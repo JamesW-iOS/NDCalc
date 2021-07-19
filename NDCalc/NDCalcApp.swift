@@ -10,11 +10,18 @@ import os
 
 @main
 struct NDCalcApp: App {
-    var model: HomeViewModel<PreferenceController>
+    var model: HomeViewModel<PreferenceController, CountdownController<NotificationController>>
 
     init() {
         let userPreferences = PreferenceController()
         DIContainer.shared.register(type: PreferenceController.self, component: userPreferences)
+
+        let notificationController = NotificationController()
+        DIContainer.shared.register(type: NotificationController.self, component: notificationController)
+
+        let countdownController = CountdownController<NotificationController>()
+        DIContainer.shared.register(type: CountdownController<NotificationController>.self, component: countdownController)
+        
         model = HomeViewModel()
     }
 

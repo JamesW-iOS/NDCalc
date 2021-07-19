@@ -9,21 +9,26 @@ import SwiftUI
 import Combine
 
 struct CountdownCircleView: View {
-    private static let updateFrequency = 0.1
+    private static let updateFrequency = 0.005
 
-    let totalRunLength: CGFloat
+    let countdown: Countdown
     let circleColor: Color
 
-    @State private var currentRunLength: CGFloat = 0.0
+//    @State private var currentRunLength: CGFloat = 0.0
     let timer = Timer.publish(every: Self.updateFrequency, on: .main, in: .common).autoconnect()
-
-    private var completionAmount: CGFloat {
-        currentRunLength / totalRunLength
-    }
+    @State var completionAmount = 1.0
+//
+//    private var completionAmount: CGFloat {
+//        currentRunLength / totalRunLength
+//    }
 
     private var secondsLeft: String {
         // Taking magnitude here since floating point rounding error can leave us with a slightly negative number that will cause the string to be -0 which look wrong
-        String(format: "%.0f", (totalRunLength - currentRunLength).magnitude)
+        String(format: "%.0f", countdown.secondsLeft.magnitude)
+    }
+
+    private var timerDone: Bool {
+        countdown.isComplete
     }
 
     var body: some View {
@@ -40,23 +45,41 @@ struct CountdownCircleView: View {
                 .rotationEffect(Angle(degrees: 270.0))
                 .animation(.linear)
 
-            Text(secondsLeft)
-                .font(.largeTitle)
+            if timerDone {
+                Text("Complete")
+                    .font(.largeTitle)
+            } else {
+                VStack {
+                    Text(secondsLeft)
+                        .font(.largeTitle)
+                    Text("Seconds left")
+                }
+            }
+
 
         }
         .padding()
         .onReceive(timer) { time in
-            if (currentRunLength - totalRunLength).magnitude < 0.001  {
-                self.timer.upstream.connect().cancel()
-            }
-            currentRunLength += Self.updateFrequency
+//            if (currentRunLength - totalRunLength).magnitude < 0.001  {
+//                self.timer.upstream.connect().cancel()
+//            }
+//            currentRunLength += Self.updateFrequency
 
+            completionAmount = countdown.completionAmount
+            if completionAmount < 0 {
+                timer.upstream.connect().cancel()
+            }
         }
+//        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+//            print("Moving back to the foreground!")
+//        }
     }
 }
 
 struct CountdownCircleView_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownCircleView(totalRunLength: 5.0, circleColor: .blue)
+        //CountdownCircleView(totalRunLength: 5.0, circleColor: .blue)
+        //CountdownCircleView(completionAmount: 0.5, secondsLeft: 10, circleColor: .blue)
+        CountdownCircleView(countdown: try! Countdown(endsAt: Date(timeIntervalSinceNow: 3.0)), circleColor: .blue)
     }
 }

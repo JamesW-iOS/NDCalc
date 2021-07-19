@@ -19,14 +19,18 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceControllerPr
                     .blur(radius: model.timerViewActive ? 20 : 0)
 
                 if model.timerViewActive {
-                    timerRunningView
+                    timerRunningView()
+                    Spacer()
                 }
             }
             .toolbar {
                 NavigationLink(destination: SettingsView<Preference>(model: settingsViewModel)) {
                     Image(systemName: "gear")
                 }
+            }
         }
+        .onAppear {
+            model.requestNotificationPermission()
         }
     }
 
@@ -77,18 +81,24 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceControllerPr
         }
     }
 
-    var timerRunningView: some View {
-        VStack {
-            CountdownCircleView(totalRunLength: CGFloat(model.calculatedShutterSpeed.seconds), circleColor: .blue)
-            Button {
-                withAnimation {
-                    model.cancelTimer()
+    @ViewBuilder
+    func timerRunningView() -> some View {
+        if let countdown = model.countdown {
+            VStack {
+                CountdownCircleView(countdown: countdown, circleColor: .blue)
+                Button {
+                    withAnimation {
+                        model.cancelTimer()
+                    }
+                } label: {
+                    NDButton(color: .blue, text: model.timerIsRunning ? "Cancel" : "Done")
                 }
-            } label: {
-                NDButton(color: .blue, text: model.timerIsRunning ? "Cancel" : "Done")
             }
+            .animation(.default)
+        } else {
+            Text("Something has gone wrong😬")
+                .font(.title)
         }
-        .animation(.default)
     }
 
     var startTimerButton: some View {

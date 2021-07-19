@@ -29,6 +29,10 @@
 		1A6B878626187C9500F67DE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A6B878526187C9500F67DE5 /* Preview Assets.xcassets */; };
 		1A6B879126187C9500F67DE5 /* NDCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B879026187C9500F67DE5 /* NDCalcTests.swift */; };
 		1A6B879C26187C9500F67DE5 /* NDCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B879B26187C9500F67DE5 /* NDCalcUITests.swift */; };
+		1A9E0DF126A52291002A1ED4 /* CountdownControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9E0DF026A52291002A1ED4 /* CountdownControllerProtocol.swift */; };
+		1A9E0DF326A52307002A1ED4 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9E0DF226A52307002A1ED4 /* Countdown.swift */; };
+		1A9E0DF526A524AA002A1ED4 /* CountdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9E0DF426A524AA002A1ED4 /* CountdownController.swift */; };
+		1A9E0DF726A524FC002A1ED4 /* NotificationControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9E0DF626A524FC002A1ED4 /* NotificationControllerProtocol.swift */; };
 		1AD7CF5B261C402E00F6C33A /* shutterSpeeds.json in Resources */ = {isa = PBXBuildFile; fileRef = 1AD7CF5A261C402E00F6C33A /* shutterSpeeds.json */; };
 		1AD7CF5D261C429A00F6C33A /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD7CF5C261C429A00F6C33A /* Bundle-Decodable.swift */; };
 		1AFC055926A14E3B0037B9B1 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFC055826A14E3B0037B9B1 /* About.swift */; };
@@ -82,6 +86,10 @@
 		1A6B879726187C9500F67DE5 /* NDCalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NDCalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A6B879B26187C9500F67DE5 /* NDCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDCalcUITests.swift; sourceTree = "<group>"; };
 		1A6B879D26187C9500F67DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A9E0DF026A52291002A1ED4 /* CountdownControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownControllerProtocol.swift; sourceTree = "<group>"; };
+		1A9E0DF226A52307002A1ED4 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
+		1A9E0DF426A524AA002A1ED4 /* CountdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownController.swift; sourceTree = "<group>"; };
+		1A9E0DF626A524FC002A1ED4 /* NotificationControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationControllerProtocol.swift; sourceTree = "<group>"; };
 		1AD7CF5A261C402E00F6C33A /* shutterSpeeds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shutterSpeeds.json; sourceTree = "<group>"; };
 		1AD7CF5C261C429A00F6C33A /* Bundle-Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		1AFC055826A14E3B0037B9B1 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
@@ -117,6 +125,7 @@
 		1A077269269E8D2B0096BBD6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1A9E0DEF26A52246002A1ED4 /* Countdown */,
 				1A07726B269E8D4B0096BBD6 /* Preferances */,
 				1A07726A269E8D3F0096BBD6 /* Notification */,
 			);
@@ -127,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				1A45765A268F1CEA00C9332A /* NotificationController.swift */,
+				1A9E0DF626A524FC002A1ED4 /* NotificationControllerProtocol.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -156,6 +166,7 @@
 				1A45764A268ECD7E00C9332A /* ShutterSpeed.swift */,
 				1AD7CF5A261C402E00F6C33A /* shutterSpeeds.json */,
 				1A077270269E8F850096BBD6 /* Constatnts.swift */,
+				1A9E0DF226A52307002A1ED4 /* Countdown.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -262,6 +273,15 @@
 				1A6B879D26187C9500F67DE5 /* Info.plist */,
 			);
 			path = NDCalcUITests;
+			sourceTree = "<group>";
+		};
+		1A9E0DEF26A52246002A1ED4 /* Countdown */ = {
+			isa = PBXGroup;
+			children = (
+				1A9E0DF026A52291002A1ED4 /* CountdownControllerProtocol.swift */,
+				1A9E0DF426A524AA002A1ED4 /* CountdownController.swift */,
+			);
+			path = Countdown;
 			sourceTree = "<group>";
 		};
 		1AFC055C26A155E40037B9B1 /* Explainer */ = {
@@ -408,11 +428,13 @@
 				1A457655268EDAA300C9332A /* HomeViewModel.swift in Sources */,
 				1A6B878126187C9400F67DE5 /* ContentView.swift in Sources */,
 				1A077276269EAFF00096BBD6 /* SettingsView.swift in Sources */,
+				1A9E0DF126A52291002A1ED4 /* CountdownControllerProtocol.swift in Sources */,
 				1A07726D269E8D620096BBD6 /* PreferenceControllerProtocol.swift in Sources */,
 				1AFC055926A14E3B0037B9B1 /* About.swift in Sources */,
 				1A077278269EB0030096BBD6 /* SettingsViewModel.swift in Sources */,
 				1A457657268EDD0B00C9332A /* HomeView.swift in Sources */,
 				1A077273269EAB8A0096BBD6 /* DIContainer.swift in Sources */,
+				1A9E0DF326A52307002A1ED4 /* Countdown.swift in Sources */,
 				1A6B877F26187C9400F67DE5 /* NDCalcApp.swift in Sources */,
 				1A457645268EBB7700C9332A /* CountdownCircleView.swift in Sources */,
 				1A45765B268F1CEA00C9332A /* NotificationController.swift in Sources */,
@@ -420,6 +442,8 @@
 				1A45764B268ECD7E00C9332A /* ShutterSpeed.swift in Sources */,
 				1A457652268ED9C300C9332A /* HomeViewModelProtocol.swift in Sources */,
 				1A457659268F1C8200C9332A /* Date.swift in Sources */,
+				1A9E0DF526A524AA002A1ED4 /* CountdownController.swift in Sources */,
+				1A9E0DF726A524FC002A1ED4 /* NotificationControllerProtocol.swift in Sources */,
 				1A077271269E8F850096BBD6 /* Constatnts.swift in Sources */,
 				1AFC055B26A153130037B9B1 /* Explainer.swift in Sources */,
 				1AD7CF5D261C429A00F6C33A /* Bundle-Decodable.swift in Sources */,
