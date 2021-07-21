@@ -34,7 +34,7 @@ struct CountdownCircleView: View {
                 .foregroundColor(circleColor)
 
             Circle()
-                .trim(from: 0.0, to: completionAmount)
+                .trim(from: 0.0, to: CGFloat(completionAmount))
                 .stroke(style: StrokeStyle(lineWidth: 20.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(circleColor)
                 .rotationEffect(Angle(degrees: 270.0))

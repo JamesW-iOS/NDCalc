@@ -19,9 +19,9 @@ final class NotificationController: NotificationControllerProtocol {
         content.body = "Your exposure has finished"
         content.sound = UNNotificationSound.defaultCritical
 
-        if #available(iOS 15.0, *) {
-            content.interruptionLevel = UNNotificationInterruptionLevel.critical
-        }
+//        if #available(iOS 15.0, *) {
+//            content.interruptionLevel = UNNotificationInterruptionLevel.critical
+//        }
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: endDate.timeIntervalSinceNow, repeats: false)
         let identifier = UUID().uuidString
