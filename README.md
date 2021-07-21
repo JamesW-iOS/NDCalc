@@ -3,7 +3,7 @@
 ## Overview
 NDCalc is a simple calculator that will convert shutter speeds for differant strengths of netural density filters. For example using a 2 stop ND filter on a scene that normally needs a 3 second exposure will result in 12 second exposure. The app allows you to start a timer with the chosen exposure time and will alert you when it is finished. The app also support multiple differant ranges of shutter speeds used by differant camera makers.
 
-## Screenshots
+![exposure select screenshot](https://github.com/TheTrexDev/NDCalc/blob/main/Screenshots/githubScreenshot.png)
 
 ## Key technologies used
 ### SwiftUI
