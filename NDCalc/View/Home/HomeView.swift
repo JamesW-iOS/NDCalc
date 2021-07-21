@@ -29,6 +29,7 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceControllerPr
                 }
             }
         }
+        .animation(.linear)
         .onAppear {
             model.requestNotificationPermission()
         }
@@ -56,6 +57,7 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceControllerPr
                         }
                         .frame(maxWidth: geometry.size.width / 2)
                         .clipped()
+                        .animation(.none)
                     }
                     VStack {
                         Text("Selected exposure time")
@@ -68,6 +70,7 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceControllerPr
                         }
                         .frame(maxWidth: geometry.size.width / 2)
                         .clipped()
+                        .animation(.none)
                     }
                 }
 

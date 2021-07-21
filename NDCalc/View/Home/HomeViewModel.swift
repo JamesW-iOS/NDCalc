@@ -17,20 +17,18 @@ final class HomeViewModel<Preference, CountdownCon>: HomeViewModelProtocol where
 
     private var cancellables: Set<AnyCancellable> = []
 
-//    var nextTimer: Double? {
-//        didSet {
-//            if nextTimer == nil {
-//                timerViewActive = false
-//            } else {
-//                timerViewActive = true
-//            }
-//        }
-//    }
-
     @Published var timerViewActive = false
     @Published var countdown: Countdown?
 
     private var notificationIdentifier: String?
+
+    private var formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 1
+        formatter.usesGroupingSeparator = false
+        return formatter
+    }()
 
 
     init(userPreferences: Preference = DIContainer.shared.resolve(type: Preference.self)!, countdownController: CountdownCon = DIContainer.shared.resolve(type: CountdownCon.self)!) {
@@ -65,7 +63,7 @@ final class HomeViewModel<Preference, CountdownCon>: HomeViewModelProtocol where
     var calculatedShutterSpeed: ShutterSpeed {
         //print("filter multiple \(filters[selectedFilterIndex].value)")
         //print("Numerator \(Self.shutterSpeeds[shutterIntervalIndex][selectedExposureIndex].numerator)")
-        let newNumer = selectedShutterSpeed.numerator * Int((pow(2.0, Double(Filter.filters[selectedFilterIndex].value))))
+        let newNumer = selectedShutterSpeed.numerator * (pow(2.0, Double(Filter.filters[selectedFilterIndex].value)))
 
         return  ShutterSpeed(numerator: newNumer, denominator: selectedShutterSpeed.denominator)
     }
@@ -75,9 +73,11 @@ final class HomeViewModel<Preference, CountdownCon>: HomeViewModelProtocol where
             return "Less than 1s"
         } else {
             if calculatedShutterSpeed.seconds > 60 {
-                return "\(calculatedShutterSpeed.seconds / 60)m \(calculatedShutterSpeed.seconds % 60)s"
+                let minutes = numberToString(calculatedShutterSpeed.seconds / 60)
+                let seconds = numberToString(calculatedShutterSpeed.seconds.remainder(dividingBy: 60.0))
+                return "\(minutes)m \(seconds)s"
             }
-            return "\(calculatedShutterSpeed.seconds)s"
+            return "\(numberToString(calculatedShutterSpeed.seconds))s"
         }
 
     }
@@ -99,48 +99,22 @@ final class HomeViewModel<Preference, CountdownCon>: HomeViewModelProtocol where
             //TODO: add error handling here
             return
         }
-//        timerIsRunning = true
-//
-//        let centre = UNUserNotificationCenter.current()
-//
-//        let content = UNMutableNotificationContent()
-//        content.title = "Exposure finished"
-//        content.body = "Your exposure has finished"
-//        content.sound = UNNotificationSound.defaultCritical
-//
-//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(calculatedShutterSpeed.seconds), repeats: false)
-//        let identifier = UUID().uuidString
-//        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-//
-//        notificationIdentifier = identifier
-//
-//        centre.add(request) { (error) in
-//            if let error = error {
-//                print("error while scheduling notification: \(error.localizedDescription)")
-//            }
-//        }
-//        let timerAlertTime = Date(timeIntervalSinceNow: Double(calculatedShutterSpeed.seconds)).timeIntervalSince1970
-//        self.nextTimer = timerAlertTime
-//
-//        timer = Timer.scheduledTimer(withTimeInterval: Double(calculatedShutterSpeed.seconds), repeats: false) { _ in
-//            self.timerIsRunning = false
-//            Vibration.error.vibrate()
-//        }
     }
 
     func cancelTimer() {
-//        nextTimer = nil
-//        timerIsRunning = false
-//        guard let timer = timer else {
-//            return
-//        }
-//        timer.invalidate()
-//        self.timer = nil
-
         countdownController.cancelCountdown()
     }
 
     func requestNotificationPermission() {
         NotificationController.requestNotificationPermission()
+    }
+
+    private func numberToString(_ number: Double) -> String {
+        guard let string = formatter.string(from: NSNumber(value: number)) else {
+            assertionFailure("failed to convert numerator to string")
+            return "Error"
+        }
+
+        return string
     }
 }

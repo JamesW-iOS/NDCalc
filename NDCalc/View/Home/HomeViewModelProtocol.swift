@@ -41,7 +41,6 @@ final class MockHomeViewModel: HomeViewModelProtocol {
 
     init(selectedFilterIndex: Int = 0,
          selectedShutterSpeed: ShutterSpeed = ShutterSpeed(numerator: 1, denominator: 30),
-//         nextTimer: Double? = nil,
          hasTimerRunning: Bool = false,
          isValidTime: Bool = true,
          currentTimeInFuture: Bool = true,
@@ -52,7 +51,6 @@ final class MockHomeViewModel: HomeViewModelProtocol {
          countdown: Countdown? = try! Countdown(endsAt: Date(timeIntervalSinceNow: 10.0))) {
         self.selectedFilterIndex = selectedFilterIndex
         self.selectedShutterSpeed = selectedShutterSpeed
-//        self.nextTimer = nextTimer
         self.timerViewActive = hasTimerRunning
         self.isValidTime = isValidTime
         self.currentTimeInFuture = currentTimeInFuture

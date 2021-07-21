@@ -52,12 +52,6 @@ final class NotificationController: NotificationControllerProtocol {
             if let error = error {
                 fatalError("error while requesting notification: \(error.localizedDescription)")
             }
-
-            if result {
-                print("can send notifications")
-            } else {
-                print("can't send notifications")
-            }
         }
     }
 }
