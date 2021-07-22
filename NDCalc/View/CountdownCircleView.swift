@@ -9,12 +9,10 @@ import SwiftUI
 import Combine
 
 struct CountdownCircleView: View {
-    private static let updateFrequency = 0.005
-
     let countdown: Countdown
     let circleColor: Color
 
-    let timer = Timer.publish(every: Self.updateFrequency, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     @State var completionAmount = 1.0
 
     private var secondsLeft: String {
@@ -38,7 +36,6 @@ struct CountdownCircleView: View {
                 .stroke(style: StrokeStyle(lineWidth: 20.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(circleColor)
                 .rotationEffect(Angle(degrees: 270.0))
-                .animation(.linear)
 
             if timerDone {
                 Text("Complete")
@@ -53,6 +50,7 @@ struct CountdownCircleView: View {
 
 
         }
+        .animation(Animation.linear(duration: 1.0))
         .padding()
         .onReceive(timer) { time in
             completionAmount = countdown.completionAmount
