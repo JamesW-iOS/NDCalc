@@ -8,15 +8,19 @@
 import UserNotifications
 
 final class NotificationController: NotificationControllerProtocol {
-    var notificationIdentifier: String?
-    let centre = UNUserNotificationCenter.current()
+    private(set) var notificationIdentifier: String?
+    private let centre: UserNotificationCenter
+
+    var hasNotificationScheduled = false
+
+    init(notificationCentre: UserNotificationCenter = UNUserNotificationCenter.current()) {
+        centre = notificationCentre
+    }
 
     func scheduleNotification(for endDate: Date) {
-        let centre = UNUserNotificationCenter.current()
-
         let content = UNMutableNotificationContent()
-        content.title = "Exposure finished"
-        content.body = "Your exposure has finished"
+        content.title = Self.notificationTitle
+        content.body = Self.notificationBody
         content.sound = UNNotificationSound.defaultCritical
 
 //        if #available(iOS 15.0, *) {
@@ -28,6 +32,7 @@ final class NotificationController: NotificationControllerProtocol {
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
 
         notificationIdentifier = identifier
+        hasNotificationScheduled = true
 
         centre.add(request) { (error) in
             if let error = error {
@@ -42,16 +47,19 @@ final class NotificationController: NotificationControllerProtocol {
             return
         }
 
+        hasNotificationScheduled = false
+        self.notificationIdentifier = nil
         centre.removePendingNotificationRequests(withIdentifiers: [notificationIdentifier])
     }
 
-    static func requestNotificationPermission() {
-        let centre = UNUserNotificationCenter.current()
-
+    func requestNotificationPermission() {
         centre.requestAuthorization(options: [.alert, .sound, .badge]) { result, error in
             if let error = error {
                 fatalError("error while requesting notification: \(error.localizedDescription)")
             }
         }
     }
+
+    static let notificationTitle = "Exposure finished"
+    static let notificationBody = "Your exposure has finished"
 }

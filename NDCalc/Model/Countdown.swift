@@ -18,7 +18,7 @@ enum CountdownError: Error, CustomStringConvertible {
     }
 }
 
-struct Countdown {
+struct Countdown: Equatable {
     let finishTime: Date
     private let startedAt = Date()
 
@@ -41,5 +41,9 @@ struct Countdown {
         }
 
         finishTime = endsAt
+    }
+
+    static func == (lhs: Countdown, rhs: Countdown) -> Bool {
+        return lhs.finishTime == rhs.finishTime
     }
 }

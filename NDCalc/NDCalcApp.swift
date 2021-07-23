@@ -10,7 +10,7 @@ import os
 
 @main
 struct NDCalcApp: App {
-    var model: HomeViewModel<PreferenceController, CountdownController<NotificationController>>
+    var model: HomeViewModel<PreferenceController, CountdownController<NotificationController>, NotificationController>
 
     init() {
         let userPreferences = PreferenceController()

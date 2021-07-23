@@ -8,6 +8,10 @@
 import Foundation
 
 protocol NotificationControllerProtocol {
+    var hasNotificationScheduled: Bool { get }
+    var notificationIdentifier: String? { get }
+
     func scheduleNotification(for endDate: Date)
     func cancelNotification()
+    func requestNotificationPermission()
 }

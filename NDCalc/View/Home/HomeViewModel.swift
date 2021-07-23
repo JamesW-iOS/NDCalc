@@ -9,11 +9,12 @@ import Combine
 import UserNotifications
 import AVFoundation
 
-final class HomeViewModel<Preference, CountdownCon>: HomeViewModelProtocol where Preference: PreferenceControllerProtocol, CountdownCon: CountdownControllerProtocol {
+final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewModelProtocol where Preference: PreferenceControllerProtocol, CountdownCon: CountdownControllerProtocol, NotificationCon: NotificationControllerProtocol {
     @Published var selectedFilterIndex = 0
     @Published var selectedShutterSpeed: ShutterSpeed
     let userPreferences: Preference
     let countdownController: CountdownCon
+    let notificationController: NotificationCon
 
     private var cancellables: Set<AnyCancellable> = []
 
@@ -31,9 +32,12 @@ final class HomeViewModel<Preference, CountdownCon>: HomeViewModelProtocol where
     }()
 
 
-    init(userPreferences: Preference = DIContainer.shared.resolve(type: Preference.self)!, countdownController: CountdownCon = DIContainer.shared.resolve(type: CountdownCon.self)!) {
+    init(userPreferences: Preference = DIContainer.shared.resolve(type: Preference.self)!,
+         countdownController: CountdownCon = DIContainer.shared.resolve(type: CountdownCon.self)!,
+         notificationController: NotificationCon = DIContainer.shared.resolve(type: NotificationCon.self)!) {
         self.userPreferences = userPreferences
         self.countdownController = countdownController
+        self.notificationController = notificationController
         self.selectedShutterSpeed =  ShutterSpeed.speedsForGap(userPreferences.selectedShutterSpeedGap)[0]
 
         userPreferences.objectWillChange.sink { _ in
@@ -90,8 +94,6 @@ final class HomeViewModel<Preference, CountdownCon>: HomeViewModelProtocol where
         Date(timeIntervalSinceNow: Double(calculatedShutterSpeed.seconds)).isInFuture
     }
 
-
-
     func startTimer() {
         do {
             try countdownController.startCountdown(for: Date(timeIntervalSinceNow: Double(calculatedShutterSpeed.seconds)))
@@ -106,7 +108,7 @@ final class HomeViewModel<Preference, CountdownCon>: HomeViewModelProtocol where
     }
 
     func requestNotificationPermission() {
-        NotificationController.requestNotificationPermission()
+        notificationController.requestNotificationPermission()
     }
 
     private func numberToString(_ number: Double) -> String {
