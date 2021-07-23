@@ -29,7 +29,7 @@ struct ShutterSpeed: Identifiable, Hashable, Codable {
         if denominator == 1 {
             return numberToString(numerator)
         } else {
-            return "\(numberToString(numerator)) / \(numberToString(denominator))"
+            return "\(numberToString(numerator))/\(numberToString(denominator))"
         }
     }
 

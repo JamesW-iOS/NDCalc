@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CountdownError: Error, CustomStringConvertible {
+enum CountdownError: Error, CustomStringConvertible, Equatable {
     case invalidEndTime
 
     var description: String {

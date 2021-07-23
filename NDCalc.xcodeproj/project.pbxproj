@@ -28,6 +28,9 @@
 		1A6A28E026AA382900D53227 /* NotificationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A28DF26AA382900D53227 /* NotificationControllerTests.swift */; };
 		1A6A28E226AA402200D53227 /* UserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A28E126AA402200D53227 /* UserNotificationCenter.swift */; };
 		1A6A28E426AA418D00D53227 /* MockUserNotificationCentre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A28E326AA418D00D53227 /* MockUserNotificationCentre.swift */; };
+		1A6A28E626AA547100D53227 /* CountdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A28E526AA547100D53227 /* CountdownTests.swift */; };
+		1A6A28E926AA560B00D53227 /* XCTestErrorAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A28E726AA55D600D53227 /* XCTestErrorAssert.swift */; };
+		1A6A28EB26AA594700D53227 /* ShutterSpeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A28EA26AA594700D53227 /* ShutterSpeedTests.swift */; };
 		1A6B877F26187C9400F67DE5 /* NDCalcApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B877E26187C9400F67DE5 /* NDCalcApp.swift */; };
 		1A6B878126187C9400F67DE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B878026187C9400F67DE5 /* ContentView.swift */; };
 		1A6B878326187C9500F67DE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A6B878226187C9500F67DE5 /* Assets.xcassets */; };
@@ -86,6 +89,9 @@
 		1A6A28DF26AA382900D53227 /* NotificationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationControllerTests.swift; sourceTree = "<group>"; };
 		1A6A28E126AA402200D53227 /* UserNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationCenter.swift; sourceTree = "<group>"; };
 		1A6A28E326AA418D00D53227 /* MockUserNotificationCentre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserNotificationCentre.swift; sourceTree = "<group>"; };
+		1A6A28E526AA547100D53227 /* CountdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTests.swift; sourceTree = "<group>"; };
+		1A6A28E726AA55D600D53227 /* XCTestErrorAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestErrorAssert.swift; sourceTree = "<group>"; };
+		1A6A28EA26AA594700D53227 /* ShutterSpeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterSpeedTests.swift; sourceTree = "<group>"; };
 		1A6B877B26187C9400F67DE5 /* NDCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NDCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A6B877E26187C9400F67DE5 /* NDCalcApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDCalcApp.swift; sourceTree = "<group>"; };
 		1A6B878026187C9400F67DE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -286,11 +292,14 @@
 		1A6B878F26187C9500F67DE5 /* NDCalcTests */ = {
 			isa = PBXGroup;
 			children = (
+				1A6A28E726AA55D600D53227 /* XCTestErrorAssert.swift */,
 				1A6B879026187C9500F67DE5 /* NDCalcTests.swift */,
 				1A6A28DC26A971CD00D53227 /* Mocks */,
 				1A6B879226187C9500F67DE5 /* Info.plist */,
 				1A6A28DA26A9719300D53227 /* CountdownControllerTests.swift */,
 				1A6A28DF26AA382900D53227 /* NotificationControllerTests.swift */,
+				1A6A28E526AA547100D53227 /* CountdownTests.swift */,
+				1A6A28EA26AA594700D53227 /* ShutterSpeedTests.swift */,
 			);
 			path = NDCalcTests;
 			sourceTree = "<group>";
@@ -491,6 +500,9 @@
 				1A6A28DE26A971DC00D53227 /* MockNotificationController.swift in Sources */,
 				1A6B879126187C9500F67DE5 /* NDCalcTests.swift in Sources */,
 				1A6A28E026AA382900D53227 /* NotificationControllerTests.swift in Sources */,
+				1A6A28E926AA560B00D53227 /* XCTestErrorAssert.swift in Sources */,
+				1A6A28E626AA547100D53227 /* CountdownTests.swift in Sources */,
+				1A6A28EB26AA594700D53227 /* ShutterSpeedTests.swift in Sources */,
 				1A6A28DB26A9719300D53227 /* CountdownControllerTests.swift in Sources */,
 				1A6A28E426AA418D00D53227 /* MockUserNotificationCentre.swift in Sources */,
 			);
