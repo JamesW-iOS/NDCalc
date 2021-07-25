@@ -32,7 +32,6 @@
 		1A6A28E926AA560B00D53227 /* XCTestErrorAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A28E726AA55D600D53227 /* XCTestErrorAssert.swift */; };
 		1A6A28EB26AA594700D53227 /* ShutterSpeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A28EA26AA594700D53227 /* ShutterSpeedTests.swift */; };
 		1A6B877F26187C9400F67DE5 /* NDCalcApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B877E26187C9400F67DE5 /* NDCalcApp.swift */; };
-		1A6B878126187C9400F67DE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B878026187C9400F67DE5 /* ContentView.swift */; };
 		1A6B878326187C9500F67DE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A6B878226187C9500F67DE5 /* Assets.xcassets */; };
 		1A6B878626187C9500F67DE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A6B878526187C9500F67DE5 /* Preview Assets.xcassets */; };
 		1A6B879126187C9500F67DE5 /* NDCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6B879026187C9500F67DE5 /* NDCalcTests.swift */; };
@@ -94,7 +93,6 @@
 		1A6A28EA26AA594700D53227 /* ShutterSpeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterSpeedTests.swift; sourceTree = "<group>"; };
 		1A6B877B26187C9400F67DE5 /* NDCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NDCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A6B877E26187C9400F67DE5 /* NDCalcApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDCalcApp.swift; sourceTree = "<group>"; };
-		1A6B878026187C9400F67DE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1A6B878226187C9500F67DE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A6B878526187C9500F67DE5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1A6B878726187C9500F67DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 				1AFC055C26A155E40037B9B1 /* Explainer */,
 				1A077274269EAFDF0096BBD6 /* Settings */,
 				1A457653268EDA9400C9332A /* Home */,
-				1A6B878026187C9400F67DE5 /* ContentView.swift */,
 				1A457644268EBB7700C9332A /* CountdownCircleView.swift */,
 				1A457648268ECCA400C9332A /* NDButton.swift */,
 				1AFC055826A14E3B0037B9B1 /* About.swift */,
@@ -341,6 +338,7 @@
 				1A6B877726187C9400F67DE5 /* Sources */,
 				1A6B877826187C9400F67DE5 /* Frameworks */,
 				1A6B877926187C9400F67DE5 /* Resources */,
+				1ACB829826AD6A2700349F33 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -456,6 +454,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1ACB829826AD6A2700349F33 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1A6B877726187C9400F67DE5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -465,7 +484,6 @@
 				1A6A28E226AA402200D53227 /* UserNotificationCenter.swift in Sources */,
 				1AFC055E26A155F90037B9B1 /* ExplainerViewModel.swift in Sources */,
 				1A457655268EDAA300C9332A /* HomeViewModel.swift in Sources */,
-				1A6B878126187C9400F67DE5 /* ContentView.swift in Sources */,
 				1A077276269EAFF00096BBD6 /* SettingsView.swift in Sources */,
 				1A9E0DF126A52291002A1ED4 /* CountdownControllerProtocol.swift in Sources */,
 				1A07726D269E8D620096BBD6 /* PreferenceControllerProtocol.swift in Sources */,

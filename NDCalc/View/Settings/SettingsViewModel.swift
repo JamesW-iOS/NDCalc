@@ -30,5 +30,6 @@ final class SettingsViewModel<Preference>: ObservableObject where Preference: Pr
     }
 
     // MARK: - Explanations
+    // swiftlint:disable:next line_length
     let shutterGapExplanation = ExplainerViewModel(title: "Shutter gap interval", explanation: "This is the number of intervals between stops in the shutter speed selection. For example if this is set to one stop it would be 1/60, 1/30, 1/15. At a third stop 1/60, 1/50, 1/40, 1/30, 1/25, 1/10. Each camera brand will vary but they all should generally fall into one of the three categories.")
 }

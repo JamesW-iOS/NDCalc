@@ -9,6 +9,7 @@ import Foundation
 
 struct Filter: Identifiable, Hashable {
     let value: Int
+    // swiftlint:disable:next identifier_name
     var id: Int { value }
 
     static let filters = [

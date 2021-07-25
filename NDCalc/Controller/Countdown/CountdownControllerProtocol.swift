@@ -33,12 +33,7 @@ final class MockCountdownController: CountdownControllerProtocol {
         }
     }
 
+    func startCountdown(for endDate: Date) throws {}
 
-    func startCountdown(for endDate: Date) throws {
-    }
-
-    func cancelCountdown() {
-    }
-
-
+    func cancelCountdown() {}
 }

@@ -53,7 +53,7 @@ final class NotificationController: NotificationControllerProtocol {
     }
 
     func requestNotificationPermission() {
-        centre.requestAuthorization(options: [.alert, .sound, .badge]) { result, error in
+        centre.requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
             if let error = error {
                 fatalError("error while requesting notification: \(error.localizedDescription)")
             }

@@ -20,8 +20,9 @@ struct NDCalcApp: App {
         DIContainer.shared.register(type: NotificationController.self, component: notificationController)
 
         let countdownController = CountdownController<NotificationController>()
-        DIContainer.shared.register(type: CountdownController<NotificationController>.self, component: countdownController)
-        
+        DIContainer.shared.register(type: CountdownController<NotificationController>.self,
+                                    component: countdownController)
+
         model = HomeViewModel()
     }
 

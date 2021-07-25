@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-final class CountdownController<Notification>: CountdownControllerProtocol where Notification: NotificationControllerProtocol {
+final class CountdownController<Notification: NotificationControllerProtocol>: CountdownControllerProtocol {
     @Published var currentCountdown: Countdown?
     var currentCountdownPublisher: Published<Countdown?>.Publisher { $currentCountdown }
 
@@ -37,7 +37,7 @@ final class CountdownController<Notification>: CountdownControllerProtocol where
         }
 
     }
-    
+
     func cancelCountdown() {
         currentCountdown = nil
         notificationController.cancelNotification()
@@ -49,6 +49,4 @@ final class CountdownController<Notification>: CountdownControllerProtocol where
         timer.invalidate()
         self.timer = nil
     }
-    
-    
 }

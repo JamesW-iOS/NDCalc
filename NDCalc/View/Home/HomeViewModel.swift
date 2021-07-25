@@ -9,7 +9,11 @@ import Combine
 import UserNotifications
 import AVFoundation
 
-final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewModelProtocol where Preference: PreferenceControllerProtocol, CountdownCon: CountdownControllerProtocol, NotificationCon: NotificationControllerProtocol {
+final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewModelProtocol where
+    Preference: PreferenceControllerProtocol,
+    CountdownCon: CountdownControllerProtocol,
+    NotificationCon: NotificationControllerProtocol {
+
     @Published var selectedFilterIndex = 0
     @Published var selectedShutterSpeed: ShutterSpeed
     let userPreferences: Preference
@@ -30,7 +34,6 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
         formatter.usesGroupingSeparator = false
         return formatter
     }()
-
 
     init(userPreferences: Preference = DIContainer.shared.resolve(type: Preference.self)!,
          countdownController: CountdownCon = DIContainer.shared.resolve(type: CountdownCon.self)!,
@@ -65,8 +68,6 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
     }
 
     var calculatedShutterSpeed: ShutterSpeed {
-        //print("filter multiple \(filters[selectedFilterIndex].value)")
-        //print("Numerator \(Self.shutterSpeeds[shutterIntervalIndex][selectedExposureIndex].numerator)")
         let newNumer = selectedShutterSpeed.numerator * (pow(2.0, Double(Filter.filters[selectedFilterIndex].value)))
 
         return  ShutterSpeed(numerator: newNumer, denominator: selectedShutterSpeed.denominator)
@@ -96,9 +97,9 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
 
     func startTimer() {
         do {
-            try countdownController.startCountdown(for: Date(timeIntervalSinceNow: Double(calculatedShutterSpeed.seconds)))
+            let timerEndDate = Date(timeIntervalSinceNow: Double(calculatedShutterSpeed.seconds))
+            try countdownController.startCountdown(for: timerEndDate)
         } catch {
-            //TODO: add error handling here
             return
         }
     }

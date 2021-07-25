@@ -16,7 +16,10 @@ class ShutterSpeedTests: XCTestCase {
                      (ShutterSpeed(numerator: 1.5, denominator: 1), "1.5")]
 
         for shutterSpeedCase in cases {
-            XCTAssertEqual(shutterSpeedCase.0.stringRepresentation, shutterSpeedCase.1, "string representation of shutter speed: \(shutterSpeedCase.0.stringRepresentation) does not match expected: \(shutterSpeedCase.1)")
+            XCTAssertEqual(shutterSpeedCase.0.stringRepresentation,
+                           shutterSpeedCase.1,
+                           "string representation of shutter speed: \(shutterSpeedCase.0.stringRepresentation) does not match expected: \(shutterSpeedCase.1)")
+                           // swiftlint:disable:previous line_length
         }
     }
 

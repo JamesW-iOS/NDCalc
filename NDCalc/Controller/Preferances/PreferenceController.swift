@@ -20,7 +20,8 @@ final class PreferenceController: PreferenceControllerProtocol, ObservableObject
         let defaults = UserDefaults.standard
 
         if let storedSelectedShutterSpeedGapData = defaults.data(forKey: UserDefaultKeys.shutterGapKey),
-           let storedSelectedShutterSpeedGapValue = try? JSONDecoder().decode(ShutterGap.self, from: storedSelectedShutterSpeedGapData) {
+           let storedSelectedShutterSpeedGapValue = try? JSONDecoder().decode(ShutterGap.self,
+                                                                              from: storedSelectedShutterSpeedGapData) {
             self.selectedShutterSpeedGap = storedSelectedShutterSpeedGapValue
         } else {
             self.selectedShutterSpeedGap = ShutterGap.halfStop

@@ -23,9 +23,5 @@ final class MockNotificationController: NotificationControllerProtocol {
         scheduledNotificationDate = nil
     }
 
-    func requestNotificationPermission() {
-        
-    }
-
-
+    func requestNotificationPermission() {}
 }

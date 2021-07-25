@@ -12,7 +12,6 @@ final class MockUserNotificationCentre: UserNotificationCenter {
     var hasAuthorizationStatus = false
     var request: UNNotificationRequest?
 
-
     func requestAuthorization(options: UNAuthorizationOptions, completionHandler: @escaping (Bool, Error?) -> Void) {
         hasAuthorizationStatus = true
         completionHandler(true, nil)

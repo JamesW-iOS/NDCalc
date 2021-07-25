@@ -48,6 +48,7 @@ final class MockHomeViewModel: HomeViewModelProtocol {
          calculatedShutterSpeedString: String = "10s",
          timerIsRunning: Bool = false,
          shutterSpeeds: [ShutterSpeed] = [],
+         // swiftlint:disable:next force_try
          countdown: Countdown? = try! Countdown(endsAt: Date(timeIntervalSinceNow: 10.0))) {
         self.selectedFilterIndex = selectedFilterIndex
         self.selectedShutterSpeed = selectedShutterSpeed

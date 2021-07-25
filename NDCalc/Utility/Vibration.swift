@@ -23,6 +23,7 @@ enum Vibration {
     case selection
     case oldSchool
 
+    // swiftlint:disable:next cyclomatic_complexity
     public func vibrate() {
         switch self {
         case .error:

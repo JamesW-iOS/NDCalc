@@ -10,6 +10,7 @@ import Foundation
 struct ShutterSpeed: Identifiable, Hashable, Codable {
     let numerator: Double
     let denominator: Double
+    // swiftlint:disable:next identifier_name
     var id: String { "\(numerator) \\ \(denominator)" }
 
     private static let shutterSpeeds = Bundle.main.decode([[ShutterSpeed]].self, from: "shutterSpeeds.json")
@@ -64,6 +65,7 @@ struct ShutterSpeed: Identifiable, Hashable, Codable {
 }
 
 enum ShutterGap: String, Codable, CaseIterable, Identifiable {
+    // swiftlint:disable:next identifier_name
     var id: Self { self }
 
     case oneStop = "One Stop"

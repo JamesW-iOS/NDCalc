@@ -16,7 +16,8 @@ struct CountdownCircleView: View {
     @State var completionAmount = 1.0
 
     private var secondsLeft: String {
-        // Taking magnitude here since floating point rounding error can leave us with a slightly negative number that will cause the string to be -0 which look wrong
+        // Taking magnitude here since floating point rounding error can leave us with a slightly negative number,
+        // that will cause the string to be -0 which look wrong
         String(format: "%.0f", countdown.secondsLeft.magnitude)
     }
 
@@ -47,12 +48,10 @@ struct CountdownCircleView: View {
                     Text("Seconds left")
                 }
             }
-
-
         }
         .animation(Animation.linear(duration: 1.0))
         .padding()
-        .onReceive(timer) { time in
+        .onReceive(timer) { _ in
             completionAmount = countdown.completionAmount
             if completionAmount < 0 {
                 timer.upstream.connect().cancel()
@@ -63,6 +62,7 @@ struct CountdownCircleView: View {
 
 struct CountdownCircleView_Previews: PreviewProvider {
     static var previews: some View {
+        // swiftlint:disable:next force_try
         CountdownCircleView(countdown: try! Countdown(endsAt: Date(timeIntervalSinceNow: 3.0)), circleColor: .blue)
     }
 }

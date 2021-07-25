@@ -87,14 +87,14 @@ struct About: View {
         .padding()
         .frame(maxWidth: .infinity)
     }
+
+    enum AboutCopy {
+        static let aboutMe = "Developed by James, solo indie developer in Melbourne Australia."
+    }
 }
 
 struct About_Previews: PreviewProvider {
     static var previews: some View {
         About()
     }
-}
-
-fileprivate enum AboutCopy {
-    static let aboutMe = "Developed by James, solo indie developer in Melbourne Australia."
 }

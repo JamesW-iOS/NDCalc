@@ -9,8 +9,8 @@ import XCTest
 @testable import NDCalc
 
 class CountdownControllerTests: XCTestCase {
-    var sut: CountdownController<MockNotificationController>?
-    var notificationController: MockNotificationController?
+    var sut: CountdownController<MockNotificationController>!
+    var notificationController: MockNotificationController!
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -24,28 +24,18 @@ class CountdownControllerTests: XCTestCase {
     }
 
     func testStartCountdown() throws {
-        guard let sut = sut else {
-            XCTFail()
-            return
-        }
-
         let endDate = Date(timeIntervalSinceNow: 60.0)
         let countdown = try Countdown(endsAt: endDate)
 
         try startCountdown(for: endDate)
-
 
         XCTAssertTrue(sut.hasActiveTimer)
         XCTAssertEqual(countdown, sut.currentCountdown)
     }
 
     func testStartingCountdownSetsNotification() throws {
-        guard let sut = sut, let notificationController = notificationController else {
-            XCTFail()
-            return
-        }
-
-        XCTAssertFalse(notificationController.hasNotificationScheduled, "notification controller should not start with notification scheduled.")
+        XCTAssertFalse(notificationController.hasNotificationScheduled,
+                       "notification controller should not start with notification scheduled.")
 
         let endDate = Date(timeIntervalSinceNow: 60.0)
         let countdown = try Countdown(endsAt: endDate)
@@ -54,16 +44,13 @@ class CountdownControllerTests: XCTestCase {
 
         XCTAssertTrue(sut.hasActiveTimer, "hasActiveTimer should be true after starting a countdown.")
         XCTAssertEqual(countdown, sut.currentCountdown, "currentCountdown should be equal to the one started.")
-        XCTAssertTrue(notificationController.hasNotificationScheduled, "notification controller should have notification started.")
-        XCTAssertEqual(notificationController.scheduledNotificationDate, endDate, "scheduled notification should be for the same time as the countdown end time.")
+        XCTAssertTrue(notificationController.hasNotificationScheduled,
+                      "notification controller should have notification started.")
+        XCTAssertEqual(notificationController.scheduledNotificationDate, endDate,
+                       "scheduled notification should be for the same time as the countdown end time.")
     }
 
     func testCancelingCountdown() throws {
-        guard let sut = sut else {
-            XCTFail()
-            return
-        }
-
         try testStartCountdown()
         sut.cancelCountdown()
 
@@ -72,27 +59,16 @@ class CountdownControllerTests: XCTestCase {
     }
 
     func testCancelingCountdownCancelsNotification() throws {
-        guard let notificationController = notificationController else {
-            XCTFail()
-            return
-        }
-
         try testCancelingCountdown()
         XCTAssertFalse(notificationController.hasNotificationScheduled, "notification should be canceled.")
-        XCTAssertNil(notificationController.scheduledNotificationDate, "there should be no notification date when countdown is cancelled.")
+        XCTAssertNil(notificationController.scheduledNotificationDate,
+                     "there should be no notification date when countdown is cancelled.")
     }
 
     private func startCountdown(for endDate: Date) throws {
-        guard let sut = sut else {
-            XCTFail()
-            return
-        }
-
         XCTAssertFalse(sut.hasActiveTimer, "countdownController should start without a timer started.")
         XCTAssertNil(sut.currentCountdown, "countdownController should not start with a Countdown object.")
 
         try sut.startCountdown(for: endDate)
     }
-
-
 }
