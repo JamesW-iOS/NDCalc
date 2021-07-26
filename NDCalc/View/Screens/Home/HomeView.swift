@@ -15,10 +15,10 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
         NavigationView {
             ZStack {
                 mainView
-                    .disabled(model.timerViewActive)
-                    .blur(radius: model.timerViewActive ? 20 : 0)
+                    .disabled(model.countdownViewActive)
+                    .blur(radius: model.countdownViewActive ? 20 : 0)
 
-                if model.timerViewActive {
+                if model.countdownViewActive {
                     timerRunningView()
                     Spacer()
                 }
@@ -54,22 +54,17 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
 
     @ViewBuilder
     func timerRunningView() -> some View {
-        if let countdown = model.countdown {
-            VStack {
-                CountdownCircleView(countdown: countdown, circleColor: .blue)
-                Button {
-                    withAnimation {
-                        model.cancelCountdown()
-                    }
-                } label: {
-                    NDButton(color: .blue, text: model.timerIsRunning ? "Cancel" : "Done")
+        VStack {
+            CountdownCircleView(countdown: model.countdown, circleColor: .blue)
+            Button {
+                withAnimation {
+                    model.countdownViewButtonTapped()
                 }
+            } label: {
+                NDButton(color: .blue, text: model.countdownIsActive ? "Cancel" : "Done")
             }
-            .animation(.default)
-        } else {
-            Text("Something has gone wrong😬")
-                .font(.title)
         }
+        .animation(.default)
     }
 
     func sideBySidePickers(fullWidth: CGFloat) -> some View {

@@ -9,20 +9,22 @@ import SwiftUI
 import Combine
 
 struct CountdownCircleView: View {
-    let countdown: Countdown
+    let countdown: Countdown?
     let circleColor: Color
 
-    let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     @State var completionAmount = 1.0
+
+    @State private var circleReseting = false
 
     private var secondsLeft: String {
         // Taking magnitude here since floating point rounding error can leave us with a slightly negative number,
         // that will cause the string to be -0 which look wrong
-        String(format: "%.0f", countdown.secondsLeft.magnitude)
+        String(format: "%.0f", countdown?.secondsLeft.magnitude ?? 0.0)
     }
 
     private var timerDone: Bool {
-        countdown.isComplete
+        countdown?.isComplete ?? true
     }
 
     var body: some View {
@@ -49,12 +51,18 @@ struct CountdownCircleView: View {
                 }
             }
         }
-        .animation(Animation.linear(duration: 1.0))
+        .animation(Animation.linear(duration: circleReseting ? 0.7 : 0.1))
         .padding()
         .onReceive(timer) { _ in
-            completionAmount = countdown.completionAmount
-            if completionAmount < 0 {
+            if let countdown = countdown {
+                completionAmount = countdown.completionAmount
+                if completionAmount < 0 {
+                    timer.upstream.connect().cancel()
+                }
+            } else {
                 timer.upstream.connect().cancel()
+                circleReseting = true
+                completionAmount = 1.0
             }
         }
     }

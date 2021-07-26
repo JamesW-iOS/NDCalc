@@ -11,17 +11,16 @@ import Foundation
 protocol HomeViewModelProtocol: ObservableObject {
     var selectedFilter: Filter { get set }
     var selectedShutterSpeed: ShutterSpeed { get set }
-    var timerViewActive: Bool { get set }
-    var timerIsRunning: Bool { get }
+    var countdownViewActive: Bool { get set }
+    var countdownIsActive: Bool { get }
     var isCurrentTimeValid: Bool { get }
-    var currentTimeInFuture: Bool { get }
     var calculatedShutterSpeed: ShutterSpeed { get }
     var calculatedShutterSpeedString: String { get }
     var shutterSpeeds: [ShutterSpeed] { get }
     var countdown: Countdown? { get }
 
     func startCountdown()
-    func cancelCountdown()
+    func countdownViewButtonTapped()
     func requestNotificationPermission()
 }
 
@@ -29,12 +28,11 @@ final class MockHomeViewModel: HomeViewModelProtocol {
     var selectedFilter: Filter
     var selectedShutterSpeed: ShutterSpeed
     var nextTimer: Double?
-    var timerViewActive: Bool
+    var countdownViewActive: Bool
     var isCurrentTimeValid: Bool
-    var currentTimeInFuture: Bool
     var calculatedShutterSpeed: ShutterSpeed
     var calculatedShutterSpeedString: String
-    var timerIsRunning: Bool
+    var countdownIsActive: Bool
     var shutterSpeeds: [ShutterSpeed]
     var countdown: Countdown?
 
@@ -44,7 +42,6 @@ final class MockHomeViewModel: HomeViewModelProtocol {
          selectedShutterSpeed: ShutterSpeed = defaultShutterSpeeds[0],
          hasTimerRunning: Bool = false,
          isValidTime: Bool = true,
-         currentTimeInFuture: Bool = true,
          calculatedShutterSpeed: ShutterSpeed =
             ShutterSpeed.calculateShutterSpeedWithFilter(shutterSpeed: defaultShutterSpeeds[0],
                                                       filter: Filter(strength: 1)),
@@ -55,12 +52,11 @@ final class MockHomeViewModel: HomeViewModelProtocol {
          countdown: Countdown? = try! Countdown(endsAt: Date(timeIntervalSinceNow: 10.0))) {
         self.selectedFilter = selectedFilter
         self.selectedShutterSpeed = selectedShutterSpeed
-        self.timerViewActive = hasTimerRunning
+        self.countdownViewActive = hasTimerRunning
         self.isCurrentTimeValid = isValidTime
-        self.currentTimeInFuture = currentTimeInFuture
         self.calculatedShutterSpeed = calculatedShutterSpeed
         self.calculatedShutterSpeedString = calculatedShutterSpeedString
-        self.timerIsRunning = timerIsRunning
+        self.countdownIsActive = timerIsRunning
         self.shutterSpeeds = shutterSpeeds
         self.countdown = countdown
     }
@@ -69,7 +65,7 @@ final class MockHomeViewModel: HomeViewModelProtocol {
         print("Timer started")
     }
 
-    func cancelCountdown() {
+    func countdownViewButtonTapped() {
         print("Timer stoped")
     }
 

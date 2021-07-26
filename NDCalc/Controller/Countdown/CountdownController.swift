@@ -62,6 +62,7 @@ final class CountdownController<Notification: NotificationControllerProtocol>: C
         notificationController.scheduleNotification(for: endDate)
         timer = Timer.scheduledTimer(withTimeInterval: endDate.timeIntervalSinceNow, repeats: false) { _ in
             Vibration.error.vibrate()
+            self.currentCountdown = nil
         }
 
     }
