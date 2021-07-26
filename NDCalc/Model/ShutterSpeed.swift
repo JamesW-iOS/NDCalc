@@ -85,6 +85,11 @@ struct ShutterSpeed: Identifiable, Hashable, Codable {
             return Self.thirdStopSpeeds
         }
     }
+
+    static func calculateShutterSpeedWithFilter(shutterSpeed: ShutterSpeed, filter: Filter) -> ShutterSpeed {
+        let newNumer = shutterSpeed.numerator * (pow(2.0, Double(filter.strength)))
+        return  ShutterSpeed(numerator: newNumer, denominator: shutterSpeed.denominator)
+    }
 }
 
 /// Represents the different intervals between shutter speeds.

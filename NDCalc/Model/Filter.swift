@@ -17,9 +17,9 @@ struct Filter: Identifiable, Hashable {
     // swiftlint:disable:next identifier_name
     var id: Int { strength }
 
-    /// A private initiiliser for an NDFilter of a particular strength,
+    /// initialiser for an NDFilter of a particular strength,
     /// - Parameter strength: The number of stops of light that the filter will darken the image by.
-    private init(strength: Int) {
+    init(strength: Int) {
         self.strength = strength
     }
 

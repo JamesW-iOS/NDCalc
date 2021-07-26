@@ -38,48 +38,16 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
     var mainView: some View {
         GeometryReader { geometry in
             VStack {
-                Text("Calculated Time:")
-                    .font(.title)
-                Text(model.calculatedShutterSpeedString)
-                    .font(.largeTitle)
+                calculatedShutterSpeed
 
                 Spacer()
 
-                HStack {
-                    VStack {
-                        Text("Selected filter")
-
-                        Picker(selection: $model.selectedFilterIndex, label: Text("Selected Filter")) {
-                            ForEach(0..<Filter.filters.count) { filterIndex in
-                                Text("\(Filter.filters[filterIndex].strength)")
-                                    .tag(filterIndex)
-                            }
-                        }
-                        .frame(maxWidth: geometry.size.width / 2)
-                        .clipped()
-                        .animation(.none)
-                    }
-                    VStack {
-                        Text("Selected exposure time")
-                        Picker(selection: $model.selectedShutterSpeed, label: Text("Selected exposure")) {
-                            ForEach(model.shutterSpeeds) { shutterSpeed in
-                                Text(shutterSpeed.stringRepresentation)
-                                    .tag(shutterSpeed)
-
-                            }
-                        }
-                        .frame(maxWidth: geometry.size.width / 2)
-                        .clipped()
-                        .animation(.none)
-                    }
-                }
+                sideBySidePickers(fullWidth: geometry.size.width)
 
                 Spacer()
 
                 startTimerButton
-                    .disabled(!model.isValidTime)
-
-                Spacer()
+                    .disabled(!model.isCurrentTimeValid)
             }
         }
     }
@@ -91,7 +59,7 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
                 CountdownCircleView(countdown: countdown, circleColor: .blue)
                 Button {
                     withAnimation {
-                        model.cancelTimer()
+                        model.cancelCountdown()
                     }
                 } label: {
                     NDButton(color: .blue, text: model.timerIsRunning ? "Cancel" : "Done")
@@ -104,14 +72,39 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
         }
     }
 
+    func sideBySidePickers(fullWidth: CGFloat) -> some View {
+        HStack {
+            FilterPicker(selectedFilter: $model.selectedFilter)
+
+                .frame(maxWidth: fullWidth / 2)
+                .clipped()
+
+            ShutterSpeedPicker(shutterSpeeds: model.shutterSpeeds,
+                                selectedShutterSpeed: $model.selectedShutterSpeed)
+                .frame(maxWidth: fullWidth / 2)
+                .clipped()
+        }
+
+        .animation(.none)
+    }
+
+    var calculatedShutterSpeed: some View {
+        VStack {
+            Text("Calculated Time:")
+                .font(.title)
+            Text(model.calculatedShutterSpeedString)
+                .font(.largeTitle)
+        }
+    }
+
     var startTimerButton: some View {
         Button {
             withAnimation {
-                model.startTimer()
+                model.startCountdown()
             }
         } label: {
             NDButton(color: .blue, text: "Start timer")
-                .opacity(model.isValidTime ? 1.0 : 0.5)
+                .opacity(model.isCurrentTimeValid ? 1.0 : 0.5)
         }
     }
 }

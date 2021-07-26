@@ -9,28 +9,28 @@ import Combine
 import Foundation
 
 protocol HomeViewModelProtocol: ObservableObject {
-    var selectedFilterIndex: Int { get set }
+    var selectedFilter: Filter { get set }
     var selectedShutterSpeed: ShutterSpeed { get set }
     var timerViewActive: Bool { get set }
     var timerIsRunning: Bool { get }
-    var isValidTime: Bool { get }
+    var isCurrentTimeValid: Bool { get }
     var currentTimeInFuture: Bool { get }
     var calculatedShutterSpeed: ShutterSpeed { get }
     var calculatedShutterSpeedString: String { get }
     var shutterSpeeds: [ShutterSpeed] { get }
     var countdown: Countdown? { get }
 
-    func startTimer()
-    func cancelTimer()
+    func startCountdown()
+    func cancelCountdown()
     func requestNotificationPermission()
 }
 
 final class MockHomeViewModel: HomeViewModelProtocol {
-    var selectedFilterIndex: Int
+    var selectedFilter: Filter
     var selectedShutterSpeed: ShutterSpeed
     var nextTimer: Double?
     var timerViewActive: Bool
-    var isValidTime: Bool
+    var isCurrentTimeValid: Bool
     var currentTimeInFuture: Bool
     var calculatedShutterSpeed: ShutterSpeed
     var calculatedShutterSpeedString: String
@@ -38,7 +38,7 @@ final class MockHomeViewModel: HomeViewModelProtocol {
     var shutterSpeeds: [ShutterSpeed]
     var countdown: Countdown?
 
-    init(selectedFilterIndex: Int = 0,
+    init(selectedFilter: Filter = Filter(strength: 1),
          selectedShutterSpeed: ShutterSpeed = ShutterSpeed(numerator: 1, denominator: 30),
          hasTimerRunning: Bool = false,
          isValidTime: Bool = true,
@@ -49,10 +49,10 @@ final class MockHomeViewModel: HomeViewModelProtocol {
          shutterSpeeds: [ShutterSpeed] = [],
          // swiftlint:disable:next force_try
          countdown: Countdown? = try! Countdown(endsAt: Date(timeIntervalSinceNow: 10.0))) {
-        self.selectedFilterIndex = selectedFilterIndex
+        self.selectedFilter = selectedFilter
         self.selectedShutterSpeed = selectedShutterSpeed
         self.timerViewActive = hasTimerRunning
-        self.isValidTime = isValidTime
+        self.isCurrentTimeValid = isValidTime
         self.currentTimeInFuture = currentTimeInFuture
         self.calculatedShutterSpeed = calculatedShutterSpeed
         self.calculatedShutterSpeedString = calculatedShutterSpeedString
@@ -61,11 +61,11 @@ final class MockHomeViewModel: HomeViewModelProtocol {
         self.countdown = countdown
     }
 
-    func startTimer() {
+    func startCountdown() {
         print("Timer started")
     }
 
-    func cancelTimer() {
+    func cancelCountdown() {
         print("Timer stoped")
     }
 

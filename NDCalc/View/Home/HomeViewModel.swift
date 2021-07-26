@@ -14,17 +14,16 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
     CountdownCon: CountdownControllerProtocol,
     NotificationCon: NotificationControllerProtocol {
 
-    @Published var selectedFilterIndex = 0
+    @Published var selectedFilter: Filter
     @Published var selectedShutterSpeed: ShutterSpeed
+    @Published var timerViewActive = false
+    @Published var countdown: Countdown?
+
     let userPreferences: Preference
     let countdownController: CountdownCon
     let notificationController: NotificationCon
 
     private var cancellables: Set<AnyCancellable> = []
-
-    @Published var timerViewActive = false
-    @Published var countdown: Countdown?
-
     private var notificationIdentifier: String?
 
     private var formatter: NumberFormatter = {
@@ -42,6 +41,7 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
         self.countdownController = countdownController
         self.notificationController = notificationController
         self.selectedShutterSpeed =  ShutterSpeed.speedsForGap(userPreferences.selectedShutterSpeedGap)[0]
+        self.selectedFilter = Filter.filters[0]
 
         userPreferences.objectWillChange.sink { _ in
             self.objectWillChange.send()
@@ -68,9 +68,8 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
     }
 
     var calculatedShutterSpeed: ShutterSpeed {
-        let newNumer = selectedShutterSpeed.numerator * (pow(2.0, Double(Filter.filters[selectedFilterIndex].strength)))
-
-        return  ShutterSpeed(numerator: newNumer, denominator: selectedShutterSpeed.denominator)
+        return ShutterSpeed.calculateShutterSpeedWithFilter(shutterSpeed: selectedShutterSpeed,
+                                                            filter: selectedFilter)
     }
 
     var calculatedShutterSpeedString: String {
@@ -87,7 +86,7 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
 
     }
 
-    var isValidTime: Bool {
+    var isCurrentTimeValid: Bool {
         calculatedShutterSpeed.seconds >= 1
     }
 
@@ -95,7 +94,7 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
         Date(timeIntervalSinceNow: Double(calculatedShutterSpeed.seconds)).isInFuture
     }
 
-    func startTimer() {
+    func startCountdown() {
         do {
             let timerEndDate = Date(timeIntervalSinceNow: Double(calculatedShutterSpeed.seconds))
             try countdownController.startCountdown(for: timerEndDate)
@@ -104,7 +103,7 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
         }
     }
 
-    func cancelTimer() {
+    func cancelCountdown() {
         countdownController.cancelCountdown()
     }
 
