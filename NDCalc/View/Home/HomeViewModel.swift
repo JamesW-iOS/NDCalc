@@ -10,7 +10,7 @@ import UserNotifications
 import AVFoundation
 
 final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewModelProtocol where
-    Preference: PreferenceControllerProtocol,
+    Preference: PreferenceStoreProtocol,
     CountdownCon: CountdownControllerProtocol,
     NotificationCon: NotificationControllerProtocol {
 
@@ -60,7 +60,7 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
     }
 
     var timerIsRunning: Bool {
-        countdownController.hasActiveTimer
+        countdownController.hasCountdownActive
     }
 
     var shutterSpeeds: [ShutterSpeed] {
@@ -68,7 +68,7 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
     }
 
     var calculatedShutterSpeed: ShutterSpeed {
-        let newNumer = selectedShutterSpeed.numerator * (pow(2.0, Double(Filter.filters[selectedFilterIndex].value)))
+        let newNumer = selectedShutterSpeed.numerator * (pow(2.0, Double(Filter.filters[selectedFilterIndex].strength)))
 
         return  ShutterSpeed(numerator: newNumer, denominator: selectedShutterSpeed.denominator)
     }

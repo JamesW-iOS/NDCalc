@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A07726D269E8D620096BBD6 /* PreferenceControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A07726C269E8D620096BBD6 /* PreferenceControllerProtocol.swift */; };
-		1A07726F269E8EA00096BBD6 /* PreferenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A07726E269E8EA00096BBD6 /* PreferenceController.swift */; };
+		1A07726D269E8D620096BBD6 /* PreferenceStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A07726C269E8D620096BBD6 /* PreferenceStoreProtocol.swift */; };
+		1A07726F269E8EA00096BBD6 /* PreferenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A07726E269E8EA00096BBD6 /* PreferenceStore.swift */; };
 		1A077271269E8F850096BBD6 /* Constatnts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A077270269E8F850096BBD6 /* Constatnts.swift */; };
 		1A077273269EAB8A0096BBD6 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A077272269EAB8A0096BBD6 /* DIContainer.swift */; };
 		1A077276269EAFF00096BBD6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A077275269EAFF00096BBD6 /* SettingsView.swift */; };
@@ -67,8 +67,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1A07726C269E8D620096BBD6 /* PreferenceControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceControllerProtocol.swift; sourceTree = "<group>"; };
-		1A07726E269E8EA00096BBD6 /* PreferenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceController.swift; sourceTree = "<group>"; };
+		1A07726C269E8D620096BBD6 /* PreferenceStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceStoreProtocol.swift; sourceTree = "<group>"; };
+		1A07726E269E8EA00096BBD6 /* PreferenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceStore.swift; sourceTree = "<group>"; };
 		1A077270269E8F850096BBD6 /* Constatnts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constatnts.swift; sourceTree = "<group>"; };
 		1A077272269EAB8A0096BBD6 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		1A077275269EAFF00096BBD6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -163,8 +163,8 @@
 		1A07726B269E8D4B0096BBD6 /* Preferances */ = {
 			isa = PBXGroup;
 			children = (
-				1A07726C269E8D620096BBD6 /* PreferenceControllerProtocol.swift */,
-				1A07726E269E8EA00096BBD6 /* PreferenceController.swift */,
+				1A07726C269E8D620096BBD6 /* PreferenceStoreProtocol.swift */,
+				1A07726E269E8EA00096BBD6 /* PreferenceStore.swift */,
 			);
 			path = Preferances;
 			sourceTree = "<group>";
@@ -486,7 +486,7 @@
 				1A457655268EDAA300C9332A /* HomeViewModel.swift in Sources */,
 				1A077276269EAFF00096BBD6 /* SettingsView.swift in Sources */,
 				1A9E0DF126A52291002A1ED4 /* CountdownControllerProtocol.swift in Sources */,
-				1A07726D269E8D620096BBD6 /* PreferenceControllerProtocol.swift in Sources */,
+				1A07726D269E8D620096BBD6 /* PreferenceStoreProtocol.swift in Sources */,
 				1AFC055926A14E3B0037B9B1 /* About.swift in Sources */,
 				1A077278269EB0030096BBD6 /* SettingsViewModel.swift in Sources */,
 				1A457657268EDD0B00C9332A /* HomeView.swift in Sources */,
@@ -495,7 +495,7 @@
 				1A6B877F26187C9400F67DE5 /* NDCalcApp.swift in Sources */,
 				1A457645268EBB7700C9332A /* CountdownCircleView.swift in Sources */,
 				1A45765B268F1CEA00C9332A /* NotificationController.swift in Sources */,
-				1A07726F269E8EA00096BBD6 /* PreferenceController.swift in Sources */,
+				1A07726F269E8EA00096BBD6 /* PreferenceStore.swift in Sources */,
 				1A9E0DFB26A58B54002A1ED4 /* BundleItems.swift in Sources */,
 				1A45764B268ECD7E00C9332A /* ShutterSpeed.swift in Sources */,
 				1A457652268ED9C300C9332A /* HomeViewModelProtocol.swift in Sources */,

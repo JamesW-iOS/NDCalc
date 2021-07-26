@@ -7,11 +7,22 @@
 
 import Foundation
 
+/// A protocol defining the requirements for a NotificationController.
+///
+/// Only a single notification can be scheduled to be delivered at once, this is intentional'
+/// since only a single countdown may be running at one time.
 protocol NotificationControllerProtocol {
+    /// A flag indicating if there is a notification currently scheduled.
     var hasNotificationScheduled: Bool { get }
+    /// the identifier for the currently scheduled notification if one exists.
     var notificationIdentifier: String? { get }
 
+    /// Schedule a notification to be sent at a particular time..
+    ///
+    /// - Parameter for: The time at which the notification should be delivered.
     func scheduleNotification(for endDate: Date)
+    /// Cancel the currently scheduled notification if there is one
     func cancelNotification()
+    /// Request notification permission from the system.
     func requestNotificationPermission()
 }

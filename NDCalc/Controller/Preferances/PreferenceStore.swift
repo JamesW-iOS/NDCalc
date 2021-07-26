@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-final class PreferenceController: PreferenceControllerProtocol, ObservableObject {
+final class PreferenceStore: PreferenceStoreProtocol, ObservableObject {
 
     @Published var selectedShutterSpeedGap: ShutterGap {
         didSet {

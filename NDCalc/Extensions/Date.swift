@@ -8,6 +8,7 @@
 import Foundation
 
 extension Date {
+    /// A convience calculated property for is the `Date` is in the future
     var isInFuture: Bool {
         self > Date()
     }

@@ -7,10 +7,10 @@
 
 import Combine
 
-protocol PreferenceControllerProtocol: ObservableObject {
+protocol PreferenceStoreProtocol: ObservableObject {
     var selectedShutterSpeedGap: ShutterGap { get set }
 }
 
-final class MockPreferenceController: PreferenceControllerProtocol {
+final class MockPreferenceController: PreferenceStoreProtocol {
     var selectedShutterSpeedGap: ShutterGap = ShutterGap.oneStop
 }

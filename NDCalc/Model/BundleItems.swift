@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// An enum that allows for access to items stored in the application bundle.
 enum BundleItems {
     static var versionNumber: String {
         guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {

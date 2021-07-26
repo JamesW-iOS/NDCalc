@@ -7,26 +7,40 @@
 
 import Foundation
 
-final class SettingsViewModel<Preference>: ObservableObject where Preference: PreferenceControllerProtocol {
-    private var userPreferences: Preference
+/// A view model for the SettingsView view.
+///
+/// Preference is a generic parameter for an object adopting the PreferenceStoreProtocol
+final class SettingsViewModel<PreferenceStore>: ObservableObject where PreferenceStore: PreferenceStoreProtocol {
+    /// The store the settings will be saved into and retrieved from.
+    private var userPreferenceStore: PreferenceStore
 
-    @Published var shutterGapExplainer: ExplainerViewModel?
+    /// Stores the currently shown ExplainerViewModel.
+    @Published var currentExplainer: ExplainerViewModel?
 
+    /// This is the currently set ShutterGap for the app.
     var selectedShutterGap: ShutterGap {
         get {
-            userPreferences.selectedShutterSpeedGap
+            userPreferenceStore.selectedShutterSpeedGap
         }
         set {
-            userPreferences.selectedShutterSpeedGap = newValue
+            userPreferenceStore.selectedShutterSpeedGap = newValue
         }
     }
 
-    init(userPreferences: Preference = DIContainer.shared.resolve(type: Preference.self)!) {
-        self.userPreferences = userPreferences
+    /// Initialises a SettingsViewModel, defaults to using the provided PreferenceStore object
+    /// or defaulting to the one set in the DIContainer.
+    /// - Parameter userPreferences: An object that conforms to the PreferenceStoreProtocol,
+    /// defaults to the one set in the DIContainer.
+    init(userPreferences: PreferenceStore = DIContainer.shared.resolve(type: PreferenceStore.self)!) {
+        self.userPreferenceStore = userPreferences
     }
 
+    /// To be called when the user selects learn more on the ShutterSpeedGap setting.
+    ///
+    /// This will set the currentExplainer to the Explanation for the shutter gap,
+    /// this will cause a modal popover with an Explainer View to popover.
     func selectedLearnMoreShutterGap() {
-        shutterGapExplainer = shutterGapExplanation
+        currentExplainer = shutterGapExplanation
     }
 
     // MARK: - Explanations

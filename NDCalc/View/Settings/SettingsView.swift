@@ -7,7 +7,10 @@
 
 import SwiftUI
 
-struct SettingsView<Preference>: View where Preference: PreferenceControllerProtocol {
+/// This view displays a list of settings where the user can configure preferences.
+///
+/// Preference is a generic parameter for an  object that stores and retrieves
+struct SettingsView<Preference>: View where Preference: PreferenceStoreProtocol {
     @ObservedObject var model: SettingsViewModel<Preference>
 
     var body: some View {
@@ -34,7 +37,7 @@ struct SettingsView<Preference>: View where Preference: PreferenceControllerProt
                 }
             }
         }
-        .sheet(item: $model.shutterGapExplainer, onDismiss: nil) { explainerModel in
+        .sheet(item: $model.currentExplainer, onDismiss: nil) { explainerModel in
             Explainer(model: explainerModel)
         }
     }

@@ -29,7 +29,7 @@ class CountdownControllerTests: XCTestCase {
 
         try startCountdown(for: endDate)
 
-        XCTAssertTrue(sut.hasActiveTimer)
+        XCTAssertTrue(sut.hasCountdownActive)
         XCTAssertEqual(countdown, sut.currentCountdown)
     }
 
@@ -42,7 +42,7 @@ class CountdownControllerTests: XCTestCase {
 
         try startCountdown(for: endDate)
 
-        XCTAssertTrue(sut.hasActiveTimer, "hasActiveTimer should be true after starting a countdown.")
+        XCTAssertTrue(sut.hasCountdownActive, "hasActiveTimer should be true after starting a countdown.")
         XCTAssertEqual(countdown, sut.currentCountdown, "currentCountdown should be equal to the one started.")
         XCTAssertTrue(notificationController.hasNotificationScheduled,
                       "notification controller should have notification started.")
@@ -54,7 +54,7 @@ class CountdownControllerTests: XCTestCase {
         try testStartCountdown()
         sut.cancelCountdown()
 
-        XCTAssertFalse(sut.hasActiveTimer, "countdownController should not have timer running after canceling.")
+        XCTAssertFalse(sut.hasCountdownActive, "countdownController should not have timer running after canceling.")
         XCTAssertNil(sut.currentCountdown, "countdownController should not have a Countdown object after canceling.")
     }
 
@@ -66,7 +66,7 @@ class CountdownControllerTests: XCTestCase {
     }
 
     private func startCountdown(for endDate: Date) throws {
-        XCTAssertFalse(sut.hasActiveTimer, "countdownController should start without a timer started.")
+        XCTAssertFalse(sut.hasCountdownActive, "countdownController should start without a timer started.")
         XCTAssertNil(sut.currentCountdown, "countdownController should not start with a Countdown object.")
 
         try sut.startCountdown(for: endDate)

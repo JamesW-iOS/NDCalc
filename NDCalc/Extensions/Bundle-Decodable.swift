@@ -1,8 +1,9 @@
 //
 //  Bundle-Decodable.swift
-//  UltimatePortfolio
+//  NDCalc
 //
 //  Created by James Warren on 2/3/21.
+//  This is taken from the UltimatePortfolio course, Hacking With Swift+
 //
 
 import Foundation

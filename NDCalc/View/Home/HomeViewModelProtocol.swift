@@ -11,7 +11,6 @@ import Foundation
 protocol HomeViewModelProtocol: ObservableObject {
     var selectedFilterIndex: Int { get set }
     var selectedShutterSpeed: ShutterSpeed { get set }
-//    var nextTimer: Double? { get set }
     var timerViewActive: Bool { get set }
     var timerIsRunning: Bool { get }
     var isValidTime: Bool { get }

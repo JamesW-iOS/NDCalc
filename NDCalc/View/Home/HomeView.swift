@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceControllerProtocol>: View {
+struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtocol>: View {
     @ObservedObject var model: Model
     @StateObject private var settingsViewModel = SettingsViewModel<Preference>()
 
@@ -51,7 +51,7 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceControllerPr
 
                         Picker(selection: $model.selectedFilterIndex, label: Text("Selected Filter")) {
                             ForEach(0..<Filter.filters.count) { filterIndex in
-                                Text("\(Filter.filters[filterIndex].value)")
+                                Text("\(Filter.filters[filterIndex].strength)")
                                     .tag(filterIndex)
                             }
                         }

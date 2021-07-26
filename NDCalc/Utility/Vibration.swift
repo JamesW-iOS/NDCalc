@@ -9,6 +9,9 @@
 import UIKit
 import AVFoundation
 
+/// An enum that has has several different kinds of vibration patters.
+///
+/// Each enum value has access to the `Vibrate` method which will cause the device to vibrate in that pattern/
 enum Vibration {
     case error
     case success

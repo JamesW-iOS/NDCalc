@@ -10,11 +10,12 @@ import os
 
 @main
 struct NDCalcApp: App {
-    var model: HomeViewModel<PreferenceController, CountdownController<NotificationController>, NotificationController>
+    var model: HomeViewModel<PreferenceStore, CountdownController<NotificationController>, NotificationController>
 
     init() {
-        let userPreferences = PreferenceController()
-        DIContainer.shared.register(type: PreferenceController.self, component: userPreferences)
+        // The components need to be registered in this order since each one depends of the ones registered before it.
+        let userPreferences = PreferenceStore()
+        DIContainer.shared.register(type: PreferenceStore.self, component: userPreferences)
 
         let notificationController = NotificationController()
         DIContainer.shared.register(type: NotificationController.self, component: notificationController)
@@ -28,7 +29,7 @@ struct NDCalcApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView<HomeViewModel, PreferenceController>(model: model)
+            HomeView<HomeViewModel, PreferenceStore>(model: model)
         }
     }
 }
