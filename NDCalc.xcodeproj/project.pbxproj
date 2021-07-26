@@ -198,14 +198,9 @@
 		1A45764F268ECDCD00C9332A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1AAD4E6A26AE82180037F3A0 /* Picker */,
-				1AFC055C26A155E40037B9B1 /* Explainer */,
-				1A077274269EAFDF0096BBD6 /* Settings */,
-				1A457653268EDA9400C9332A /* Home */,
-				1A457644268EBB7700C9332A /* CountdownCircleView.swift */,
-				1A457648268ECCA400C9332A /* NDButton.swift */,
-				1AFC055826A14E3B0037B9B1 /* About.swift */,
-				1A9E0DF826A58AE3002A1ED4 /* MailView.swift */,
+				1AAD4E6D26AE85260037F3A0 /* Screens */,
+				1AAD4E6A26AE82180037F3A0 /* Pickers */,
+				1AAD4E6F26AE85650037F3A0 /* Buttons */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -225,6 +220,7 @@
 				1A457651268ED9C300C9332A /* HomeViewModelProtocol.swift */,
 				1A457654268EDAA300C9332A /* HomeViewModel.swift */,
 				1A457656268EDD0B00C9332A /* HomeView.swift */,
+				1A457644268EBB7700C9332A /* CountdownCircleView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -324,13 +320,41 @@
 			path = Countdown;
 			sourceTree = "<group>";
 		};
-		1AAD4E6A26AE82180037F3A0 /* Picker */ = {
+		1AAD4E6A26AE82180037F3A0 /* Pickers */ = {
 			isa = PBXGroup;
 			children = (
 				1AAD4E6826AE80DF0037F3A0 /* FilterPicker.swift */,
 				1AAD4E6B26AE82270037F3A0 /* ShutterSpeedPicker.swift */,
 			);
-			path = Picker;
+			path = Pickers;
+			sourceTree = "<group>";
+		};
+		1AAD4E6D26AE85260037F3A0 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				1AAD4E6E26AE85480037F3A0 /* About */,
+				1AFC055C26A155E40037B9B1 /* Explainer */,
+				1A077274269EAFDF0096BBD6 /* Settings */,
+				1A457653268EDA9400C9332A /* Home */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		1AAD4E6E26AE85480037F3A0 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				1AFC055826A14E3B0037B9B1 /* About.swift */,
+				1A9E0DF826A58AE3002A1ED4 /* MailView.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		1AAD4E6F26AE85650037F3A0 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				1A457648268ECCA400C9332A /* NDButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		1AFC055C26A155E40037B9B1 /* Explainer */ = {
