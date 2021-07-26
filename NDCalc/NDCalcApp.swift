@@ -29,7 +29,7 @@ struct NDCalcApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView<HomeViewModel, PreferenceStore>(model: model)
+            HomeView<HomeViewModel, PreferenceStore>(model: model, settingsViewModel: SettingsViewModel())
         }
     }
 }

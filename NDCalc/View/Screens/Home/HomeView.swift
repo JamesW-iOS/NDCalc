@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtocol>: View {
     @ObservedObject var model: Model
-    @StateObject private var settingsViewModel = SettingsViewModel<Preference>()
+    @StateObject var settingsViewModel: SettingsViewModel<Preference>
 
     var body: some View {
         NavigationView {
@@ -111,6 +111,7 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView<MockHomeViewModel, MockPreferenceController>(model: MockHomeViewModel())
+        // swiftlint:disable:next line_length
+        HomeView<MockHomeViewModel, MockPreferenceController>(model: MockHomeViewModel(), settingsViewModel: SettingsViewModel<MockPreferenceController>(userPreferences: MockPreferenceController()))
     }
 }
