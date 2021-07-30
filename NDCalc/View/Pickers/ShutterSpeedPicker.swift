@@ -13,7 +13,7 @@ struct ShutterSpeedPicker: View {
 
     var body: some View {
         VStack {
-            Text("Selected exposure")
+            PickerHeading(heading: "Selected Exposure")
             Picker(selection: $selectedShutterSpeed, label: Text("Selected exposure")) {
                 ForEach(shutterSpeeds) { shutterSpeed in
                     Text(shutterSpeed.stringRepresentation)

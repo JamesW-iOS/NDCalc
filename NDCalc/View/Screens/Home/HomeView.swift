@@ -88,7 +88,9 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
             Text("Calculated Time:")
                 .font(.title)
             Text(model.calculatedShutterSpeedString)
-                .font(.largeTitle)
+                .font(.system(size: 70))
+                .bold()
+                .padding(.top)
         }
     }
 

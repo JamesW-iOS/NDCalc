@@ -49,6 +49,7 @@
 		1AFC055926A14E3B0037B9B1 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFC055826A14E3B0037B9B1 /* About.swift */; };
 		1AFC055B26A153130037B9B1 /* Explainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFC055A26A153130037B9B1 /* Explainer.swift */; };
 		1AFC055E26A155F90037B9B1 /* ExplainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFC055D26A155F90037B9B1 /* ExplainerViewModel.swift */; };
+		1AFE701826B3BD8A00E74618 /* PickerHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFE701726B3BD8A00E74618 /* PickerHeading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		1AFC055826A14E3B0037B9B1 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		1AFC055A26A153130037B9B1 /* Explainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Explainer.swift; sourceTree = "<group>"; };
 		1AFC055D26A155F90037B9B1 /* ExplainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplainerViewModel.swift; sourceTree = "<group>"; };
+		1AFE701726B3BD8A00E74618 /* PickerHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerHeading.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +327,7 @@
 			children = (
 				1AAD4E6826AE80DF0037F3A0 /* FilterPicker.swift */,
 				1AAD4E6B26AE82270037F3A0 /* ShutterSpeedPicker.swift */,
+				1AFE701726B3BD8A00E74618 /* PickerHeading.swift */,
 			);
 			path = Pickers;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				1A9E0DF726A524FC002A1ED4 /* NotificationControllerProtocol.swift in Sources */,
 				1A077271269E8F850096BBD6 /* Constatnts.swift in Sources */,
 				1AFC055B26A153130037B9B1 /* Explainer.swift in Sources */,
+				1AFE701826B3BD8A00E74618 /* PickerHeading.swift in Sources */,
 				1AAD4E6C26AE82270037F3A0 /* ShutterSpeedPicker.swift in Sources */,
 				1AD7CF5D261C429A00F6C33A /* Bundle-Decodable.swift in Sources */,
 				1A45765E268F30C600C9332A /* Vibration.swift in Sources */,

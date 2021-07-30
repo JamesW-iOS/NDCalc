@@ -11,10 +11,10 @@ struct FilterPicker: View {
     @Binding var selectedFilter: Filter
     var body: some View {
         VStack {
-            Text("Selected filter")
+            PickerHeading(heading: "Selected Filter")
             Picker(selection: $selectedFilter, label: Text("Selected Filter")) {
                 ForEach(Filter.filters) { filter in
-                    Text("\(filter.strength)")
+                    Text("\(filter.stopsReduced)")
                         .tag(filter)
                 }
             }

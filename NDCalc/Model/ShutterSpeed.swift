@@ -87,7 +87,7 @@ struct ShutterSpeed: Identifiable, Hashable, Codable {
     }
 
     static func calculateShutterSpeedWithFilter(shutterSpeed: ShutterSpeed, filter: Filter) -> ShutterSpeed {
-        let newNumer = shutterSpeed.numerator * (pow(2.0, Double(filter.strength)))
+        let newNumer = shutterSpeed.numerator * (pow(2.0, Double(filter.stopsReduced)))
         return  ShutterSpeed(numerator: newNumer, denominator: shutterSpeed.denominator)
     }
 }
