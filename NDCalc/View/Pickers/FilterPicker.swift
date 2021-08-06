@@ -9,12 +9,14 @@ import SwiftUI
 
 struct FilterPicker: View {
     @Binding var selectedFilter: Filter
+    let filterNotation: FilterStrengthRepresentation
+
     var body: some View {
         VStack {
             PickerHeading(heading: "Selected Filter")
             Picker(selection: $selectedFilter, label: Text("Selected Filter")) {
                 ForEach(Filter.filters) { filter in
-                    Text("\(filter.stopsReduced)")
+                    Text("\(filter.stringRepresentation(notation: filterNotation))")
                         .tag(filter)
                 }
             }
@@ -24,6 +26,6 @@ struct FilterPicker: View {
 
 struct FilterPicker_Previews: PreviewProvider {
     static var previews: some View {
-        FilterPicker(selectedFilter: .constant(Filter(strength: 1)))
+        FilterPicker(selectedFilter: .constant(Filter(strength: 1)), filterNotation: .stopsReduced)
     }
 }

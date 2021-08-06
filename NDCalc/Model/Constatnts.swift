@@ -9,4 +9,5 @@ import Foundation
 
 enum UserDefaultKeys {
     static let shutterGapKey = "shutterGap"
+    static let filterRepresentationKey = "filterRepresentation"
 }

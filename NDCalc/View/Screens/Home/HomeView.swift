@@ -69,7 +69,7 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
 
     func sideBySidePickers(fullWidth: CGFloat) -> some View {
         HStack {
-            FilterPicker(selectedFilter: $model.selectedFilter)
+            FilterPicker(selectedFilter: $model.selectedFilter, filterNotation: model.filterNotation)
 
                 .frame(maxWidth: fullWidth / 2)
                 .clipped()

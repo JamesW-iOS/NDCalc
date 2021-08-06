@@ -24,6 +24,17 @@ final class SettingsViewModel<PreferenceStore>: ObservableObject where Preferenc
         }
         set {
             userPreferenceStore.selectedShutterSpeedGap = newValue
+            objectWillChange.send()
+        }
+    }
+
+    var selectedFilterRepresentation: FilterStrengthRepresentation {
+        get {
+            userPreferenceStore.selectedFilterRepresentation
+        }
+        set {
+            userPreferenceStore.selectedFilterRepresentation = newValue
+            objectWillChange.send()
         }
     }
 
@@ -43,7 +54,14 @@ final class SettingsViewModel<PreferenceStore>: ObservableObject where Preferenc
         currentExplainer = shutterGapExplanation
     }
 
+    func selectedLearnMoreFilterRepresentation() {
+        currentExplainer = filterRepresenation
+    }
+
     // MARK: - Explanations
     // swiftlint:disable:next line_length
     let shutterGapExplanation = ExplainerViewModel(title: "Shutter gap interval", explanation: "This is the number of intervals between stops in the shutter speed selection. For example if this is set to one stop it would be 1/60, 1/30, 1/15. At a third stop 1/60, 1/50, 1/40, 1/30, 1/25, 1/10. Each camera brand will vary but they all should generally fall into one of the three categories.")
+
+    // swiftlint:disable:next line_length
+    let filterRepresenation = ExplainerViewModel(title: "Filter Notation", explanation: "The strength of an ND filter can be represented in multiple ways, different companies will market the strength using different notations. Each one will be written differently, bellow is an example of the same strength filter with each of the different notations.\nND1 number notation: ND 104\n ND Decimal number notation: ND 1.2\nND number notation: ND16\nf-stop reduction: 4")
 }

@@ -9,35 +9,19 @@ import Combine
 import Foundation
 
 final class PreferenceStore: PreferenceStoreProtocol, ObservableObject {
-
-    @Published var selectedShutterSpeedGap: ShutterGap {
+    @UserDefault(key: UserDefaultKeys.shutterGapKey,
+                 defaultValue: ShutterGap.oneStop)
+    var selectedShutterSpeedGap: ShutterGap {
         didSet {
-            encodeAndStore(selectedShutterSpeedGap, key: UserDefaultKeys.shutterGapKey)
+            objectWillChange.send()
         }
     }
 
-    init() {
-        let defaults = UserDefaults.standard
-
-        if let storedSelectedShutterSpeedGapData = defaults.data(forKey: UserDefaultKeys.shutterGapKey),
-           let storedSelectedShutterSpeedGapValue = try? JSONDecoder().decode(ShutterGap.self,
-                                                                              from: storedSelectedShutterSpeedGapData) {
-            self.selectedShutterSpeedGap = storedSelectedShutterSpeedGapValue
-        } else {
-            self.selectedShutterSpeedGap = ShutterGap.halfStop
-            guard let data = try? JSONEncoder().encode(selectedShutterSpeedGap) else {
-                fatalError("TempUnit should be encodable")
-            }
-            defaults.set(data, forKey: UserDefaultKeys.shutterGapKey)
+    @UserDefault(key: UserDefaultKeys.filterRepresentationKey,
+                 defaultValue: FilterStrengthRepresentation.stopsReduced)
+    var selectedFilterRepresentation: FilterStrengthRepresentation {
+        didSet {
+            objectWillChange.send()
         }
     }
-
-    private func encodeAndStore<T: Codable>(_ value: T, key: String) {
-        let encoder = JSONEncoder()
-        guard let encoded = try? encoder.encode(value) else {
-            fatalError("\(value) should be encodable")
-        }
-        UserDefaults.standard.set(encoded, forKey: key)
-    }
-
 }

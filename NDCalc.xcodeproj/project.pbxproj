@@ -50,6 +50,8 @@
 		1AFC055B26A153130037B9B1 /* Explainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFC055A26A153130037B9B1 /* Explainer.swift */; };
 		1AFC055E26A155F90037B9B1 /* ExplainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFC055D26A155F90037B9B1 /* ExplainerViewModel.swift */; };
 		1AFE701826B3BD8A00E74618 /* PickerHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFE701726B3BD8A00E74618 /* PickerHeading.swift */; };
+		1AFE701A26B3CEF200E74618 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFE701926B3CEF200E74618 /* UserDefaultWrapper.swift */; };
+		1AFE701C26B3D02100E74618 /* AnyOptionalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFE701B26B3D02100E74618 /* AnyOptionalProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,8 @@
 		1AFC055A26A153130037B9B1 /* Explainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Explainer.swift; sourceTree = "<group>"; };
 		1AFC055D26A155F90037B9B1 /* ExplainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplainerViewModel.swift; sourceTree = "<group>"; };
 		1AFE701726B3BD8A00E74618 /* PickerHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerHeading.swift; sourceTree = "<group>"; };
+		1AFE701926B3CEF200E74618 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
+		1AFE701B26B3D02100E74618 /* AnyOptionalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyOptionalProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +236,8 @@
 			children = (
 				1A45765D268F30C600C9332A /* Vibration.swift */,
 				1A077272269EAB8A0096BBD6 /* DIContainer.swift */,
+				1AFE701926B3CEF200E74618 /* UserDefaultWrapper.swift */,
+				1AFE701B26B3D02100E74618 /* AnyOptionalProtocol.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -531,6 +537,7 @@
 				1A07726D269E8D620096BBD6 /* PreferenceStoreProtocol.swift in Sources */,
 				1AFC055926A14E3B0037B9B1 /* About.swift in Sources */,
 				1A077278269EB0030096BBD6 /* SettingsViewModel.swift in Sources */,
+				1AFE701C26B3D02100E74618 /* AnyOptionalProtocol.swift in Sources */,
 				1A457657268EDD0B00C9332A /* HomeView.swift in Sources */,
 				1A077273269EAB8A0096BBD6 /* DIContainer.swift in Sources */,
 				1A9E0DF326A52307002A1ED4 /* Countdown.swift in Sources */,
@@ -545,6 +552,7 @@
 				1A9E0DF526A524AA002A1ED4 /* CountdownController.swift in Sources */,
 				1A9E0DF726A524FC002A1ED4 /* NotificationControllerProtocol.swift in Sources */,
 				1A077271269E8F850096BBD6 /* Constatnts.swift in Sources */,
+				1AFE701A26B3CEF200E74618 /* UserDefaultWrapper.swift in Sources */,
 				1AFC055B26A153130037B9B1 /* Explainer.swift in Sources */,
 				1AFE701826B3BD8A00E74618 /* PickerHeading.swift in Sources */,
 				1AAD4E6C26AE82270037F3A0 /* ShutterSpeedPicker.swift in Sources */,

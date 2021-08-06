@@ -30,15 +30,29 @@ struct SettingsView<Preference>: View where Preference: PreferenceStoreProtocol 
                 }
                 .pickerStyle(SegmentedPickerStyle())
 
-                Button {
-                    model.selectedLearnMoreShutterGap()
-                } label: {
-                    Text("What does this mean?")
+                showMoreButton(funcToCall: model.selectedLearnMoreShutterGap)
+            }
+
+            Section(header: Text("Filter strength notation")) {
+                Picker("Filter strength notation", selection: $model.selectedFilterRepresentation) {
+                    ForEach(FilterStrengthRepresentation.allCases) { notation in
+                        Text(notation.rawValue)
+                            .tag(notation)
+                    }
                 }
+                showMoreButton(funcToCall: model.selectedLearnMoreFilterRepresentation)
             }
         }
         .sheet(item: $model.currentExplainer, onDismiss: nil) { explainerModel in
             Explainer(model: explainerModel)
+        }
+    }
+
+    func showMoreButton(funcToCall: @escaping () -> Void) -> some View {
+        Button {
+            funcToCall()
+        } label: {
+            Text("What does this mean?")
         }
     }
 }

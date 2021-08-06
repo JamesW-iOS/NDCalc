@@ -17,6 +17,7 @@ protocol HomeViewModelProtocol: ObservableObject {
     var calculatedShutterSpeed: ShutterSpeed { get }
     var calculatedShutterSpeedString: String { get }
     var shutterSpeeds: [ShutterSpeed] { get }
+    var filterNotation: FilterStrengthRepresentation { get }
     var countdown: Countdown? { get }
 
     func startCountdown()
@@ -34,6 +35,7 @@ final class MockHomeViewModel: HomeViewModelProtocol {
     var calculatedShutterSpeedString: String
     var countdownIsActive: Bool
     var shutterSpeeds: [ShutterSpeed]
+    var filterNotation: FilterStrengthRepresentation
     var countdown: Countdown?
 
     static var defaultShutterSpeeds = ShutterSpeed.speedsForGap(.oneStop)
@@ -59,6 +61,7 @@ final class MockHomeViewModel: HomeViewModelProtocol {
         self.countdownIsActive = timerIsRunning
         self.shutterSpeeds = shutterSpeeds
         self.countdown = countdown
+        self.filterNotation = .stopsReduced
     }
 
     func startCountdown() {

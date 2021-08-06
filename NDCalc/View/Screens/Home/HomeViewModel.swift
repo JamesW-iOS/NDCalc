@@ -82,6 +82,10 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
         ShutterSpeed.speedsForGap(userPreferences.selectedShutterSpeedGap)
     }
 
+    var filterNotation: FilterStrengthRepresentation {
+        userPreferences.selectedFilterRepresentation
+    }
+
     /// A `ShutterSpeed` when the selected `Filter` is applied to the selected `ShutterSpeed`
     var calculatedShutterSpeed: ShutterSpeed {
         return ShutterSpeed.calculateShutterSpeedWithFilter(shutterSpeed: selectedShutterSpeed,
