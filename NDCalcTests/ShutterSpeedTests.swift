@@ -23,6 +23,15 @@ class ShutterSpeedTests: XCTestCase {
         }
     }
 
+    func testPropertiesSet() {
+        let numerator = 1.0
+        let denominator = 30.0
+        let shutterSpeed = ShutterSpeed(numerator: numerator, denominator: denominator)
+
+        XCTAssertEqual(shutterSpeed.denominator, denominator)
+        XCTAssertEqual(shutterSpeed.numerator, numerator)
+    }
+
     func testShutterSpeedsForGap() {
         let shutterSpeeds = Bundle.main.decode([[ShutterSpeed]].self, from: "shutterSpeeds.json")
         let oneStopSpeeds = shutterSpeeds[0]

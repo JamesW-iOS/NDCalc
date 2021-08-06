@@ -23,6 +23,8 @@
 		1A457659268F1C8200C9332A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A457658268F1C8200C9332A /* Date.swift */; };
 		1A45765B268F1CEA00C9332A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45765A268F1CEA00C9332A /* NotificationController.swift */; };
 		1A45765E268F30C600C9332A /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45765D268F30C600C9332A /* Vibration.swift */; };
+		1A649B0F26BCF2F80008ACF2 /* XCTestCombineAwait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A649B0E26BCF2F80008ACF2 /* XCTestCombineAwait.swift */; };
+		1A649B1226BCF7CF0008ACF2 /* Publisher-CollectNext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A649B1126BCF7CF0008ACF2 /* Publisher-CollectNext.swift */; };
 		1A6A28DB26A9719300D53227 /* CountdownControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A28DA26A9719300D53227 /* CountdownControllerTests.swift */; };
 		1A6A28DE26A971DC00D53227 /* MockNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A28DD26A971DC00D53227 /* MockNotificationController.swift */; };
 		1A6A28E026AA382900D53227 /* NotificationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A28DF26AA382900D53227 /* NotificationControllerTests.swift */; };
@@ -88,6 +90,8 @@
 		1A457658268F1C8200C9332A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1A45765A268F1CEA00C9332A /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		1A45765D268F30C600C9332A /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
+		1A649B0E26BCF2F80008ACF2 /* XCTestCombineAwait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCombineAwait.swift; sourceTree = "<group>"; };
+		1A649B1126BCF7CF0008ACF2 /* Publisher-CollectNext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher-CollectNext.swift"; sourceTree = "<group>"; };
 		1A6A28DA26A9719300D53227 /* CountdownControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownControllerTests.swift; sourceTree = "<group>"; };
 		1A6A28DD26A971DC00D53227 /* MockNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNotificationController.swift; sourceTree = "<group>"; };
 		1A6A28DF26AA382900D53227 /* NotificationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationControllerTests.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 			children = (
 				1AD7CF5C261C429A00F6C33A /* Bundle-Decodable.swift */,
 				1A457658268F1C8200C9332A /* Date.swift */,
+				1A649B1126BCF7CF0008ACF2 /* Publisher-CollectNext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -240,6 +245,15 @@
 				1AFE701B26B3D02100E74618 /* AnyOptionalProtocol.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		1A649B1026BCF31A0008ACF2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1A6A28E726AA55D600D53227 /* XCTestErrorAssert.swift */,
+				1A649B0E26BCF2F80008ACF2 /* XCTestCombineAwait.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1A6A28DC26A971CD00D53227 /* Mocks */ = {
@@ -298,8 +312,8 @@
 		1A6B878F26187C9500F67DE5 /* NDCalcTests */ = {
 			isa = PBXGroup;
 			children = (
-				1A6A28E726AA55D600D53227 /* XCTestErrorAssert.swift */,
 				1A6B879026187C9500F67DE5 /* NDCalcTests.swift */,
+				1A649B1026BCF31A0008ACF2 /* Extensions */,
 				1A6A28DC26A971CD00D53227 /* Mocks */,
 				1A6B879226187C9500F67DE5 /* Info.plist */,
 				1A6A28DA26A9719300D53227 /* CountdownControllerTests.swift */,
@@ -551,6 +565,7 @@
 				1A457659268F1C8200C9332A /* Date.swift in Sources */,
 				1A9E0DF526A524AA002A1ED4 /* CountdownController.swift in Sources */,
 				1A9E0DF726A524FC002A1ED4 /* NotificationControllerProtocol.swift in Sources */,
+				1A649B1226BCF7CF0008ACF2 /* Publisher-CollectNext.swift in Sources */,
 				1A077271269E8F850096BBD6 /* Constatnts.swift in Sources */,
 				1AFE701A26B3CEF200E74618 /* UserDefaultWrapper.swift in Sources */,
 				1AFC055B26A153130037B9B1 /* Explainer.swift in Sources */,
@@ -568,6 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A6A28DE26A971DC00D53227 /* MockNotificationController.swift in Sources */,
+				1A649B0F26BCF2F80008ACF2 /* XCTestCombineAwait.swift in Sources */,
 				1A6B879126187C9500F67DE5 /* NDCalcTests.swift in Sources */,
 				1A6A28E026AA382900D53227 /* NotificationControllerTests.swift in Sources */,
 				1A6A28E926AA560B00D53227 /* XCTestErrorAssert.swift in Sources */,

@@ -20,4 +20,12 @@ class CountdownTests: XCTestCase {
 
         XCTAssertEqual(countdown.finishTime, futureDate, "futureDate should be set to what countdown was started with")
     }
+
+    func testIsComplete() throws {
+        let futureDate = Date(timeIntervalSinceNow: 0.1)
+        let countdown = try Countdown(endsAt: futureDate)
+
+        XCTAssertEqual(countdown.finishTime, futureDate, "futureDate should be set to what countdown was started with")
+        XCTAssertFalse(countdown.isComplete)
+    }
 }

@@ -51,22 +51,23 @@ class NotificationControllerTests: XCTestCase {
                                                                repeats: false)
 
         let request = mockNotificationCentre.request
-        guard let request = request else {
-            XCTFail("request should be set after making request")
-            return
-        }
+        // guard unwrapping the request causes the compiler to crash, no idea why, force unwrapping here since it's just a test.
+//        guard let request = request else {
+//            XCTFail("Unable to unwrap the request")
+//            return
+//        }
 
-        guard let trigger = request.trigger as? UNTimeIntervalNotificationTrigger else {
+        guard let trigger = request!.trigger as? UNTimeIntervalNotificationTrigger else {
             XCTFail("trigger should be a time interval trigger")
             return
         }
 
         let timeDifferance = trigger.timeInterval - correctTrigger.timeInterval
         XCTAssertTrue(timeDifferance.magnitude < 0.01, "notification should have the time finish time aproximately")
-        XCTAssertEqual(request.identifier, sut.notificationIdentifier, "request identifiers should be the same.")
-        XCTAssertEqual(request.content.body, NotificationController.notificationBody,
+        XCTAssertEqual(request!.identifier, sut.notificationIdentifier, "request identifiers should be the same.")
+        XCTAssertEqual(request!.content.body, NotificationController.notificationBody,
                        "body of notification should be set.")
-        XCTAssertEqual(request.content.title, NotificationController.notificationTitle,
+        XCTAssertEqual(request!.content.title, NotificationController.notificationTitle,
                        "title of notification should be set.")
     }
 
