@@ -24,7 +24,7 @@ struct ShutterSpeedPicker: View {
 
                     }
                 }
-                .pickerStyle(.menu)
+                .pickerStyle(MenuPickerStyle())
             } else {
                 PickerHeading(heading: "Selected Exposure")
                 Picker(selection: $selectedShutterSpeed,
@@ -35,7 +35,7 @@ struct ShutterSpeedPicker: View {
 
                     }
                 }
-                .pickerStyle(.wheel)
+                .pickerStyle(WheelPickerStyle())
             }
         }
     }

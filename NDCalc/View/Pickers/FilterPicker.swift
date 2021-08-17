@@ -26,7 +26,7 @@ struct FilterPicker: View {
                             .tag(filter)
                     }
                 }
-                .pickerStyle(.menu)
+                .pickerStyle(MenuPickerStyle())
             } else {
                 PickerHeading(heading: "Selected Filter")
                 Picker(selection: $selectedFilter, label: Text(selectedFilterString)) {
@@ -35,7 +35,7 @@ struct FilterPicker: View {
                             .tag(filter)
                     }
                 }
-                .pickerStyle(.wheel)
+                .pickerStyle(WheelPickerStyle())
             }
         }
     }
