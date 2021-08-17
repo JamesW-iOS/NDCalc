@@ -94,17 +94,7 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
 
     /// A string representation of the `calculatedShutterSpeed`
     var calculatedShutterSpeedString: String {
-        if calculatedShutterSpeed.seconds < 1 {
-            return "Less than 1s"
-        } else {
-            if calculatedShutterSpeed.seconds > 60 {
-                let minutes = numberToString(calculatedShutterSpeed.seconds / 60)
-                let seconds = numberToString(calculatedShutterSpeed.seconds.remainder(dividingBy: 60.0))
-                return "\(minutes)m \(seconds)s"
-            }
-            return "\(numberToString(calculatedShutterSpeed.seconds))s"
-        }
-
+        return calculatedShutterSpeed.stringRepresentation
     }
 
     /// A flag that shows if the currently selected `ShutterSpeed` is a valid one to start a timer with

@@ -33,7 +33,7 @@ struct ShutterSpeed: Identifiable, Hashable, Codable {
     private static let thirdStopSpeeds = shutterSpeeds[2]
 
     /// formatter for displaying the numbers in a nice way.
-    private static var formatter: NumberFormatter = {
+    private static var numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 1
@@ -41,17 +41,40 @@ struct ShutterSpeed: Identifiable, Hashable, Codable {
         return formatter
     }()
 
-    /// A 'human' friendly representation of a shutter speed.
+    private static var timeFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .abbreviated
+        formatter.allowedUnits = [.hour, .minute, .second]
+
+        return formatter
+    }()
+
+    /// A 'human' friendly representation of a shutter speed in the form of a fraction where appropriate,
+    /// will always be number of seconds.
     ///
     /// The convention for how shutter speeds are displayed are not exact but in general any shutter speed
     /// that can be represented as 1/n seconds will be represented as a fraction (0.5 being an exception). all
     /// Others are represented as a decimal number.
-    var stringRepresentation: String {
+    var stringFractionalRepresentation: String {
         if denominator == 1 {
             return numberToString(numerator)
         } else {
             return "\(numberToString(numerator))/\(numberToString(denominator))"
         }
+    }
+
+    /// Another 'human' friendly representation of a shutter speed, this time in the form of hours, minutes, seconds.
+    var stringRepresentation: String {
+        guard seconds > 1 else {
+            return "Less than one second"
+        }
+
+        guard let output = Self.timeFormatter.string(from: seconds) else {
+            assertionFailure("Unable to format shutterSpeed")
+            return "Unable to calculate time"
+        }
+
+        return output
     }
 
     /// The number of seconds of the shutter speed as a decimal number.
@@ -66,7 +89,7 @@ struct ShutterSpeed: Identifiable, Hashable, Codable {
 
     /// A function that generates a 'human' formatted version of a number
     private func numberToString(_ number: Double) -> String {
-        guard let string = Self.formatter.string(from: NSNumber(value: number)) else {
+        guard let string = Self.numberFormatter.string(from: NSNumber(value: number)) else {
             assertionFailure("failed to convert numerator to string")
             return "Error"
         }

@@ -10,13 +10,20 @@ import SwiftUI
 struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtocol>: View {
     @ObservedObject var model: Model
     @StateObject var settingsViewModel: SettingsViewModel<Preference>
+    @Environment(\.sizeCategory) var sizeCategory
 
     var body: some View {
         NavigationView {
             ZStack {
-                mainView
-                    .disabled(model.countdownViewActive)
-                    .blur(radius: model.countdownViewActive ? 20 : 0)
+                if sizeCategory.isAccessibilityCategory {
+                    accessibilityMainView
+                        .disabled(model.countdownViewActive)
+                        .blur(radius: model.countdownViewActive ? 20 : 0)
+                } else {
+                    mainView
+                        .disabled(model.countdownViewActive)
+                        .blur(radius: model.countdownViewActive ? 20 : 0)
+                }
 
                 if model.countdownViewActive {
                     timerRunningView()
@@ -52,6 +59,24 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
         }
     }
 
+    var accessibilityMainView: some View {
+        ScrollView {
+            VStack {
+                calculatedShutterSpeed
+                FilterPicker(selectedFilter: $model.selectedFilter,
+                             filterNotation: model.filterNotation,
+                             shouldDisplayAcceccibiltyMode: true)
+                    .animation(.none)
+                ShutterSpeedPicker(shutterSpeeds: model.shutterSpeeds,
+                                   selectedShutterSpeed: $model.selectedShutterSpeed,
+                                   shouldDisplayAcceccibiltyMode: true)
+                    .animation(.none)
+                startTimerButton
+                    .disabled(!model.isCurrentTimeValid)
+            }
+        }
+    }
+
     @ViewBuilder
     func timerRunningView() -> some View {
         VStack {
@@ -69,13 +94,15 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
 
     func sideBySidePickers(fullWidth: CGFloat) -> some View {
         HStack {
-            FilterPicker(selectedFilter: $model.selectedFilter, filterNotation: model.filterNotation)
+            FilterPicker(selectedFilter: $model.selectedFilter,
+                         filterNotation: model.filterNotation,
+                         shouldDisplayAcceccibiltyMode: false)
 
                 .frame(maxWidth: fullWidth / 2)
                 .clipped()
 
             ShutterSpeedPicker(shutterSpeeds: model.shutterSpeeds,
-                                selectedShutterSpeed: $model.selectedShutterSpeed)
+                                selectedShutterSpeed: $model.selectedShutterSpeed, shouldDisplayAcceccibiltyMode: false)
                 .frame(maxWidth: fullWidth / 2)
                 .clipped()
         }
@@ -87,10 +114,14 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
         VStack {
             Text("Calculated Time:")
                 .font(.title)
+                .fixedSize(horizontal: false, vertical: true)
             Text(model.calculatedShutterSpeedString)
-                .font(.system(size: 70))
+                .font(.system(size: 70.0))
                 .bold()
-                .padding(.top)
+                .multilineTextAlignment(.center)
+                .scaledToFit()
+                .minimumScaleFactor(0.4)
+                .padding()
         }
     }
 
@@ -110,5 +141,8 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         // swiftlint:disable:next line_length
         HomeView<MockHomeViewModel, MockPreferenceController>(model: MockHomeViewModel(), settingsViewModel: SettingsViewModel<MockPreferenceController>(userPreferences: MockPreferenceController()))
+
+        // swiftlint:disable:next line_length
+        HomeView<MockHomeViewModel, MockPreferenceController>(model: MockHomeViewModel(calculatedShutterSpeedString: "Less than one second"), settingsViewModel: SettingsViewModel<MockPreferenceController>(userPreferences: MockPreferenceController()))
     }
 }

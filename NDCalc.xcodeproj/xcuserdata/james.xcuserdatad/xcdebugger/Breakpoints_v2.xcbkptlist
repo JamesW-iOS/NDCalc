@@ -208,8 +208,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
             endingLineNumber = "60"
-            landmarkName = "init(userPreferences:countdownController:notificationController:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -242,6 +242,38 @@
             endingLineNumber = "25"
             landmarkName = "awaitPublisher(_:timeout:file:line:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6C031C20-99EB-4BEC-8B85-BD19097D51E6 - 5cfb406a197987cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;&#x3c4;_0_0.Failure&gt;) -&gt; () in __C.XCTestCase.awaitPublisher&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Combine.Publisher&gt;(_: &#x3c4;_0_0, timeout: Swift.Double, file: Swift.StaticString, line: Swift.UInt) throws -&gt; &#x3c4;_0_0.Output"
+                  moduleName = "NDCalcTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/james/Documents/Development/Apps/NDCalc/NDCalcTests/Extensions/XCTestCombineAwait.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "496">
+               </Location>
+               <Location
+                  uuid = "6C031C20-99EB-4BEC-8B85-BD19097D51E6 - 5cfb406a197987cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;&#x3c4;_0_0.Failure&gt;) -&gt; () in __C.XCTestCase.awaitPublisher&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Combine.Publisher&gt;(_: &#x3c4;_0_0, timeout: Swift.Double, file: Swift.StaticString, line: Swift.UInt) throws -&gt; &#x3c4;_0_0.Output"
+                  moduleName = "NDCalcTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/james/Documents/Development/Apps/NDCalc/NDCalcTests/Extensions/XCTestCombineAwait.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "628">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -258,6 +290,38 @@
             endingLineNumber = "34"
             landmarkName = "awaitPublisher(_:timeout:file:line:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C19109FA-CB00-4FBF-8AC2-54D2453F6A7E - b841470445920767"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (&#x3c4;_0_0.Output) -&gt; () in __C.XCTestCase.awaitPublisher&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Combine.Publisher&gt;(_: &#x3c4;_0_0, timeout: Swift.Double, file: Swift.StaticString, line: Swift.UInt) throws -&gt; &#x3c4;_0_0.Output"
+                  moduleName = "NDCalcTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/james/Documents/Development/Apps/NDCalc/NDCalcTests/Extensions/XCTestCombineAwait.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "212">
+               </Location>
+               <Location
+                  uuid = "C19109FA-CB00-4FBF-8AC2-54D2453F6A7E - b841470445920767"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (&#x3c4;_0_0.Output) -&gt; () in __C.XCTestCase.awaitPublisher&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Combine.Publisher&gt;(_: &#x3c4;_0_0, timeout: Swift.Double, file: Swift.StaticString, line: Swift.UInt) throws -&gt; &#x3c4;_0_0.Output"
+                  moduleName = "NDCalcTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/james/Documents/Development/Apps/NDCalc/NDCalcTests/Extensions/XCTestCombineAwait.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "252">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -274,6 +338,38 @@
             endingLineNumber = "35"
             landmarkName = "awaitPublisher(_:timeout:file:line:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5E0EE1CD-3861-44FF-8989-F4E02FC17885 - b841470445920556"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (&#x3c4;_0_0.Output) -&gt; () in __C.XCTestCase.awaitPublisher&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Combine.Publisher&gt;(_: &#x3c4;_0_0, timeout: Swift.Double, file: Swift.StaticString, line: Swift.UInt) throws -&gt; &#x3c4;_0_0.Output"
+                  moduleName = "NDCalcTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/james/Documents/Development/Apps/NDCalc/NDCalcTests/Extensions/XCTestCombineAwait.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  uuid = "5E0EE1CD-3861-44FF-8989-F4E02FC17885 - b841470445920556"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (&#x3c4;_0_0.Output) -&gt; () in __C.XCTestCase.awaitPublisher&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Combine.Publisher&gt;(_: &#x3c4;_0_0, timeout: Swift.Double, file: Swift.StaticString, line: Swift.UInt) throws -&gt; &#x3c4;_0_0.Output"
+                  moduleName = "NDCalcTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/james/Documents/Development/Apps/NDCalc/NDCalcTests/Extensions/XCTestCombineAwait.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "284">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -290,6 +386,38 @@
             endingLineNumber = "27"
             landmarkName = "awaitPublisher(_:timeout:file:line:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "ED4C2B4F-0E4C-496A-90AB-A368B9F75CC6 - 5cfb406a19798709"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;&#x3c4;_0_0.Failure&gt;) -&gt; () in __C.XCTestCase.awaitPublisher&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Combine.Publisher&gt;(_: &#x3c4;_0_0, timeout: Swift.Double, file: Swift.StaticString, line: Swift.UInt) throws -&gt; &#x3c4;_0_0.Output"
+                  moduleName = "NDCalcTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/james/Documents/Development/Apps/NDCalc/NDCalcTests/Extensions/XCTestCombineAwait.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "584">
+               </Location>
+               <Location
+                  uuid = "ED4C2B4F-0E4C-496A-90AB-A368B9F75CC6 - 5cfb406a19798709"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;&#x3c4;_0_0.Failure&gt;) -&gt; () in __C.XCTestCase.awaitPublisher&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Combine.Publisher&gt;(_: &#x3c4;_0_0, timeout: Swift.Double, file: Swift.StaticString, line: Swift.UInt) throws -&gt; &#x3c4;_0_0.Output"
+                  moduleName = "NDCalcTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/james/Documents/Development/Apps/NDCalc/NDCalcTests/Extensions/XCTestCombineAwait.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "716">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -306,6 +434,38 @@
             endingLineNumber = "21"
             landmarkName = "awaitPublisher(_:timeout:file:line:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "252A2DF0-203E-4CBE-B469-DD5E93762495 - 6020097337b32a7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__C.XCTestCase.awaitPublisher&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Combine.Publisher&gt;(_: &#x3c4;_0_0, timeout: Swift.Double, file: Swift.StaticString, line: Swift.UInt) throws -&gt; &#x3c4;_0_0.Output"
+                  moduleName = "NDCalcTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/james/Documents/Development/Apps/NDCalc/NDCalcTests/Extensions/XCTestCombineAwait.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "516">
+               </Location>
+               <Location
+                  uuid = "252A2DF0-203E-4CBE-B469-DD5E93762495 - 6020097337b32a7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__C.XCTestCase.awaitPublisher&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Combine.Publisher&gt;(_: &#x3c4;_0_0, timeout: Swift.Double, file: Swift.StaticString, line: Swift.UInt) throws -&gt; &#x3c4;_0_0.Output"
+                  moduleName = "NDCalcTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/james/Documents/Development/Apps/NDCalc/NDCalcTests/Extensions/XCTestCombineAwait.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "544">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -322,6 +482,38 @@
             endingLineNumber = "32"
             landmarkName = "awaitPublisher(_:timeout:file:line:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7A393023-0A4D-4A6F-BACB-B8C65629A40E - 5cfb406a197984a4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;&#x3c4;_0_0.Failure&gt;) -&gt; () in __C.XCTestCase.awaitPublisher&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Combine.Publisher&gt;(_: &#x3c4;_0_0, timeout: Swift.Double, file: Swift.StaticString, line: Swift.UInt) throws -&gt; &#x3c4;_0_0.Output"
+                  moduleName = "NDCalcTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/james/Documents/Development/Apps/NDCalc/NDCalcTests/Extensions/XCTestCombineAwait.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1024">
+               </Location>
+               <Location
+                  uuid = "7A393023-0A4D-4A6F-BACB-B8C65629A40E - 5cfb406a197984a4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;&#x3c4;_0_0.Failure&gt;) -&gt; () in __C.XCTestCase.awaitPublisher&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Combine.Publisher&gt;(_: &#x3c4;_0_0, timeout: Swift.Double, file: Swift.StaticString, line: Swift.UInt) throws -&gt; &#x3c4;_0_0.Output"
+                  moduleName = "NDCalcTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/james/Documents/Development/Apps/NDCalc/NDCalcTests/Extensions/XCTestCombineAwait.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1180">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -338,6 +530,86 @@
             endingLineNumber = "64"
             landmarkName = "testCancelingCountdown()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "09A7958A-334F-4293-A733-234BA5508780"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NDCalcTests/ShutterSpeedTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "testStringRepresentationCorrect()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "09A7958A-334F-4293-A733-234BA5508780 - 28b2c30c48bd28ec"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NDCalcTests.ShutterSpeedTests.testStringRepresentationCorrect() -&gt; ()"
+                  moduleName = "NDCalcTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/james/Documents/Development/Apps/NDCalc/NDCalcTests/ShutterSpeedTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "1056">
+               </Location>
+               <Location
+                  uuid = "09A7958A-334F-4293-A733-234BA5508780 - 28b2c30c48bd28ec"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NDCalcTests.ShutterSpeedTests.testStringRepresentationCorrect() -&gt; ()"
+                  moduleName = "NDCalcTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/james/Documents/Development/Apps/NDCalc/NDCalcTests/ShutterSpeedTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "1160">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F6267CB7-7458-4B06-A234-4983611FC694"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NDCalc/View/Screens/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2E9BEC74-9F25-4EB1-8C95-2CDC1F4B7C5C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NDCalc/Model/ShutterSpeed.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "stringRepresentation"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
