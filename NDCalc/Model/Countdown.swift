@@ -28,9 +28,27 @@ struct Countdown: Equatable {
     /// The time that the `Countdown` was started.
     private let startedAt = Date()
 
+    /// A formatter for displaying time in a friendly way
+    private static var timeFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .abbreviated
+        formatter.allowedUnits = [.hour, .minute, .second]
+
+        return formatter
+    }()
+
     /// The number of seconds left till the finish time of the `Countdown`.
     var secondsLeft: Double {
         Date().distance(to: finishTime)
+    }
+
+    /// A formatted representation of the time left in a countdown
+    var stringSecondsLeft: String {
+        guard let output = Self.timeFormatter.string(from: secondsLeft.magnitude) else {
+            assertionFailure("Unable to format time left in countdown")
+            return "Error"
+        }
+        return output
     }
 
     /// The proportion of the Countdown that is finished, represented as a decimal number with 1.0 being

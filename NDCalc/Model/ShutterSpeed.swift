@@ -41,6 +41,7 @@ struct ShutterSpeed: Identifiable, Hashable, Codable {
         return formatter
     }()
 
+    /// A formatter for displaying time in a friendly way
     private static var timeFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .abbreviated

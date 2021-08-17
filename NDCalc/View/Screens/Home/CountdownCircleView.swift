@@ -40,16 +40,8 @@ struct CountdownCircleView: View {
                 .foregroundColor(circleColor)
                 .rotationEffect(Angle(degrees: 270.0))
 
-            if timerDone {
-                Text("Complete")
-                    .font(.largeTitle)
-            } else {
-                VStack {
-                    Text(secondsLeft)
-                        .font(.largeTitle)
-                    Text("Seconds left")
-                }
-            }
+            Text(countdown?.stringSecondsLeft ?? "Done")
+                .font(.largeTitle)
         }
         .animation(Animation.linear(duration: circleReseting ? 0.7 : 0.1))
         .padding()
