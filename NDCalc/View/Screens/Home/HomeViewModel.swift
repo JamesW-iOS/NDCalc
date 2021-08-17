@@ -15,9 +15,21 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
     NotificationCon: NotificationControllerProtocol {
 
     /// The currently selected `Filter` in the picker.
-    @Published var selectedFilter: Filter
+    @UserDefault(key: UserDefaultKeys.selectedFilterKey,
+                 defaultValue: Filter.filters[0])
+    var selectedFilter: Filter {
+        didSet {
+            objectWillChange.send()
+        }
+    }
     /// The currently selected `ShutterSpeed` in the picker.
-    @Published var selectedShutterSpeed: ShutterSpeed
+    @UserDefault(key: UserDefaultKeys.selectedShutterSpeedKEy,
+                 defaultValue: ShutterSpeed.speedsForGap(.oneStop)[0])
+    var selectedShutterSpeed: ShutterSpeed {
+        didSet {
+            objectWillChange.send()
+        }
+    }
     /// Flag to indicate if the Countdown view should be active.
     ///
     /// When true the Countdown view will be placed over the top of the main view.
@@ -52,8 +64,8 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
         self.userPreferences = userPreferences
         self.countdownController = countdownController
         self.notificationController = notificationController
-        self.selectedShutterSpeed = ShutterSpeed.speedsForGap(userPreferences.selectedShutterSpeedGap)[0]
-        self.selectedFilter = Filter.filters[0]
+//        self.selectedShutterSpeed = ShutterSpeed.speedsForGap(userPreferences.selectedShutterSpeedGap)[0]
+//        self.selectedFilter = Filter.filters[0]
 
         /// When the PreferenceStore changes we need to update our view, lookout for changes and send an update here.
         userPreferences.objectWillChange.sink { _ in

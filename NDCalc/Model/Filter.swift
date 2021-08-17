@@ -24,7 +24,7 @@ enum FilterStrengthRepresentation: String, Codable, CaseIterable, RawRepresentab
 ///
 /// The struct has a private initialiser since the only filters accessible in the app should be the ones
 /// in the static `filters` property.
-struct Filter: Identifiable, Hashable {
+struct Filter: Identifiable, Hashable, Codable {
     /// The strength of the ND filter, represented as how many stops of light the filter darkens the image by.
     let stopsReduced: Float
     // swiftlint:disable:next identifier_name
