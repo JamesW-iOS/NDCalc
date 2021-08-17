@@ -23,6 +23,8 @@
 		1A457659268F1C8200C9332A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A457658268F1C8200C9332A /* Date.swift */; };
 		1A45765B268F1CEA00C9332A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45765A268F1CEA00C9332A /* NotificationController.swift */; };
 		1A45765E268F30C600C9332A /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45765D268F30C600C9332A /* Vibration.swift */; };
+		1A5AB73726CB9F0E00E819A7 /* AppInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5AB73626CB9F0E00E819A7 /* AppInformation.swift */; };
+		1A5AB73B26CBA05A00E819A7 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5AB73A26CBA05A00E819A7 /* ErrorAlert.swift */; };
 		1A649B0F26BCF2F80008ACF2 /* XCTestCombineAwait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A649B0E26BCF2F80008ACF2 /* XCTestCombineAwait.swift */; };
 		1A649B1226BCF7CF0008ACF2 /* Publisher-CollectNext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A649B1126BCF7CF0008ACF2 /* Publisher-CollectNext.swift */; };
 		1A6A28DB26A9719300D53227 /* CountdownControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A28DA26A9719300D53227 /* CountdownControllerTests.swift */; };
@@ -90,6 +92,8 @@
 		1A457658268F1C8200C9332A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1A45765A268F1CEA00C9332A /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		1A45765D268F30C600C9332A /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
+		1A5AB73626CB9F0E00E819A7 /* AppInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInformation.swift; sourceTree = "<group>"; };
+		1A5AB73A26CBA05A00E819A7 /* ErrorAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		1A649B0E26BCF2F80008ACF2 /* XCTestCombineAwait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCombineAwait.swift; sourceTree = "<group>"; };
 		1A649B1126BCF7CF0008ACF2 /* Publisher-CollectNext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher-CollectNext.swift"; sourceTree = "<group>"; };
 		1A6A28DA26A9719300D53227 /* CountdownControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownControllerTests.swift; sourceTree = "<group>"; };
@@ -241,9 +245,11 @@
 			isa = PBXGroup;
 			children = (
 				1A45765D268F30C600C9332A /* Vibration.swift */,
+				1A5AB73A26CBA05A00E819A7 /* ErrorAlert.swift */,
 				1A077272269EAB8A0096BBD6 /* DIContainer.swift */,
 				1AFE701926B3CEF200E74618 /* UserDefaultWrapper.swift */,
 				1AFE701B26B3D02100E74618 /* AnyOptionalProtocol.swift */,
+				1A5AB73626CB9F0E00E819A7 /* AppInformation.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -554,6 +560,7 @@
 				1AFE701C26B3D02100E74618 /* AnyOptionalProtocol.swift in Sources */,
 				1A457657268EDD0B00C9332A /* HomeView.swift in Sources */,
 				1A077273269EAB8A0096BBD6 /* DIContainer.swift in Sources */,
+				1A5AB73B26CBA05A00E819A7 /* ErrorAlert.swift in Sources */,
 				1A9E0DF326A52307002A1ED4 /* Countdown.swift in Sources */,
 				1A6B877F26187C9400F67DE5 /* NDCalcApp.swift in Sources */,
 				1A457645268EBB7700C9332A /* CountdownCircleView.swift in Sources */,
@@ -562,6 +569,7 @@
 				1A9E0DFB26A58B54002A1ED4 /* BundleItems.swift in Sources */,
 				1A45764B268ECD7E00C9332A /* ShutterSpeed.swift in Sources */,
 				1A457652268ED9C300C9332A /* HomeViewModelProtocol.swift in Sources */,
+				1A5AB73726CB9F0E00E819A7 /* AppInformation.swift in Sources */,
 				1A457659268F1C8200C9332A /* Date.swift in Sources */,
 				1A9E0DF526A524AA002A1ED4 /* CountdownController.swift in Sources */,
 				1A9E0DF726A524FC002A1ED4 /* NotificationControllerProtocol.swift in Sources */,

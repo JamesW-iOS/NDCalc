@@ -8,25 +8,33 @@
 import SwiftUI
 import MessageUI
 
-struct About: View {
-    enum MailSubject { case feature, bug, feedback}
+enum MailSubject: String {
+    case feature = "[FEATURE]"
+    case bug = "[BUG]"
+    case feedback = "[FEEDBACK]"
 
+}
+
+struct About: View {
     @State var mailSubject = MailSubject.feedback
-    @State private var result: Result<MFMailComposeResult, Error>?
     @State private var isShowingMailView = false
+    @State private var mailError: ErrorAlert?
+
+    @State private var result: Result<MFMailComposeResult, Error>? {
+        didSet {
+            if let result = result {
+                switch result {
+                case .failure(let error):
+                    mailError = ErrorAlert(title: "Error occurred", body: error.localizedDescription)
+                case .success(_):
+                    mailError = nil
+                }
+            }
+        }
+    }
 
     var mailSubjectText: String {
-        var mailSubjectString = ""
-        switch mailSubject {
-        case .bug:
-            mailSubjectString = "ND [BUG]"
-        case .feature:
-            mailSubjectString = "ND [FEATURE]"
-        case .feedback:
-            mailSubjectString = "ND [FEEDBACK]"
-        }
-
-        return "\(mailSubjectString) - \(versionInfo)"
+        return "\(mailSubject.rawValue) - \(versionInfo)"
     }
 
     var versionInfo: String {
@@ -34,6 +42,19 @@ struct About: View {
         let version = dictionary["CFBundleShortVersionString"] as? String ?? "Couldn't get version"
         let build = dictionary["CFBundleVersion"] as? String ?? "Couldn't get build number"
         return "\(version) build \(build)"
+    }
+
+    var shouldShowError: Bool {
+        if let result = result {
+            switch result {
+            case .failure(_):
+                return true
+            case .success(_):
+                return false
+            }
+        }
+
+        return false
     }
 
     var body: some View {
@@ -70,6 +91,12 @@ struct About: View {
             }
             .listStyle(InsetGroupedListStyle())
             .foregroundColor(.primary)
+        }
+        .sheet(isPresented: $isShowingMailView, content: {
+            MailView(result: $result, subject: mailSubject)
+        })
+        .alert(item: $mailError) { mailError in
+            mailError.alert
         }
     }
 

@@ -13,3 +13,7 @@ enum UserDefaultKeys {
     static let selectedFilterKey = "selectedFilter"
     static let selectedShutterSpeedKEy = "selectedShutterSpeed"
 }
+
+enum StringConstants {
+    static let feedbackEmail = "me@thetrex.dev"
+}
