@@ -39,15 +39,18 @@ final class MockHomeViewModel: HomeViewModelProtocol {
     var countdown: Countdown?
 
     static var defaultShutterSpeeds = ShutterSpeed.speedsForGap(.oneStop)
+    static var defaultSelectedFilter = Filter(strength: 3.0)
+    static var defaultShutterSpeed = defaultShutterSpeeds[18]
+    static var defaultCalculatedShutterSpeed =
+        ShutterSpeed.calculateShutterSpeedWithFilter(shutterSpeed: defaultShutterSpeed,
+                                                     filter: defaultSelectedFilter)
 
-    init(selectedFilter: Filter = Filter(strength: 1),
-         selectedShutterSpeed: ShutterSpeed = defaultShutterSpeeds[0],
+    init(selectedFilter: Filter = defaultSelectedFilter,
+         selectedShutterSpeed: ShutterSpeed = defaultShutterSpeed,
          hasTimerRunning: Bool = false,
          isValidTime: Bool = true,
-         calculatedShutterSpeed: ShutterSpeed =
-            ShutterSpeed.calculateShutterSpeedWithFilter(shutterSpeed: defaultShutterSpeeds[0],
-                                                      filter: Filter(strength: 1)),
-         calculatedShutterSpeedString: String = "10s",
+         calculatedShutterSpeed: ShutterSpeed = defaultCalculatedShutterSpeed,
+         calculatedShutterSpeedString: String = defaultCalculatedShutterSpeed.stringRepresentation,
          timerIsRunning: Bool = false,
          shutterSpeeds: [ShutterSpeed] = defaultShutterSpeeds,
          // swiftlint:disable:next force_try
