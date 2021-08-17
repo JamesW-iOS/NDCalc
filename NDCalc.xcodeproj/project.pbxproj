@@ -186,6 +186,7 @@
 		1A077274269EAFDF0096BBD6 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				1AFC055C26A155E40037B9B1 /* Explainer */,
 				1A077275269EAFF00096BBD6 /* SettingsView.swift */,
 				1A077277269EB0030096BBD6 /* SettingsViewModel.swift */,
 			);
@@ -356,7 +357,6 @@
 			isa = PBXGroup;
 			children = (
 				1AAD4E6E26AE85480037F3A0 /* About */,
-				1AFC055C26A155E40037B9B1 /* Explainer */,
 				1A077274269EAFDF0096BBD6 /* Settings */,
 				1A457653268EDA9400C9332A /* Home */,
 			);

@@ -70,7 +70,6 @@ struct About: View {
             }
             .listStyle(InsetGroupedListStyle())
             .foregroundColor(.primary)
-
         }
     }
 

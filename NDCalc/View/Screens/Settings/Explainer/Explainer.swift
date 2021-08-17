@@ -17,12 +17,14 @@ struct Explainer: View {
     var body: some View {
         VStack {
             Spacer()
+
             Text(model.title)
                 .font(.title)
                 .padding()
-            Text(model.explanation)
-                .padding()
-
+            ScrollView {
+                Text(model.explanation)
+                    .padding()
+            }
             Spacer()
 
             Button {

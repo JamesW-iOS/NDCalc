@@ -46,6 +46,7 @@ struct SettingsView<Preference>: View where Preference: PreferenceStoreProtocol 
         .sheet(item: $model.currentExplainer, onDismiss: nil) { explainerModel in
             Explainer(model: explainerModel)
         }
+        .navigationTitle(Text("Settings"))
     }
 
     func showMoreButton(funcToCall: @escaping () -> Void) -> some View {
