@@ -51,7 +51,8 @@ class NotificationControllerTests: XCTestCase {
                                                                repeats: false)
 
         let request = mockNotificationCentre.request
-        // guard unwrapping the request causes the compiler to crash, no idea why, force unwrapping here since it's just a test.
+        // guard unwrapping the request causes the compiler to crash, no idea why,
+        // force unwrapping here since it's just a test.
 //        guard let request = request else {
 //            XCTFail("Unable to unwrap the request")
 //            return
