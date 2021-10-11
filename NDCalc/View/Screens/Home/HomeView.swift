@@ -60,19 +60,23 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
     }
 
     var accessibilityMainView: some View {
-        ScrollView {
-            VStack {
-                calculatedShutterSpeed
-                FilterPicker(selectedFilter: $model.selectedFilter,
-                             filterNotation: model.filterNotation,
-                             shouldDisplayAcceccibiltyMode: true)
-                    .animation(.none)
-                ShutterSpeedPicker(shutterSpeeds: model.shutterSpeeds,
-                                   selectedShutterSpeed: $model.selectedShutterSpeed,
-                                   shouldDisplayAcceccibiltyMode: true)
-                    .animation(.none)
-                startTimerButton
-                    .disabled(!model.isCurrentTimeValid)
+        GeometryReader { geometry in
+            ScrollView {
+                VStack {
+                    calculatedShutterSpeed
+                    FilterPicker(selectedFilter: $model.selectedFilter,
+                                 filterNotation: model.filterNotation,
+                                 shouldDisplayAcceccibiltyMode: true,
+                                 width: geometry.size.width)
+                        .animation(.none)
+                    ShutterSpeedPicker(shutterSpeeds: model.shutterSpeeds,
+                                       selectedShutterSpeed: $model.selectedShutterSpeed,
+                                       shouldDisplayAcceccibiltyMode: true,
+                                       width: geometry.size.width)
+                        .animation(.none)
+                    startTimerButton
+                        .disabled(!model.isCurrentTimeValid)
+                }
             }
         }
     }
@@ -93,21 +97,11 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
     }
 
     func sideBySidePickers(fullWidth: CGFloat) -> some View {
-        HStack {
-            FilterPicker(selectedFilter: $model.selectedFilter,
-                         filterNotation: model.filterNotation,
-                         shouldDisplayAcceccibiltyMode: false)
-
-                .frame(maxWidth: fullWidth / 2)
-                .clipped()
-
-            ShutterSpeedPicker(shutterSpeeds: model.shutterSpeeds,
-                                selectedShutterSpeed: $model.selectedShutterSpeed, shouldDisplayAcceccibiltyMode: false)
-                .frame(maxWidth: fullWidth / 2)
-                .clipped()
-        }
-
-        .animation(.none)
+        NDPicker(filters: Filter.filters,
+                 shutterSpeeds: $model.shutterSpeeds,
+                 selectedFilter: $model.selectedFilter,
+                 selectedShutterSpeed: $model.selectedShutterSpeed,
+                 filterNotation: $model.selectedFilterNotation)
     }
 
     var calculatedShutterSpeed: some View {

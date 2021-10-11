@@ -30,6 +30,10 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
             objectWillChange.send()
         }
     }
+    /// An array of `ShutterSpeed` to show in the picker, updates based on user preferences.
+    @Published var shutterSpeeds = ShutterSpeed.speedsForGap(.oneStop)
+    @Published var selectedFilterNotation: FilterStrengthRepresentation
+
     /// Flag to indicate if the Countdown view should be active.
     ///
     /// When true the Countdown view will be placed over the top of the main view.
@@ -61,15 +65,18 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
     init(userPreferences: Preference = DIContainer.shared.resolve(type: Preference.self)!,
          countdownController: CountdownCon = DIContainer.shared.resolve(type: CountdownCon.self)!,
          notificationController: NotificationCon = DIContainer.shared.resolve(type: NotificationCon.self)!) {
+
         self.userPreferences = userPreferences
         self.countdownController = countdownController
         self.notificationController = notificationController
-//        self.selectedShutterSpeed = ShutterSpeed.speedsForGap(userPreferences.selectedShutterSpeedGap)[0]
-//        self.selectedFilter = Filter.filters[0]
 
+        self.shutterSpeeds = ShutterSpeed.speedsForGap(userPreferences.selectedShutterSpeedGap)
+        self.selectedFilterNotation = userPreferences.selectedFilterRepresentation
+        
         /// When the PreferenceStore changes we need to update our view, lookout for changes and send an update here.
         userPreferences.objectWillChange.sink { _ in
-            self.objectWillChange.send()
+            self.selectedFilterNotation = userPreferences.selectedFilterRepresentation
+            self.shutterSpeeds = ShutterSpeed.speedsForGap(userPreferences.selectedShutterSpeedGap)
         }
         .store(in: &cancellables)
 
@@ -87,11 +94,6 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
     /// Flag that indicates if a countdown is currently running.
     var countdownIsActive: Bool {
         countdownController.hasCountdownActive
-    }
-
-    /// An array of `ShutterSpeed` to show in the picker, updates based on user preferences.
-    var shutterSpeeds: [ShutterSpeed] {
-        ShutterSpeed.speedsForGap(userPreferences.selectedShutterSpeedGap)
     }
 
     var filterNotation: FilterStrengthRepresentation {

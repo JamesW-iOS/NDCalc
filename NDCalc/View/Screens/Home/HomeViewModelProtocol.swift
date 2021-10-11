@@ -16,9 +16,10 @@ protocol HomeViewModelProtocol: ObservableObject {
     var isCurrentTimeValid: Bool { get }
     var calculatedShutterSpeed: ShutterSpeed { get }
     var calculatedShutterSpeedString: String { get }
-    var shutterSpeeds: [ShutterSpeed] { get }
+    var shutterSpeeds: [ShutterSpeed] { get set }
     var filterNotation: FilterStrengthRepresentation { get }
     var countdown: Countdown? { get }
+    var selectedFilterNotation: FilterStrengthRepresentation { get set }
 
     func startCountdown()
     func countdownViewButtonTapped()
@@ -26,6 +27,7 @@ protocol HomeViewModelProtocol: ObservableObject {
 }
 
 final class MockHomeViewModel: HomeViewModelProtocol {
+    var selectedFilterNotation: FilterStrengthRepresentation
     var selectedFilter: Filter
     var selectedShutterSpeed: ShutterSpeed
     var nextTimer: Double?
@@ -54,7 +56,8 @@ final class MockHomeViewModel: HomeViewModelProtocol {
          timerIsRunning: Bool = false,
          shutterSpeeds: [ShutterSpeed] = defaultShutterSpeeds,
          // swiftlint:disable:next force_try
-         countdown: Countdown? = try! Countdown(endsAt: Date(timeIntervalSinceNow: 10.0))) {
+         countdown: Countdown? = try! Countdown(endsAt: Date(timeIntervalSinceNow: 10.0)),
+         selectedFilterNotation: FilterStrengthRepresentation = .stopsReduced) {
         self.selectedFilter = selectedFilter
         self.selectedShutterSpeed = selectedShutterSpeed
         self.countdownViewActive = hasTimerRunning
@@ -65,6 +68,7 @@ final class MockHomeViewModel: HomeViewModelProtocol {
         self.shutterSpeeds = shutterSpeeds
         self.countdown = countdown
         self.filterNotation = .stopsReduced
+        self.selectedFilterNotation = selectedFilterNotation
     }
 
     func startCountdown() {

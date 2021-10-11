@@ -11,6 +11,7 @@ struct FilterPicker: View {
     @Binding var selectedFilter: Filter
     let filterNotation: FilterStrengthRepresentation
     let shouldDisplayAcceccibiltyMode: Bool
+    let width: CGFloat
 
     var selectedFilterString: String {
         selectedFilter.stringRepresentation(notation: filterNotation)
@@ -36,6 +37,9 @@ struct FilterPicker: View {
                     }
                 }
                 .pickerStyle(WheelPickerStyle())
+                .frame(width: width)
+                .clipped()
+                .border(Color.red)
             }
         }
     }
@@ -45,6 +49,7 @@ struct FilterPicker_Previews: PreviewProvider {
     static var previews: some View {
         FilterPicker(selectedFilter: .constant(Filter(strength: 1)),
                      filterNotation: .stopsReduced,
-                     shouldDisplayAcceccibiltyMode: false)
+                     shouldDisplayAcceccibiltyMode: false,
+                     width: 300)
     }
 }

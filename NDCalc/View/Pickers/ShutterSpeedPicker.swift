@@ -11,6 +11,7 @@ struct ShutterSpeedPicker: View {
     let shutterSpeeds: [ShutterSpeed]
     @Binding var selectedShutterSpeed: ShutterSpeed
     let shouldDisplayAcceccibiltyMode: Bool
+    let width: CGFloat
 
     var body: some View {
         VStack {
@@ -36,6 +37,9 @@ struct ShutterSpeedPicker: View {
                     }
                 }
                 .pickerStyle(WheelPickerStyle())
+                .frame(minWidth: 0)
+                .clipped()
+                .border(Color.blue)
             }
         }
     }
@@ -47,6 +51,7 @@ struct ShutterSpeedPicker_Previews: PreviewProvider {
     static var previews: some View {
         ShutterSpeedPicker(shutterSpeeds: shutterSpeeds,
                            selectedShutterSpeed: .constant(shutterSpeeds[0]),
-                           shouldDisplayAcceccibiltyMode: false)
+                           shouldDisplayAcceccibiltyMode: false,
+                           width: 300)
     }
 }
