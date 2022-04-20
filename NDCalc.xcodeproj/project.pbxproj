@@ -3,21 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1A07726D269E8D620096BBD6 /* PreferenceStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A07726C269E8D620096BBD6 /* PreferenceStoreProtocol.swift */; };
 		1A07726F269E8EA00096BBD6 /* PreferenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A07726E269E8EA00096BBD6 /* PreferenceStore.swift */; };
 		1A077271269E8F850096BBD6 /* Constatnts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A077270269E8F850096BBD6 /* Constatnts.swift */; };
-		1A077273269EAB8A0096BBD6 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A077272269EAB8A0096BBD6 /* DIContainer.swift */; };
 		1A077276269EAFF00096BBD6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A077275269EAFF00096BBD6 /* SettingsView.swift */; };
 		1A077278269EB0030096BBD6 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A077277269EB0030096BBD6 /* SettingsViewModel.swift */; };
 		1A457645268EBB7700C9332A /* CountdownCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A457644268EBB7700C9332A /* CountdownCircleView.swift */; };
 		1A457649268ECCA400C9332A /* NDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A457648268ECCA400C9332A /* NDButton.swift */; };
 		1A45764B268ECD7E00C9332A /* ShutterSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45764A268ECD7E00C9332A /* ShutterSpeed.swift */; };
 		1A45764D268ECD9300C9332A /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45764C268ECD9300C9332A /* Filter.swift */; };
-		1A457652268ED9C300C9332A /* HomeViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A457651268ED9C300C9332A /* HomeViewModelProtocol.swift */; };
 		1A457655268EDAA300C9332A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A457654268EDAA300C9332A /* HomeViewModel.swift */; };
 		1A457657268EDD0B00C9332A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A457656268EDD0B00C9332A /* HomeView.swift */; };
 		1A457659268F1C8200C9332A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A457658268F1C8200C9332A /* Date.swift */; };
@@ -57,6 +55,8 @@
 		1AFC055E26A155F90037B9B1 /* ExplainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFC055D26A155F90037B9B1 /* ExplainerViewModel.swift */; };
 		1AFE701A26B3CEF200E74618 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFE701926B3CEF200E74618 /* UserDefaultWrapper.swift */; };
 		1AFE701C26B3D02100E74618 /* AnyOptionalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFE701B26B3D02100E74618 /* AnyOptionalProtocol.swift */; };
+		7A04C54627E5621A00D00898 /* Depends in Frameworks */ = {isa = PBXBuildFile; productRef = 7A04C54527E5621A00D00898 /* Depends */; };
+		7A28EBDB2802D600002DBB1D /* CountdownCircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28EBDA2802D600002DBB1D /* CountdownCircleViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,14 +80,12 @@
 		1A07726C269E8D620096BBD6 /* PreferenceStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceStoreProtocol.swift; sourceTree = "<group>"; };
 		1A07726E269E8EA00096BBD6 /* PreferenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceStore.swift; sourceTree = "<group>"; };
 		1A077270269E8F850096BBD6 /* Constatnts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constatnts.swift; sourceTree = "<group>"; };
-		1A077272269EAB8A0096BBD6 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		1A077275269EAFF00096BBD6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1A077277269EB0030096BBD6 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		1A457644268EBB7700C9332A /* CountdownCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCircleView.swift; sourceTree = "<group>"; };
 		1A457648268ECCA400C9332A /* NDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDButton.swift; sourceTree = "<group>"; };
 		1A45764A268ECD7E00C9332A /* ShutterSpeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterSpeed.swift; sourceTree = "<group>"; };
 		1A45764C268ECD9300C9332A /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
-		1A457651268ED9C300C9332A /* HomeViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelProtocol.swift; sourceTree = "<group>"; };
 		1A457654268EDAA300C9332A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1A457656268EDD0B00C9332A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1A457658268F1C8200C9332A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -133,6 +131,7 @@
 		1AFC055D26A155F90037B9B1 /* ExplainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplainerViewModel.swift; sourceTree = "<group>"; };
 		1AFE701926B3CEF200E74618 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 		1AFE701B26B3D02100E74618 /* AnyOptionalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyOptionalProtocol.swift; sourceTree = "<group>"; };
+		7A28EBDA2802D600002DBB1D /* CountdownCircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCircleViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A04C54627E5621A00D00898 /* Depends in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +215,6 @@
 		1A45764F268ECDCD00C9332A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1AAD4E6D26AE85260037F3A0 /* Screens */,
 				1AAD4E6A26AE82180037F3A0 /* Pickers */,
 				1AAD4E6F26AE85650037F3A0 /* Buttons */,
 			);
@@ -227,6 +226,7 @@
 			children = (
 				1AD7CF5C261C429A00F6C33A /* Bundle-Decodable.swift */,
 				1A457658268F1C8200C9332A /* Date.swift */,
+				1AAD4E6D26AE85260037F3A0 /* Screens */,
 				1A649B1126BCF7CF0008ACF2 /* Publisher-CollectNext.swift */,
 			);
 			path = Extensions;
@@ -235,10 +235,10 @@
 		1A457653268EDA9400C9332A /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				1A457651268ED9C300C9332A /* HomeViewModelProtocol.swift */,
 				1A457654268EDAA300C9332A /* HomeViewModel.swift */,
 				1A457656268EDD0B00C9332A /* HomeView.swift */,
 				1A457644268EBB7700C9332A /* CountdownCircleView.swift */,
+				7A28EBDA2802D600002DBB1D /* CountdownCircleViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -248,7 +248,6 @@
 			children = (
 				1A45765D268F30C600C9332A /* Vibration.swift */,
 				1A5AB73A26CBA05A00E819A7 /* ErrorAlert.swift */,
-				1A077272269EAB8A0096BBD6 /* DIContainer.swift */,
 				1AFE701926B3CEF200E74618 /* UserDefaultWrapper.swift */,
 				1AFE701B26B3D02100E74618 /* AnyOptionalProtocol.swift */,
 				1A5AB73626CB9F0E00E819A7 /* AppInformation.swift */,
@@ -415,6 +414,9 @@
 			dependencies = (
 			);
 			name = NDCalc;
+			packageProductDependencies = (
+				7A04C54527E5621A00D00898 /* Depends */,
+			);
 			productName = NDCalc;
 			productReference = 1A6B877B26187C9400F67DE5 /* NDCalc.app */;
 			productType = "com.apple.product-type.application";
@@ -430,6 +432,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				7A6116782801499700EA2F4A /* PBXTargetDependency */,
 				1A6B878E26187C9500F67DE5 /* PBXTargetDependency */,
 			);
 			name = NDCalcTests;
@@ -486,6 +489,10 @@
 				Base,
 			);
 			mainGroup = 1A6B877226187C9400F67DE5;
+			packageReferences = (
+				7A04C54427E5621A00D00898 /* XCRemoteSwiftPackageReference "Depends" */,
+				7A04C54B27E5625F00D00898 /* XCRemoteSwiftPackageReference "CombineExpectations" */,
+			);
 			productRefGroup = 1A6B877C26187C9400F67DE5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -561,16 +568,15 @@
 				1A077278269EB0030096BBD6 /* SettingsViewModel.swift in Sources */,
 				1AFE701C26B3D02100E74618 /* AnyOptionalProtocol.swift in Sources */,
 				1A457657268EDD0B00C9332A /* HomeView.swift in Sources */,
-				1A077273269EAB8A0096BBD6 /* DIContainer.swift in Sources */,
 				1A5AB73B26CBA05A00E819A7 /* ErrorAlert.swift in Sources */,
 				1A9E0DF326A52307002A1ED4 /* Countdown.swift in Sources */,
 				1A6B877F26187C9400F67DE5 /* NDCalcApp.swift in Sources */,
 				1A457645268EBB7700C9332A /* CountdownCircleView.swift in Sources */,
 				1A45765B268F1CEA00C9332A /* NotificationController.swift in Sources */,
 				1A07726F269E8EA00096BBD6 /* PreferenceStore.swift in Sources */,
+				7A28EBDB2802D600002DBB1D /* CountdownCircleViewModel.swift in Sources */,
 				1A9E0DFB26A58B54002A1ED4 /* BundleItems.swift in Sources */,
 				1A45764B268ECD7E00C9332A /* ShutterSpeed.swift in Sources */,
-				1A457652268ED9C300C9332A /* HomeViewModelProtocol.swift in Sources */,
 				1A5AB73726CB9F0E00E819A7 /* AppInformation.swift in Sources */,
 				1A457659268F1C8200C9332A /* Date.swift in Sources */,
 				1A9E0DF526A524AA002A1ED4 /* CountdownController.swift in Sources */,
@@ -626,6 +632,10 @@
 			isa = PBXTargetDependency;
 			target = 1A6B877A26187C9400F67DE5 /* NDCalc */;
 			targetProxy = 1A6B879826187C9500F67DE5 /* PBXContainerItemProxy */;
+		};
+		7A6116782801499700EA2F4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 7A6116772801499700EA2F4A /* CombineExpectations */;
 		};
 /* End PBXTargetDependency section */
 
@@ -920,6 +930,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7A04C54427E5621A00D00898 /* XCRemoteSwiftPackageReference "Depends" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/unsignedapps/Depends";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+		7A04C54B27E5625F00D00898 /* XCRemoteSwiftPackageReference "CombineExpectations" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/CombineExpectations";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7A04C54527E5621A00D00898 /* Depends */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A04C54427E5621A00D00898 /* XCRemoteSwiftPackageReference "Depends" */;
+			productName = Depends;
+		};
+		7A6116772801499700EA2F4A /* CombineExpectations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A04C54B27E5625F00D00898 /* XCRemoteSwiftPackageReference "CombineExpectations" */;
+			productName = CombineExpectations;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1A6B877326187C9400F67DE5 /* Project object */;
 }

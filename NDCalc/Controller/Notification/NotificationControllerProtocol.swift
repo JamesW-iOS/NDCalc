@@ -5,7 +5,9 @@
 //  Created by James Warren on 19/7/21.
 //
 
+import Depends
 import Foundation
+import UserNotifications
 
 /// A protocol defining the requirements for a NotificationController.
 ///
@@ -25,4 +27,23 @@ protocol NotificationControllerProtocol {
     func cancelNotification()
     /// Request notification permission from the system.
     func requestNotificationPermission()
+}
+
+extension DependencyKey where DependencyType == NotificationControllerProtocol {
+    static let notificationController = DependencyKey(default: MockNotificationController())
+}
+
+final class MockNotificationController: NotificationControllerProtocol {
+    var notificationIdentifier: String?
+
+    var hasNotificationScheduled: Bool = false
+
+    func scheduleNotification(for endDate: Date) {
+    }
+
+    func cancelNotification() {
+    }
+
+    func requestNotificationPermission() {
+    }
 }

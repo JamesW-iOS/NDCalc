@@ -8,11 +8,13 @@
 import Combine
 import UserNotifications
 import AVFoundation
+import Depends
 
-final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewModelProtocol where
-    Preference: PreferenceStoreProtocol,
-    CountdownCon: CountdownControllerProtocol,
-    NotificationCon: NotificationControllerProtocol {
+@MainActor
+final class HomeViewModel: ObservableObject, DependencyProvider {
+    let dependencies: DependencyRegistry
+    let settingsViewModel: SettingsViewModel
+    let countdownViewModel: CountdownCircleViewModel
 
     /// The currently selected `Filter` in the picker.
     @UserDefault(key: UserDefaultKeys.selectedFilterKey,
@@ -32,7 +34,7 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
     }
     /// An array of `ShutterSpeed` to show in the picker, updates based on user preferences.
     @Published var shutterSpeeds = ShutterSpeed.speedsForGap(.oneStop)
-    @Published var selectedFilterNotation: FilterStrengthRepresentation
+    @Published var selectedFilterNotation: FilterStrengthRepresentation = .stopsReduced
 
     /// Flag to indicate if the Countdown view should be active.
     ///
@@ -42,16 +44,16 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
     @Published var countdown: Countdown?
 
     /// A reference a PreferenceStore object.
-    let userPreferences: Preference
+    @Dependency(.preferenceStore) var userPreferences
     /// A reference to the controller for managing starting and stoping countdowns.
-    let countdownController: CountdownCon
+    @Dependency(.countdownController) var countdownController
     /// A reference to the notification controller object.
     ///
     /// We need this reference since we need to ask for notification permission.
-    let notificationController: NotificationCon
+    @Dependency(.notificationController) var notificationController
 
     /// Store publishers here.
-    private var cancellables: Set<AnyCancellable> = []
+    private var cancellables = Set<AnyCancellable>()
 
     /// A formatter for displaying numbers in a nice 'human' format.
     private var formatter: NumberFormatter = {
@@ -62,29 +64,24 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
         return formatter
     }()
 
-    init(userPreferences: Preference = DIContainer.shared.resolve(type: Preference.self)!,
-         countdownController: CountdownCon = DIContainer.shared.resolve(type: CountdownCon.self)!,
-         notificationController: NotificationCon = DIContainer.shared.resolve(type: NotificationCon.self)!) {
+    init(dependencies: DependencyRegistry) {
+        self.dependencies = dependencies
+        self.settingsViewModel = SettingsViewModel(dependencies: dependencies)
+        self.countdownViewModel = CountdownCircleViewModel(dependencies: dependencies)
 
-        self.userPreferences = userPreferences
-        self.countdownController = countdownController
-        self.notificationController = notificationController
+        userPreferences.selectedFilterRepresentation.sink { [unowned self] representation in
+            selectedFilterNotation = representation
+        }
+        .store(in: &cancellables)
 
-        self.shutterSpeeds = ShutterSpeed.speedsForGap(userPreferences.selectedShutterSpeedGap)
-        self.selectedFilterNotation = userPreferences.selectedFilterRepresentation
-        
-        /// When the PreferenceStore changes we need to update our view, lookout for changes and send an update here.
-        userPreferences.objectWillChange.sink { _ in
-            self.selectedFilterNotation = userPreferences.selectedFilterRepresentation
-            self.shutterSpeeds = ShutterSpeed.speedsForGap(userPreferences.selectedShutterSpeedGap)
+        userPreferences.selectedShutterSpeedGap.sink { [unowned self] gap in
+            shutterSpeeds = ShutterSpeed.speedsForGap(gap)
         }
         .store(in: &cancellables)
 
         countdownController.currentCountdownPublisher.sink { countdown in
             self.countdown = countdown
-            if countdown == nil {
-                // self.countdownViewActive = false
-            } else {
+            if countdown != nil {
                 self.countdownViewActive = true
             }
         }
@@ -94,10 +91,6 @@ final class HomeViewModel<Preference, CountdownCon, NotificationCon>: HomeViewMo
     /// Flag that indicates if a countdown is currently running.
     var countdownIsActive: Bool {
         countdownController.hasCountdownActive
-    }
-
-    var filterNotation: FilterStrengthRepresentation {
-        userPreferences.selectedFilterRepresentation
     }
 
     /// A `ShutterSpeed` when the selected `Filter` is applied to the selected `ShutterSpeed`

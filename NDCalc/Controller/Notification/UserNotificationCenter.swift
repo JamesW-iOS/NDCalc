@@ -6,6 +6,7 @@
 //
 
 import UserNotifications
+import Depends
 
 /// A protocol that defines the requirements for a `UserNotificationCenter`
 ///
@@ -18,3 +19,7 @@ protocol UserNotificationCenter {
 }
 
 extension UNUserNotificationCenter: UserNotificationCenter {}
+
+extension DependencyKey where DependencyType == UserNotificationCenter {
+    static let notificationCenter = DependencyKey(default: UNUserNotificationCenter.current())
+}

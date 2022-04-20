@@ -5,31 +5,31 @@
 //  Created by James Warren on 3/4/21.
 //
 
+import Depends
 import SwiftUI
-import os
 
 @main
 struct NDCalcApp: App {
-    var model: HomeViewModel<PreferenceStore, CountdownController<NotificationController>, NotificationController>
+    var model: HomeViewModel
+    let dependancies = DependencyRegistry()
 
     init() {
         // The components need to be registered in this order since each one depends of the ones registered before it.
         let userPreferences = PreferenceStore()
-        DIContainer.shared.register(type: PreferenceStore.self, component: userPreferences)
+        dependancies.register(userPreferences, for: .preferenceStore)
 
-        let notificationController = NotificationController()
-        DIContainer.shared.register(type: NotificationController.self, component: notificationController)
+        let notificationController = NotificationController(dependancies: dependancies)
+        dependancies.register(notificationController, for: .notificationController)
 
-        let countdownController = CountdownController<NotificationController>()
-        DIContainer.shared.register(type: CountdownController<NotificationController>.self,
-                                    component: countdownController)
+        let countdownController = CountdownController(dependancies: dependancies)
+        dependancies.register(countdownController, for: .countdownController)
 
-        model = HomeViewModel()
+        model = HomeViewModel(dependencies: dependancies)
     }
 
     var body: some Scene {
         WindowGroup {
-            HomeView<HomeViewModel, PreferenceStore>(model: model, settingsViewModel: SettingsViewModel())
+            HomeView(model: model)
         }
     }
 }

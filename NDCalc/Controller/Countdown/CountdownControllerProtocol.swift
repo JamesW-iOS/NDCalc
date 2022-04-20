@@ -7,10 +7,11 @@
 
 import Foundation
 import Combine
+import Depends
 
 /// A protocol that defines the requirements for a Countdown controller object,
 /// an object that can start and stop countdowns
-protocol CountdownControllerProtocol: ObservableObject {
+protocol CountdownControllerProtocol {
     /// A publisher for the current countdown that is running, nil if no countdown is running.
     ///
     /// This would ordinarily be an `@Published` marked variable but protocols don't allow for
@@ -18,7 +19,7 @@ protocol CountdownControllerProtocol: ObservableObject {
     ///
     ///     @Published var currentCountdown: Countdown?
     ///     var currentCountdownPublisher: Published<Countdown?>.Publisher { $currentCountdown }
-    var currentCountdownPublisher: Published<Countdown?>.Publisher { get }
+    var currentCountdownPublisher: CurrentValueSubject<Countdown?, Never> { get }
     /// If there is currently a countdown running
     var hasCountdownActive: Bool { get }
 
@@ -31,27 +32,25 @@ protocol CountdownControllerProtocol: ObservableObject {
     func cancelCountdown()
 }
 
+extension DependencyKey where DependencyType == CountdownControllerProtocol {
+    static let countdownController = DependencyKey(default: MockCountdownController())
+}
+
 /// A mock version of a CountdownController, useful for previews, conforms to the
 /// `CountdownControllerProtocol`.
-final class MockCountdownController: CountdownControllerProtocol {
-    /// The currently running countdown.
-    ///
-    /// Because of not allowing property wrappers in protocols this is kept as a private variable, we then
-    /// set the protocol requirement for a publisher to this variables publisher.
-    @Published private var currentCountdown: Countdown?
-
-    /// A publisher for the current countdown
-    var currentCountdownPublisher: Published<Countdown?>.Publisher { $currentCountdown }
+public final class MockCountdownController: CountdownControllerProtocol, ObservableObject {
+    var currentCountdownPublisher: CurrentValueSubject<Countdown?, Never>
 
     /// Initialises a `MockCountdownController`, optionally with a specific Countdown
     /// - Parameter countdown: An optional `Countdown` to create the `MockCountdownController` with.
-    init(countdown: Countdown?) {
-        currentCountdown = countdown
+    init(countdown: Countdown? = nil) {
+//        currentCountdown = countdown
+        currentCountdownPublisher = CurrentValueSubject(nil)
     }
 
     /// If there is currently a Countdown running
     var hasCountdownActive: Bool {
-        if let countdown = currentCountdown {
+        if let countdown = currentCountdownPublisher.value {
             return !countdown.isComplete
         } else {
             return false

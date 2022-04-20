@@ -9,7 +9,6 @@ import MessageUI
 import SwiftUI
 
 enum MailError: Error, Identifiable, Hashable, LocalizedError {
-    // swiftlint:disable:next identifier_name
     var id: Self { self }
     case noMailAccount
     case unknownError(String)

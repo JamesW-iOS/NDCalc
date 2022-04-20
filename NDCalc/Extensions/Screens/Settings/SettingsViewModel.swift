@@ -5,45 +5,39 @@
 //  Created by James Warren on 14/7/21.
 //
 
+import Combine
+import Depends
 import Foundation
 
 /// A view model for the SettingsView view.
 ///
 /// Preference is a generic parameter for an object adopting the PreferenceStoreProtocol
-final class SettingsViewModel<PreferenceStore>: ObservableObject where PreferenceStore: PreferenceStoreProtocol {
+@MainActor
+final class SettingsViewModel: ObservableObject, DependencyProvider {
+    let dependencies: DependencyRegistry
+
     /// The store the settings will be saved into and retrieved from.
-    private var userPreferenceStore: PreferenceStore
+    @Dependency(.preferenceStore) private var userPreferenceStore
 
     /// Stores the currently shown ExplainerViewModel.
     @Published var currentExplainer: ExplainerViewModel?
+    @Published var selectedShutterGap: ShutterGap
+    @Published var selectedFilterRepresentation: FilterStrengthRepresentation
 
-    /// This is the currently set ShutterGap for the app.
-    var selectedShutterGap: ShutterGap {
-        get {
-            userPreferenceStore.selectedShutterSpeedGap
-        }
-        set {
-            userPreferenceStore.selectedShutterSpeedGap = newValue
-            objectWillChange.send()
-        }
-    }
-
-    var selectedFilterRepresentation: FilterStrengthRepresentation {
-        get {
-            userPreferenceStore.selectedFilterRepresentation
-        }
-        set {
-            userPreferenceStore.selectedFilterRepresentation = newValue
-            objectWillChange.send()
-        }
-    }
+    private var cancelables = Set<AnyCancellable>()
 
     /// Initialises a SettingsViewModel, defaults to using the provided PreferenceStore object
     /// or defaulting to the one set in the DIContainer.
     /// - Parameter userPreferences: An object that conforms to the PreferenceStoreProtocol,
     /// defaults to the one set in the DIContainer.
-    init(userPreferences: PreferenceStore = DIContainer.shared.resolve(type: PreferenceStore.self)!) {
-        self.userPreferenceStore = userPreferences
+    init(dependencies: DependencyRegistry) {
+        self.dependencies = dependencies
+        let preferences = dependencies.dependency(for: .preferenceStore)
+        selectedFilterRepresentation = preferences.selectedFilterRepresentation.value
+        selectedShutterGap = preferences.selectedShutterSpeedGap.value
+
+        configureBindings()
+
     }
 
     /// To be called when the user selects learn more on the ShutterSpeedGap setting.
@@ -56,6 +50,34 @@ final class SettingsViewModel<PreferenceStore>: ObservableObject where Preferenc
 
     func selectedLearnMoreFilterRepresentation() {
         currentExplainer = filterRepresenation
+    }
+
+    private func configureBindings() {
+        userPreferenceStore.selectedShutterSpeedGap
+            .sink { [unowned self] gap in
+                selectedShutterGap = gap
+            }
+            .store(in: &cancelables)
+
+        userPreferenceStore.selectedFilterRepresentation
+            .sink { [unowned self] representation in
+                selectedFilterRepresentation = representation
+            }
+            .store(in: &cancelables)
+
+        $selectedShutterGap
+            .removeDuplicates()
+            .sink { [unowned self] gap in
+                userPreferenceStore.setSelectedShutterSpeedGap(gap)
+            }
+            .store(in: &cancelables)
+
+        $selectedFilterRepresentation
+            .removeDuplicates()
+            .sink { [unowned self] representation in
+                userPreferenceStore.setSelectedFilterRepresentation(representation)
+            }
+            .store(in: &cancelables)
     }
 
     // MARK: - Explanations

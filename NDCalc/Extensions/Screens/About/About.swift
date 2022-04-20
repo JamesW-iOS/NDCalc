@@ -26,7 +26,7 @@ struct About: View {
                 switch result {
                 case .failure(let error):
                     mailError = ErrorAlert(title: "Error occurred", body: error.localizedDescription)
-                case .success(_):
+                case .success:
                     mailError = nil
                 }
             }
@@ -47,9 +47,9 @@ struct About: View {
     var shouldShowError: Bool {
         if let result = result {
             switch result {
-            case .failure(_):
+            case .failure:
                 return true
-            case .success(_):
+            case .success:
                 return false
             }
         }

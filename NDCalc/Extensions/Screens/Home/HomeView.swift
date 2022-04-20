@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtocol>: View {
-    @ObservedObject var model: Model
-    @StateObject var settingsViewModel: SettingsViewModel<Preference>
+struct HomeView: View {
+    @ObservedObject var model: HomeViewModel
     @Environment(\.sizeCategory) var sizeCategory
 
     var body: some View {
@@ -25,13 +24,12 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
                         .blur(radius: model.countdownViewActive ? 20 : 0)
                 }
 
-                if model.countdownViewActive {
-                    timerRunningView()
-                    Spacer()
-                }
+                timerRunningView()
+                    .opacity(model.countdownViewActive ? 1.0 : 0.0)
+                    .disabled(!model.countdownViewActive)
             }
             .toolbar {
-                NavigationLink(destination: SettingsView<Preference>(model: settingsViewModel)) {
+                NavigationLink(destination: SettingsView(model: model.settingsViewModel)) {
                     Image(systemName: "gear")
                 }
             }
@@ -46,6 +44,7 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
         GeometryReader { geometry in
             VStack {
                 calculatedShutterSpeed
+                    .animation(.none)
 
                 Spacer()
 
@@ -65,7 +64,7 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
                 VStack {
                     calculatedShutterSpeed
                     FilterPicker(selectedFilter: $model.selectedFilter,
-                                 filterNotation: model.filterNotation,
+                                 filterNotation: model.selectedFilterNotation,
                                  shouldDisplayAcceccibiltyMode: true,
                                  width: geometry.size.width)
                         .animation(.none)
@@ -84,7 +83,7 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
     @ViewBuilder
     func timerRunningView() -> some View {
         VStack {
-            CountdownCircleView(countdown: model.countdown, circleColor: .blue)
+            CountdownCircleView(viewModel: model.countdownViewModel, circleColor: .blue)
             Button {
                 withAnimation {
                     model.countdownViewButtonTapped()
@@ -131,12 +130,12 @@ struct HomeView<Model: HomeViewModelProtocol, Preference: PreferenceStoreProtoco
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        // swiftlint:disable:next line_length
-        HomeView<MockHomeViewModel, MockPreferenceController>(model: MockHomeViewModel(), settingsViewModel: SettingsViewModel<MockPreferenceController>(userPreferences: MockPreferenceController()))
-
-        // swiftlint:disable:next line_length
-        HomeView<MockHomeViewModel, MockPreferenceController>(model: MockHomeViewModel(calculatedShutterSpeedString: "Less than one second"), settingsViewModel: SettingsViewModel<MockPreferenceController>(userPreferences: MockPreferenceController()))
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        // swiftlint:disable:next line_length
+//        HomeView<MockHomeViewModel, MockPreferenceController>(model: MockHomeViewModel(), settingsViewModel: SettingsViewModel<MockPreferenceController>(userPreferences: MockPreferenceController()))
+//
+//        // swiftlint:disable:next line_length
+//        HomeView<MockHomeViewModel, MockPreferenceController>(model: MockHomeViewModel(calculatedShutterSpeedString: "Less than one second"), settingsViewModel: SettingsViewModel<MockPreferenceController>(userPreferences: MockPreferenceController()))
+//    }
+//}

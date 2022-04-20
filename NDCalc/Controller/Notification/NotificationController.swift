@@ -5,16 +5,19 @@
 //  Created by James Warren on 2/7/21.
 //
 
+import Depends
 import UserNotifications
 
 /// An implementation of the `NotificationControllerProtocol`, an object that manages scheduling notification.
-final class NotificationController: NotificationControllerProtocol {
+final class NotificationController: NotificationControllerProtocol, DependencyProvider {
+    let dependencies: DependencyRegistry
+
     /// The identifier of the currently scheduled notification if there is one.
     private(set) var notificationIdentifier: String?
     /// A reference to an object that conforms to the `UserNotificationCenter` protocol
     ///
     /// This is almost always the system `UNUserNotificationCenter` except in the case of testing.
-    private let centre: UserNotificationCenter
+    @Dependency(.notificationCenter) private var centre
 
     /// A flag indicating if the controller currently has a notification scheduled.
     var hasNotificationScheduled = false
@@ -22,8 +25,8 @@ final class NotificationController: NotificationControllerProtocol {
     /// Initialise a `NotificationController`, optionally with a `UserNotificationCenter` object
     /// - Parameter notificationCentre: An object that handles actually scheduling notifications, this is almost always
     /// the  system `UNUserNotificationCenter`, this should only be overridden for testing.
-    init(notificationCentre: UserNotificationCenter = UNUserNotificationCenter.current()) {
-        centre = notificationCentre
+    init(dependancies: DependencyRegistry) {
+        self.dependencies = dependancies
     }
 
     /// Schedule a notification to be delivered at a particular time.
@@ -35,9 +38,9 @@ final class NotificationController: NotificationControllerProtocol {
         content.body = Self.notificationBody
         content.sound = UNNotificationSound.defaultCritical
 
-//        if #available(iOS 15.0, *) {
-//            content.interruptionLevel = UNNotificationInterruptionLevel.critical
-//        }
+        if #available(iOS 15.0, *) {
+            content.interruptionLevel = UNNotificationInterruptionLevel.critical
+        }
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: endDate.timeIntervalSinceNow, repeats: false)
         let identifier = UUID().uuidString

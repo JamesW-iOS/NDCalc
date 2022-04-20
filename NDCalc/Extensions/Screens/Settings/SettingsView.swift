@@ -10,8 +10,8 @@ import SwiftUI
 /// This view displays a list of settings where the user can configure preferences.
 ///
 /// Preference is a generic parameter for an  object that stores and retrieves
-struct SettingsView<Preference>: View where Preference: PreferenceStoreProtocol {
-    @ObservedObject var model: SettingsViewModel<Preference>
+struct SettingsView: View {
+    @ObservedObject var model: SettingsViewModel
 
     var body: some View {
         Form {
@@ -49,7 +49,7 @@ struct SettingsView<Preference>: View where Preference: PreferenceStoreProtocol 
         .navigationTitle(Text("Settings"))
     }
 
-    func showMoreButton(funcToCall: @escaping () -> Void) -> some View {
+    func showMoreButton(funcToCall: @MainActor @escaping () -> Void) -> some View {
         Button {
             funcToCall()
         } label: {
@@ -58,8 +58,8 @@ struct SettingsView<Preference>: View where Preference: PreferenceStoreProtocol 
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView(model: SettingsViewModel(userPreferences: MockPreferenceController()))
-    }
-}
+//struct SettingsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SettingsView(model: SettingsViewModel(dependencies: ))
+//    }
+//}

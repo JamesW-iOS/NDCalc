@@ -10,8 +10,7 @@ import Foundation
 /// Enum representing the different ways ND filter strengths can be represented.
 ///
 /// The names make no real sense, based on historical names from the photography community.
-enum FilterStrengthRepresentation: String, Codable, CaseIterable, RawRepresentable, Identifiable {
-    // swiftlint:disable:next identifier_name
+enum FilterStrengthRepresentation: String, Codable, CaseIterable, RawRepresentable, Equatable, Identifiable {
     var id: Self { self }
 
     case stopsReduced = "Stops Reduced",
@@ -27,7 +26,6 @@ enum FilterStrengthRepresentation: String, Codable, CaseIterable, RawRepresentab
 struct Filter: Identifiable, Hashable, Codable, Equatable {
     /// The strength of the ND filter, represented as how many stops of light the filter darkens the image by.
     let stopsReduced: Float
-    // swiftlint:disable:next identifier_name
     var id: Float { stopsReduced }
 
     /// String representation for number of stops reduced

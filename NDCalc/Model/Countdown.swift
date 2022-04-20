@@ -44,7 +44,7 @@ struct Countdown: Equatable {
 
     /// A formatted representation of the time left in a countdown
     var stringSecondsLeft: String {
-        guard let output = Self.timeFormatter.string(from: secondsLeft.magnitude) else {
+        guard let output = Self.timeFormatter.string(from: secondsLeft.magnitude + 1) else {
             assertionFailure("Unable to format time left in countdown")
             return "Error"
         }

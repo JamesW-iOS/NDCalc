@@ -12,12 +12,12 @@ import Foundation
 /// Shutter speeds are most often expressed as fractions of a second (1/100s for example),
 /// this is why the `ShutterSpeed` model stores them in the same way.
 struct ShutterSpeed: Identifiable, Hashable, Codable {
+    var id: String { "\(numerator) \\ \(denominator)" }
+
     /// The numerator when expressing a shutter speed
     let numerator: Double
     /// The denominator when expressing a shutter speed
     let denominator: Double
-    // swiftlint:disable:next identifier_name
-    var id: String { "\(numerator) \\ \(denominator)" }
 
     /// An array of shutter speeds, loaded from a JSON file in the bundle
     ///
@@ -117,8 +117,7 @@ struct ShutterSpeed: Identifiable, Hashable, Codable {
 }
 
 /// Represents the different intervals between shutter speeds.
-enum ShutterGap: String, Codable, CaseIterable, Identifiable {
-    // swiftlint:disable:next identifier_name
+enum ShutterGap: String, Codable, CaseIterable, Identifiable, Equatable {
     var id: Self { self }
 
     case oneStop = "One Stop"
