@@ -9,27 +9,25 @@ import SwiftUI
 
 /// This view is a standard button that is used in most places int the app.
 struct NDButton: View {
-    /// Initialises a new NDButton with specified label and background color
-    /// - Parameters:
-    ///   - color: Background color of the button
-    ///   - text: The text to be shown in the button
-    init(color: Color, text: String) {
-        self.color = color
-        self.text = text
-    }
-
     /// Background color of the button.
-    let color: Color
+    let backgroundColor: Color
+    let textColor: Color
     /// The text to be displayed in the button.
     let text: String
+
+    init(backgroundColor: Color = .blue, textColor: Color = .white, text: String) {
+        self.backgroundColor = backgroundColor
+        self.textColor = textColor
+        self.text = text
+    }
 
     var body: some View {
         Text(text)
             .font(.title3)
             .fontWeight(.semibold)
-            .frame(maxWidth: .infinity, minHeight: 70)
-            .background(Color.blue)
-            .foregroundColor(.white)
+            .frame(maxWidth: .infinity, minHeight: 50)
+            .background(backgroundColor)
+            .foregroundColor(textColor)
             .cornerRadius(10)
             .padding(25)
     }
@@ -37,6 +35,6 @@ struct NDButton: View {
 
 struct NDButton_Previews: PreviewProvider {
     static var previews: some View {
-        NDButton(color: .red, text: "Test button")
+        NDButton(backgroundColor: .blue, textColor: .white, text: "Test button")
     }
 }

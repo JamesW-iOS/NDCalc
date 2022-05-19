@@ -102,13 +102,14 @@ struct About: View {
 
     var appInformation: some View {
         VStack {
-            Text("The Photographers Weather Report")
+            Text("NDCalc")
                 .font(.title3)
                 .bold()
             Text("Version: \(BundleItems.versionNumber)")
                 .font(.body)
-            Text("Homegrown in the land down under")
+            Text(AboutCopy.aboutMe)
                 .font(.body)
+                .multilineTextAlignment(.center)
         }
         .padding()
         .frame(maxWidth: .infinity)

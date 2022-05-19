@@ -5,6 +5,7 @@
 //  Created by James Warren on 14/7/21.
 //
 
+import Depends
 import SwiftUI
 
 /// This view displays a list of settings where the user can configure preferences.
@@ -60,6 +61,10 @@ struct SettingsView: View {
 
 //struct SettingsView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        SettingsView(model: SettingsViewModel(dependencies: ))
+//        let dependancies = DependencyRegistry()
+//        let mockPreference = MockPreferenceController()
+//        dependancies.register(mockPreference, for: .preferenceStore)
+//
+//        return SettingsView(model: SettingsViewModel(dependencies: dependancies))
 //    }
 //}

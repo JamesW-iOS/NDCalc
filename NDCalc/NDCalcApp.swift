@@ -10,7 +10,6 @@ import SwiftUI
 
 @main
 struct NDCalcApp: App {
-    var model: HomeViewModel
     let dependancies = DependencyRegistry()
 
     init() {
@@ -24,12 +23,13 @@ struct NDCalcApp: App {
         let countdownController = CountdownController(dependancies: dependancies)
         dependancies.register(countdownController, for: .countdownController)
 
-        model = HomeViewModel(dependencies: dependancies)
+        let applicationStateStore = ApplicationStateStore()
+        dependancies.register(applicationStateStore, for: .applicationState)
     }
 
     var body: some Scene {
         WindowGroup {
-            HomeView(model: model)
+            OnboardingView(viewModel: OnboardingViewModel(dependencies: dependancies))
         }
     }
 }

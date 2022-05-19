@@ -5,21 +5,26 @@
 //  Created by James Warren on 23/7/21.
 //
 
+import Depends
 import XCTest
 @testable import NDCalc
 
 class NotificationControllerTests: XCTestCase {
+    var dependency: DependencyRegistry!
     var sut: NotificationController!
     var mockNotificationCentre: MockUserNotificationCentre!
 
     override func setUpWithError() throws {
+        dependency = DependencyRegistry()
         mockNotificationCentre = MockUserNotificationCentre()
-        sut = NotificationController(notificationCentre: mockNotificationCentre)
+        dependency.register(mockNotificationCentre, for: .notificationCenter)
+        sut = NotificationController(dependancies: dependency)
     }
 
     override func tearDownWithError() throws {
         sut = nil
         mockNotificationCentre = nil
+        dependency = nil
     }
 
     func testRequestPermission() {

@@ -5,9 +5,11 @@
 //  Created by James Warren on 19/7/21.
 //
 
+import AVKit
 import Combine
 import Foundation
 import Depends
+import UIKit
 
 /// An object that controls starting and stopping countdowns and commutation to start and stop notifications.
 ///
@@ -24,6 +26,9 @@ final class CountdownController: CountdownControllerProtocol, DependencyProvider
     /// A reference to an object that conforms to the NotificationControllerProtocol, used to schedule notifications.
     @Dependency(.notificationController)
     private var notificationController: NotificationControllerProtocol
+
+    @Dependency(.applicationState)
+    private var applicationStateStore: ApplicationStateStoreProtocol
 
     /// A timer that is set to finish when the countdown will finish, used to schedule a vibration to occur.
     /// `nil` if no Countdown running.
@@ -52,9 +57,7 @@ final class CountdownController: CountdownControllerProtocol, DependencyProvider
             if let countdown = try? Countdown(endsAt: date) {
                 currentCountdownPublisher.send(countdown)
             }
-
         }
-
     }
 
     /// A flag indicating if there is currently a `Countdown` running.
@@ -83,8 +86,10 @@ final class CountdownController: CountdownControllerProtocol, DependencyProvider
         ) { [unowned self] _ in
             Vibration.error.vibrate()
             currentCountdownPublisher.send(nil)
+            if applicationStateStore.applicationState.value == .foreground {
+                AudioServicesPlayAlertSound(1005)
+            }
         }
-
     }
 
     /// Cancel the currently running countdown if there is one running.

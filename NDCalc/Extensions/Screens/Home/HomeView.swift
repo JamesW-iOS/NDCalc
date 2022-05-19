@@ -12,39 +12,34 @@ struct HomeView: View {
     @Environment(\.sizeCategory) var sizeCategory
 
     var body: some View {
-        NavigationView {
-            ZStack {
-                if sizeCategory.isAccessibilityCategory {
-                    accessibilityMainView
-                        .disabled(model.countdownViewActive)
-                        .blur(radius: model.countdownViewActive ? 20 : 0)
-                } else {
-                    mainView
-                        .disabled(model.countdownViewActive)
-                        .blur(radius: model.countdownViewActive ? 20 : 0)
-                }
+        ZStack {
+            if sizeCategory.isAccessibilityCategory {
+                accessibilityMainView
+                    .disabled(model.countdownViewActive)
+                    .blur(radius: model.countdownViewActive ? 20 : 0)
+            } else {
+                mainView
+                    .disabled(model.countdownViewActive)
+                    .blur(radius: model.countdownViewActive ? 20 : 0)
+            }
 
-                timerRunningView()
-                    .opacity(model.countdownViewActive ? 1.0 : 0.0)
-                    .disabled(!model.countdownViewActive)
-            }
-            .toolbar {
-                NavigationLink(destination: SettingsView(model: model.settingsViewModel)) {
-                    Image(systemName: "gear")
-                }
+            timerRunningView()
+                .opacity(model.countdownViewActive ? 1.0 : 0.0)
+                .disabled(!model.countdownViewActive)
+        }
+        .toolbar {
+            NavigationLink(destination: SettingsView(model: model.settingsViewModel)) {
+                Image(systemName: "gear")
             }
         }
-        .animation(.linear)
-        .onAppear {
-            model.requestNotificationPermission()
-        }
+        .navigationBarBackButtonHidden(true)
+        .animation(.linear, value: model.countdownViewActive)
     }
 
     var mainView: some View {
         GeometryReader { geometry in
             VStack {
                 calculatedShutterSpeed
-                    .animation(.none)
 
                 Spacer()
 
@@ -67,12 +62,10 @@ struct HomeView: View {
                                  filterNotation: model.selectedFilterNotation,
                                  shouldDisplayAcceccibiltyMode: true,
                                  width: geometry.size.width)
-                        .animation(.none)
                     ShutterSpeedPicker(shutterSpeeds: model.shutterSpeeds,
                                        selectedShutterSpeed: $model.selectedShutterSpeed,
                                        shouldDisplayAcceccibiltyMode: true,
                                        width: geometry.size.width)
-                        .animation(.none)
                     startTimerButton
                         .disabled(!model.isCurrentTimeValid)
                 }
@@ -89,10 +82,9 @@ struct HomeView: View {
                     model.countdownViewButtonTapped()
                 }
             } label: {
-                NDButton(color: .blue, text: model.countdownIsActive ? "Cancel" : "Done")
+                NDButton(text: model.countdownIsActive ? "Cancel" : "Done")
             }
         }
-        .animation(.default)
     }
 
     func sideBySidePickers(fullWidth: CGFloat) -> some View {
@@ -124,18 +116,8 @@ struct HomeView: View {
                 model.startCountdown()
             }
         } label: {
-            NDButton(color: .blue, text: "Start timer")
+            NDButton(text: "Start timer")
                 .opacity(model.isCurrentTimeValid ? 1.0 : 0.5)
         }
     }
 }
-
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        // swiftlint:disable:next line_length
-//        HomeView<MockHomeViewModel, MockPreferenceController>(model: MockHomeViewModel(), settingsViewModel: SettingsViewModel<MockPreferenceController>(userPreferences: MockPreferenceController()))
-//
-//        // swiftlint:disable:next line_length
-//        HomeView<MockHomeViewModel, MockPreferenceController>(model: MockHomeViewModel(calculatedShutterSpeedString: "Less than one second"), settingsViewModel: SettingsViewModel<MockPreferenceController>(userPreferences: MockPreferenceController()))
-//    }
-//}

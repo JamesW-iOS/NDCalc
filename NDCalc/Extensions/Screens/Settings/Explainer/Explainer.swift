@@ -30,7 +30,7 @@ struct Explainer: View {
             Button {
                 presentationMode.wrappedValue.dismiss()
             } label: {
-                NDButton(color: .blue, text: "Done")
+                NDButton(text: "Done")
             }
         }
     }

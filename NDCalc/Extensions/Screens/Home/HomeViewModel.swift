@@ -69,23 +69,26 @@ final class HomeViewModel: ObservableObject, DependencyProvider {
         self.settingsViewModel = SettingsViewModel(dependencies: dependencies)
         self.countdownViewModel = CountdownCircleViewModel(dependencies: dependencies)
 
-        userPreferences.selectedFilterRepresentation.sink { [unowned self] representation in
-            selectedFilterNotation = representation
-        }
-        .store(in: &cancellables)
-
-        userPreferences.selectedShutterSpeedGap.sink { [unowned self] gap in
-            shutterSpeeds = ShutterSpeed.speedsForGap(gap)
-        }
-        .store(in: &cancellables)
-
-        countdownController.currentCountdownPublisher.sink { countdown in
-            self.countdown = countdown
-            if countdown != nil {
-                self.countdownViewActive = true
+        userPreferences.selectedFilterRepresentation
+            .sink { [unowned self] representation in
+                selectedFilterNotation = representation
             }
-        }
-        .store(in: &cancellables)
+            .store(in: &cancellables)
+
+        userPreferences.selectedShutterSpeedGap
+            .sink { [unowned self] gap in
+                shutterSpeeds = ShutterSpeed.speedsForGap(gap)
+            }
+            .store(in: &cancellables)
+
+        countdownController.currentCountdownPublisher
+            .sink { [unowned self] countdown in
+                self.countdown = countdown
+                if countdown != nil {
+                    self.countdownViewActive = true
+                }
+            }
+            .store(in: &cancellables)
     }
 
     /// Flag that indicates if a countdown is currently running.
@@ -129,11 +132,6 @@ final class HomeViewModel: ObservableObject, DependencyProvider {
             countdownController.cancelCountdown()
         }
         countdownViewActive = false
-    }
-
-    ///  Request notification permission.
-    func requestNotificationPermission() {
-        notificationController.requestNotificationPermission()
     }
 
     /// Convert a number to a nice 'human' representation.

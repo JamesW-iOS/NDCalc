@@ -12,6 +12,7 @@ final class MockNotificationController: NotificationControllerProtocol {
     var notificationIdentifier: String?
     var hasNotificationScheduled = false
     var scheduledNotificationDate: Date?
+    var hasRequestedNotificationPermission = false
 
     func scheduleNotification(for endDate: Date) {
         hasNotificationScheduled = true
@@ -23,5 +24,7 @@ final class MockNotificationController: NotificationControllerProtocol {
         scheduledNotificationDate = nil
     }
 
-    func requestNotificationPermission() {}
+    func requestNotificationPermission() {
+        hasRequestedNotificationPermission = true
+    }
 }
