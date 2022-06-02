@@ -20,20 +20,9 @@ final class CountdownCircleViewModel: ObservableObject, DependencyProvider {
     @Published private(set) var completionAmount: Double
     @Published private(set) var circleReseting: Bool
     @Published private(set) var secondsLeft: String
-
-    var timer: Timer?
-
     private var cancellables = Set<AnyCancellable>()
 
-//    var secondsLeft: String {
-//        // Taking magnitude here since floating point rounding error can leave us with a slightly negative number,
-//        // that will cause the string to be -0 which look wrong
-//        if let countdown = countdownController.currentCountdownPublisher.value {
-//            return String(format: "%.0f", countdown.secondsLeft.magnitude)
-//        } else {
-//            return "All Done"
-//        }
-//    }
+    var timer: Timer?
 
     var animationDuration: Double {
         if let countdown = countdownController.currentCountdownPublisher.value {

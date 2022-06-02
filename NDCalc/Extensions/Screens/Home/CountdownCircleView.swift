@@ -9,18 +9,8 @@ import SwiftUI
 import Combine
 
 struct CountdownCircleView: View {
-//    let countdown: Countdown?
     @ObservedObject private var viewModel: CountdownCircleViewModel
     let circleColor: Color
-
-//    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-//    @State var completionAmount = 1.0
-//
-//    @State private var circleReseting = false
-
-//    private var timerDone: Bool {
-//        countdown?.isComplete ?? true
-//    }
 
     init(viewModel: CountdownCircleViewModel, circleColor: Color) {
         self.viewModel = viewModel
@@ -49,10 +39,3 @@ struct CountdownCircleView: View {
         .padding()
     }
 }
-
-//struct CountdownCircleView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        // swiftlint:disable:next force_try
-//        CountdownCircleView(countdown: try! Countdown(endsAt: Date(timeIntervalSinceNow: 3.0)), circleColor: .blue)
-//    }
-//}

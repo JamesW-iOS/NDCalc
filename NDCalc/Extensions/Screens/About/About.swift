@@ -20,19 +20,6 @@ struct About: View {
     @State private var isShowingMailView = false
     @State private var mailError: ErrorAlert?
 
-    @State private var result: Result<MFMailComposeResult, Error>? {
-        didSet {
-            if let result = result {
-                switch result {
-                case .failure(let error):
-                    mailError = ErrorAlert(title: "Error occurred", body: error.localizedDescription)
-                case .success:
-                    mailError = nil
-                }
-            }
-        }
-    }
-
     var mailSubjectText: String {
         return "\(mailSubject.rawValue) - \(versionInfo)"
     }
@@ -42,19 +29,6 @@ struct About: View {
         let version = dictionary["CFBundleShortVersionString"] as? String ?? "Couldn't get version"
         let build = dictionary["CFBundleVersion"] as? String ?? "Couldn't get build number"
         return "\(version) build \(build)"
-    }
-
-    var shouldShowError: Bool {
-        if let result = result {
-            switch result {
-            case .failure:
-                return true
-            case .success:
-                return false
-            }
-        }
-
-        return false
     }
 
     var body: some View {
@@ -72,29 +46,23 @@ struct About: View {
             List {
                 Section(header: Text("Email me")) {
                     Button("Request a feature") {
-                        mailSubject = .feature
-                        isShowingMailView = true
+                        openMailApp(for: .feature)
                     }
                     Button("Submit a bug") {
-                        mailSubject = .bug
-                        isShowingMailView = true
+                        openMailApp(for: .bug)
                     }
                     Button("General feedback") {
-                        mailSubject = .feedback
-                        isShowingMailView = true
+                        openMailApp(for: .feedback)
                     }
                 }
 
                 Section(header: Text("Connect with me")) {
-                    Link("Follow me on Twitter", destination: URL(string: "https://twitter.com/TheTRexDev")!)
+                    Link("Follow me on Twitter", destination: URL(string: "https://twitter.com/JamesW-tech")!)
                 }
             }
             .listStyle(InsetGroupedListStyle())
             .foregroundColor(.primary)
         }
-        .sheet(isPresented: $isShowingMailView, content: {
-            MailView(result: $result, subject: mailSubject)
-        })
         .alert(item: $mailError) { mailError in
             mailError.alert
         }
@@ -113,6 +81,41 @@ struct About: View {
         }
         .padding()
         .frame(maxWidth: .infinity)
+    }
+
+    private func openMailApp(for mailType: MailSubject) {
+        let address = StringConstants.feedbackEmail
+        let subject = "\(mailType.rawValue) - \(AppInformation.versionInfo)"
+
+        let body = "Hi James\n\n"
+
+        var components = URLComponents()
+        components.scheme = "mailto"
+        components.path = address
+        components.queryItems = [
+              URLQueryItem(name: "subject", value: subject),
+              URLQueryItem(name: "body", value: body)
+        ]
+
+        guard let url = components.url else {
+            assertionFailure("Failed to make url for mail view")
+            showMailError()
+            return
+        }
+
+        UIApplication.shared.open(url) { success in
+            if success == false {
+                showMailError()
+            }
+        }
+    }
+
+    private func showMailError() {
+        mailError = ErrorAlert(
+            title: "Failed to open mail",
+            body: "Unable to open a mail app to submit report, check you have a mail app or feel free to reach out on Twitter."
+            // swiftlint:disable:previous line_length
+        )
     }
 
     enum AboutCopy {

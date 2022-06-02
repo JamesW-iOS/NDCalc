@@ -58,13 +58,3 @@ struct SettingsView: View {
         }
     }
 }
-
-//struct SettingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let dependancies = DependencyRegistry()
-//        let mockPreference = MockPreferenceController()
-//        dependancies.register(mockPreference, for: .preferenceStore)
-//
-//        return SettingsView(model: SettingsViewModel(dependencies: dependancies))
-//    }
-//}

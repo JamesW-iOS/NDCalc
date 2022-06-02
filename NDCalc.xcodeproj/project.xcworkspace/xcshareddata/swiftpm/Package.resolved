@@ -1,25 +1,14 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "CombineExpectations",
-        "repositoryURL": "https://github.com/groue/CombineExpectations",
-        "state": {
-          "branch": "master",
-          "revision": "04d4e4b21c9e8361925f03f64a7ecda89ef9974f",
-          "version": null
-        }
-      },
-      {
-        "package": "Depends",
-        "repositoryURL": "https://github.com/unsignedapps/Depends",
-        "state": {
-          "branch": null,
-          "revision": "3f8bf751b182e887c401c4dc7d7c62ae677ea106",
-          "version": "0.0.1"
-        }
+  "pins" : [
+    {
+      "identity" : "combineexpectations",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/groue/CombineExpectations",
+      "state" : {
+        "branch" : "master",
+        "revision" : "04d4e4b21c9e8361925f03f64a7ecda89ef9974f"
       }
-    ]
-  },
-  "version": 1
+    }
+  ],
+  "version" : 2
 }

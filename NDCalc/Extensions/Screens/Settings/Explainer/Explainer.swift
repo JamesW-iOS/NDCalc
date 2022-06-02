@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-/// This view is intended to show some explanation text, it displays a title,
-/// a paragraph of information, and a dismiss button.
 struct Explainer: View {
     @Environment(\.presentationMode) var presentationMode
 
