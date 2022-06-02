@@ -72,12 +72,12 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-seenOnboardingScreen true"
+            argument = "-SeenOnboardingScreen true"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-seenOnboardingScreen false"
-            isEnabled = "NO">
+            argument = "-SeenOnboardingScreen false"
+            isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>

@@ -10,56 +10,97 @@ import SwiftUI
 
 struct OnboardingView: View {
     @ObservedObject var viewModel: OnboardingViewModel
+    @Environment(\.dynamicTypeSize) var textSize
 
     var body: some View {
-        NavigationView {
-            VStack {
+        VStack {
+            ScrollView {
                 Text("Welcome!")
-                    .font(.largeTitle)
+                    .font(.system(size: 50))
                     .bold()
                     .padding(.bottom)
 
-                // swiftlint:disable:next line_length
-                Text("You can customise how filter strength and shutter speeds are represented in the settings screen. Choose the setting that best matches your camera.")
-                    .padding(.bottom)
+                onboardingItem(
+                    iconName: "camera.fill",
+                    title: "Customize",
+                    body: "Customise how filter strength and shutter speeds are displayed in the settings screen."
+                )
 
-                // swiftlint:disable:next line_length
-                Text("NDCalc works best when we have notification permission. That way you can be notifified when your timer ends even if you lock your phone.")
+                onboardingItem(
+                    iconName: "clock.badge.exclamationmark.fill",
+                    title: "Notifications",
+                    body: "NDCalc works best when we have notification permission so you can be alerted when timers finish."
+                )
+            }
 
-                Spacer()
+            Spacer()
 
-                NavigationLink(destination: HomeView(
-                    model: HomeViewModel(dependencies: viewModel.dependencies)
-                ), isActive: $viewModel.isShowingHomeView) { EmptyView() }
+            NavigationLink(destination: HomeView(
+                model: HomeViewModel(dependencies: viewModel.dependencies)
+            ), isActive: $viewModel.isShowingHomeView) { EmptyView() }
 
-                Button {
-                    viewModel.tappedRequestNotificationPermission()
-                } label: {
-                    NDButton(backgroundColor: .white, textColor: .blue, text: "Activate notifications")
+            Button {
+                viewModel.tappedRequestNotificationPermission()
+            } label: {
+                NDButton(backgroundColor: .white, textColor: .blue, text: "Activate notifications")
+            }
+
+            NavigationLink(destination: HomeView(
+                model: HomeViewModel(dependencies: viewModel.dependencies)
+            ), isActive: $viewModel.isShowingHomeView) { EmptyView() }
+
+            Button {
+                viewModel.tappedNoNotification()
+            } label: {
+                Text("I'd rather not")
+                    .bold()
+            }
+        }
+
+        .foregroundColor(.white)
+        .background(Color.blue)
+    }
+
+    @ViewBuilder
+    private func onboardingItem(iconName: String, title: String, body: String) -> some View {
+        if textSize.isAccessibilitySize {
+            VStack {
+                Image(systemName: iconName)
+                    .font(.largeTitle)
+                    .padding()
+                VStack(alignment: .center) {
+                    Text(title)
+                        .font(.headline)
+                    Text(body)
                 }
-
-                NavigationLink(destination: HomeView(
-                    model: HomeViewModel(dependencies: viewModel.dependencies)
-                ), isActive: $viewModel.isShowingHomeView) { EmptyView() }
-
-                Button {
-                    viewModel.tappedNoNotification()
-                } label: {
-                    Text("I'd rather not")
-                        .bold()
-                }
+                .multilineTextAlignment(.center)
             }
             .padding()
-            .foregroundColor(.white)
-            .background(Color.blue)
+        } else {
+            HStack {
+                Image(systemName: iconName)
+                    .font(.largeTitle)
+                    .padding()
+                VStack(alignment: .leading) {
+                    Text(title)
+                        .font(.headline)
+                    Text(body)
+                }
+
+            }
+            .padding()
         }
+
     }
 }
 
 struct OnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        let dependancies = DependencyRegistry()
+    static let dependancies = DependencyRegistry()
 
-        return OnboardingView(viewModel: OnboardingViewModel(dependencies: dependancies))
+    static var previews: some View {
+        OnboardingView(viewModel: OnboardingViewModel(dependencies: dependancies))
+
+        OnboardingView(viewModel: OnboardingViewModel(dependencies: dependancies))
+            .environment(\.sizeCategory, .accessibilityLarge)
     }
 }

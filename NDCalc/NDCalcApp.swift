@@ -11,6 +11,9 @@ import SwiftUI
 @main
 struct NDCalcApp: App {
     let dependancies = DependencyRegistry()
+    let seenOnboarrding = {
+        UserDefaults.standard.bool(forKey: OnboardingViewModel.SeenOnboardingScreenKey)
+    }()
 
     init() {
         // The components need to be registered in this order since each one depends of the ones registered before it.
@@ -29,7 +32,15 @@ struct NDCalcApp: App {
 
     var body: some Scene {
         WindowGroup {
-            OnboardingView(viewModel: OnboardingViewModel(dependencies: dependancies))
+            if seenOnboarrding {
+                NavigationView {
+                    HomeView(model: .init(dependencies: dependancies))
+                }
+            } else {
+                NavigationView {
+                    OnboardingView(viewModel: OnboardingViewModel(dependencies: dependancies))
+                }
+            }
         }
     }
 }
