@@ -58,8 +58,13 @@ public final class MockCountdownController: CountdownControllerProtocol, Observa
     }
 
     /// Empty implementation, here just for protocol conformance
-    func startCountdown(for endDate: Date) throws {}
+    func startCountdown(for endDate: Date) throws {
+        let countDown = try Countdown(endsAt: endDate)
+        currentCountdownPublisher.send(countDown)
+    }
 
     /// Empty implementation, here just for protocol conformance
-    func cancelCountdown() {}
+    func cancelCountdown() {
+        currentCountdownPublisher.send(nil)
+    }
 }

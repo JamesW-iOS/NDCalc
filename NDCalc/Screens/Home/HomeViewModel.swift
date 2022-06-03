@@ -32,9 +32,18 @@ final class HomeViewModel: ObservableObject, DependencyProvider {
             objectWillChange.send()
         }
     }
-    /// An array of `ShutterSpeed` to show in the picker, updates based on user preferences.
-    @Published var shutterSpeeds = ShutterSpeed.speedsForGap(.oneStop)
-    @Published var selectedFilterNotation: FilterStrengthRepresentation = .stopsReduced
+
+    var shutterSpeeds: [ShutterSpeed] {
+        ShutterSpeed.speedsForGap(userPreferences.selectedShutterSpeedGap.value)
+    }
+
+    var filters: [Filter] {
+        Filter.filters
+    }
+
+    var filterNotation: FilterStrengthRepresentation {
+        userPreferences.selectedFilterRepresentation.value
+    }
 
     /// Flag to indicate if the Countdown view should be active.
     ///
@@ -70,14 +79,14 @@ final class HomeViewModel: ObservableObject, DependencyProvider {
         self.countdownViewModel = CountdownCircleViewModel(dependencies: dependencies)
 
         userPreferences.selectedFilterRepresentation
-            .sink { [unowned self] representation in
-                selectedFilterNotation = representation
+            .sink { [unowned self] _ in
+                objectWillChange.send()
             }
             .store(in: &cancellables)
 
         userPreferences.selectedShutterSpeedGap
-            .sink { [unowned self] gap in
-                shutterSpeeds = ShutterSpeed.speedsForGap(gap)
+            .sink { [unowned self] _ in
+                objectWillChange.send()
             }
             .store(in: &cancellables)
 
@@ -98,8 +107,10 @@ final class HomeViewModel: ObservableObject, DependencyProvider {
 
     /// A `ShutterSpeed` when the selected `Filter` is applied to the selected `ShutterSpeed`
     var calculatedShutterSpeed: ShutterSpeed {
-        return ShutterSpeed.calculateShutterSpeedWithFilter(shutterSpeed: selectedShutterSpeed,
-                                                            filter: selectedFilter)
+        return ShutterSpeed.calculateShutterSpeedWithFilter(
+            shutterSpeed: selectedShutterSpeed,
+            filter: selectedFilter
+        )
     }
 
     /// A string representation of the `calculatedShutterSpeed`
@@ -118,9 +129,10 @@ final class HomeViewModel: ObservableObject, DependencyProvider {
     /// Start a countdown to finish after the `calculatedShutterSpeed` has finished.
     func startCountdown() {
         do {
-            let timerEndDate = Date(timeIntervalSinceNow: Double(calculatedShutterSpeed.seconds))
+            let timerEndDate = Date( timeIntervalSinceNow: calculatedShutterSpeed.seconds)
             try countdownController.startCountdown(for: timerEndDate)
         } catch {
+            assertionFailure("Should always start countdown")
             return
         }
     }

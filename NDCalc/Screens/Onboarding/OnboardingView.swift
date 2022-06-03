@@ -30,6 +30,7 @@ struct OnboardingView: View {
                     iconName: "clock.badge.exclamationmark.fill",
                     title: "Notifications",
                     body: "NDCalc works best when we have notification permission so you can be alerted when timers finish."
+                    // swiftlint:disable:previous line_length
                 )
             }
 

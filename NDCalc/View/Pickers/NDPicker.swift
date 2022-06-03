@@ -21,11 +21,11 @@ struct NDPicker: UIViewRepresentable {
         uiView.reloadAllComponents()
     }
 
-    var filters: [Filter]
-    @Binding var shutterSpeeds: [ShutterSpeed]
+    let filters: [Filter]
+    let shutterSpeeds: [ShutterSpeed]
     @Binding var selectedFilter: Filter
     @Binding var selectedShutterSpeed: ShutterSpeed
-    @Binding var filterNotation: FilterStrengthRepresentation
+    let filterNotation: FilterStrengthRepresentation
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)

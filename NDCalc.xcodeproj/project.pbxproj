@@ -61,8 +61,8 @@
 		7A7016F62836796B00933927 /* Depends in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 7A7016F42836796B00933927 /* Depends */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7A7016F82836797100933927 /* Depends in Frameworks */ = {isa = PBXBuildFile; productRef = 7A7016F72836797100933927 /* Depends */; };
 		7A7016FA2836797100933927 /* Depends in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 7A7016F72836797100933927 /* Depends */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A750C8728364C710050B850 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A750C8628364C710050B850 /* HomeViewModelTests.swift */; };
 		7A750C8B2836563E0050B850 /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A750C8A2836563E0050B850 /* OnboardingViewModelTests.swift */; };
+		7AAEBDE8284A0FAD002E08CD /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEBDE7284A0FAD002E08CD /* HomeViewModelTests.swift */; };
 		7AB47DB8282F52420033B727 /* ApplicationStateStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB47DB7282F52420033B727 /* ApplicationStateStoreProtocol.swift */; };
 		7AB47DBA282F53D90033B727 /* ApplicationStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB47DB9282F53D90033B727 /* ApplicationStateStore.swift */; };
 		7AB6842A282FD18000C97AFC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB68429282FD18000C97AFC /* OnboardingView.swift */; };
@@ -176,9 +176,9 @@
 		1AFE701926B3CEF200E74618 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 		1AFE701B26B3D02100E74618 /* AnyOptionalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyOptionalProtocol.swift; sourceTree = "<group>"; };
 		7A28EBDA2802D600002DBB1D /* CountdownCircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCircleViewModel.swift; sourceTree = "<group>"; };
-		7A750C8628364C710050B850 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		7A750C8A2836563E0050B850 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
 		7A750C94283679140050B850 /* Depends */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Depends; path = ../Depends; sourceTree = "<group>"; };
+		7AAEBDE7284A0FAD002E08CD /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		7AB47DB7282F52420033B727 /* ApplicationStateStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStateStoreProtocol.swift; sourceTree = "<group>"; };
 		7AB47DB9282F53D90033B727 /* ApplicationStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStateStore.swift; sourceTree = "<group>"; };
 		7AB68429282FD18000C97AFC /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -384,8 +384,8 @@
 				1A6A28DF26AA382900D53227 /* NotificationControllerTests.swift */,
 				1A6A28E526AA547100D53227 /* CountdownTests.swift */,
 				1A6A28EA26AA594700D53227 /* ShutterSpeedTests.swift */,
-				7A750C8628364C710050B850 /* HomeViewModelTests.swift */,
 				7A750C8A2836563E0050B850 /* OnboardingViewModelTests.swift */,
+				7AAEBDE7284A0FAD002E08CD /* HomeViewModelTests.swift */,
 			);
 			path = NDCalcTests;
 			sourceTree = "<group>";
@@ -702,12 +702,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AAEBDE8284A0FAD002E08CD /* HomeViewModelTests.swift in Sources */,
 				1A6A28DE26A971DC00D53227 /* MockNotificationController.swift in Sources */,
 				1A649B0F26BCF2F80008ACF2 /* XCTestCombineAwait.swift in Sources */,
 				1A6B879126187C9500F67DE5 /* NDCalcTests.swift in Sources */,
 				1A6A28E026AA382900D53227 /* NotificationControllerTests.swift in Sources */,
 				1A6A28E926AA560B00D53227 /* XCTestErrorAssert.swift in Sources */,
-				7A750C8728364C710050B850 /* HomeViewModelTests.swift in Sources */,
 				1A6A28E626AA547100D53227 /* CountdownTests.swift in Sources */,
 				7A750C8B2836563E0050B850 /* OnboardingViewModelTests.swift in Sources */,
 				1A6A28EB26AA594700D53227 /* ShutterSpeedTests.swift in Sources */,

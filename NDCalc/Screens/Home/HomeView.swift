@@ -58,14 +58,21 @@ struct HomeView: View {
             ScrollView {
                 VStack {
                     calculatedShutterSpeed
-                    FilterPicker(selectedFilter: $model.selectedFilter,
-                                 filterNotation: model.selectedFilterNotation,
-                                 shouldDisplayAcceccibiltyMode: true,
-                                 width: geometry.size.width)
-                    ShutterSpeedPicker(shutterSpeeds: model.shutterSpeeds,
-                                       selectedShutterSpeed: $model.selectedShutterSpeed,
-                                       shouldDisplayAcceccibiltyMode: true,
-                                       width: geometry.size.width)
+
+                    FilterPicker(
+                        selectedFilter: $model.selectedFilter,
+                        filterNotation: model.filterNotation,
+                        shouldDisplayAcceccibiltyMode: true,
+                        width: geometry.size.width
+                    )
+
+                    ShutterSpeedPicker(
+                        shutterSpeeds: model.shutterSpeeds,
+                        selectedShutterSpeed: $model.selectedShutterSpeed,
+                        shouldDisplayAcceccibiltyMode: true,
+                        width: geometry.size.width
+                    )
+
                     startTimerButton
                         .disabled(!model.isCurrentTimeValid)
                 }
@@ -89,10 +96,10 @@ struct HomeView: View {
 
     func sideBySidePickers(fullWidth: CGFloat) -> some View {
         NDPicker(filters: Filter.filters,
-                 shutterSpeeds: $model.shutterSpeeds,
+                 shutterSpeeds: model.shutterSpeeds,
                  selectedFilter: $model.selectedFilter,
                  selectedShutterSpeed: $model.selectedShutterSpeed,
-                 filterNotation: $model.selectedFilterNotation)
+                 filterNotation: model.filterNotation)
     }
 
     var calculatedShutterSpeed: some View {
