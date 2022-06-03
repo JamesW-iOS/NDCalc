@@ -33,7 +33,7 @@ struct CountdownCircleView: View {
             }
             .animation(.linear(duration: viewModel.animationDuration), value: viewModel.completionAmount)
             Text(viewModel.secondsLeft)
-                .font(.largeTitle)
+                .font(.system(.largeTitle, design: .monospaced))
                 .animation(.none)
         }
         .padding()

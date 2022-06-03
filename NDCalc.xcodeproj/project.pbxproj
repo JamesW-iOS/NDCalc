@@ -281,7 +281,6 @@
 			children = (
 				1AD7CF5C261C429A00F6C33A /* Bundle-Decodable.swift */,
 				1A457658268F1C8200C9332A /* Date.swift */,
-				1AAD4E6D26AE85260037F3A0 /* Screens */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -353,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				1A6B877E26187C9400F67DE5 /* NDCalcApp.swift */,
+				1AAD4E6D26AE85260037F3A0 /* Screens */,
 				1A457650268ECDDF00C9332A /* Extensions */,
 				1A45764F268ECDCD00C9332A /* View */,
 				1A45764E268ECDC200C9332A /* Model */,

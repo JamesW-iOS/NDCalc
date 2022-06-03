@@ -101,7 +101,7 @@ struct HomeView: View {
                 .font(.title)
                 .fixedSize(horizontal: false, vertical: true)
             Text(model.calculatedShutterSpeedString)
-                .font(.system(size: 70.0))
+                .font(.system(.largeTitle, design: .monospaced))
                 .bold()
                 .multilineTextAlignment(.center)
                 .scaledToFit()
