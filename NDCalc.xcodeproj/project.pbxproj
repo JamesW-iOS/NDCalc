@@ -56,9 +56,6 @@
 		2510CAFF2873EE9500F6D8ED /* TestDepends-auto in Frameworks */ = {isa = PBXBuildFile; productRef = 2510CAFE2873EE9500F6D8ED /* TestDepends-auto */; };
 		7A03334F2813D53D008DCA01 /* CombineExpectations in Frameworks */ = {isa = PBXBuildFile; productRef = 7A03334E2813D53D008DCA01 /* CombineExpectations */; };
 		7A28EBDB2802D600002DBB1D /* CountdownCircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28EBDA2802D600002DBB1D /* CountdownCircleViewModel.swift */; };
-		7A7016F22836796200933927 /* Depends in Frameworks */ = {isa = PBXBuildFile; productRef = 7A7016F12836796200933927 /* Depends */; };
-		7A7016F32836796200933927 /* Depends in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 7A7016F12836796200933927 /* Depends */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A7016F62836796B00933927 /* Depends in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 7A7016F42836796B00933927 /* Depends */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7A750C8B2836563E0050B850 /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A750C8A2836563E0050B850 /* OnboardingViewModelTests.swift */; };
 		7AAEBDE8284A0FAD002E08CD /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEBDE7284A0FAD002E08CD /* HomeViewModelTests.swift */; };
 		7AB47DB8282F52420033B727 /* ApplicationStateStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB47DB7282F52420033B727 /* ApplicationStateStoreProtocol.swift */; };
@@ -84,7 +81,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7A7016F62836796B00933927 /* Depends in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,7 +91,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7A7016F32836796200933927 /* Depends in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,7 +166,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2510CAFD2873EE9500F6D8ED /* Depends in Frameworks */,
-				7A7016F22836796200933927 /* Depends in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,7 +474,6 @@
 			);
 			name = NDCalc;
 			packageProductDependencies = (
-				7A7016F12836796200933927 /* Depends */,
 				2510CAFC2873EE9500F6D8ED /* Depends */,
 			);
 			productName = NDCalc;
@@ -504,7 +497,6 @@
 			name = NDCalcTests;
 			packageProductDependencies = (
 				7A03334E2813D53D008DCA01 /* CombineExpectations */,
-				7A7016F42836796B00933927 /* Depends */,
 				2510CAFE2873EE9500F6D8ED /* TestDepends-auto */,
 			);
 			productName = NDCalcTests;
@@ -948,14 +940,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7A04C54B27E5625F00D00898 /* XCRemoteSwiftPackageReference "CombineExpectations" */;
 			productName = CombineExpectations;
-		};
-		7A7016F12836796200933927 /* Depends */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Depends;
-		};
-		7A7016F42836796B00933927 /* Depends */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Depends;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
