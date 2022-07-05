@@ -21,7 +21,37 @@
       {
         "key" : "BUILDKITE_ANALYTICS_DEBUG_ENABLED",
         "value" : "true"
-      }
+      },
+      {
+        "key" : "GITHUB_ACTION",
+        "value" : "$GITHUB_ACTION"
+      },
+      {
+        "key" : "GITHUB_REF",
+        "value" : "$GITHUB_REF"
+      },
+      {
+        "key" : "GITHUB_RUN_NUMBER",
+        "value" : "$GITHUB_RUN_NUMBER"
+      },
+      {
+        "key" : "GITHUB_RUN_ATTEMPT",
+        "value" : "$GITHUB_RUN_ATTEMPT"
+      },
+      {
+        "key" : "GITHUB_REPOSITORY",
+        "value" : "$GITHUB_REPOSITORY"
+      },
+            {
+        "key" : "GITHUB_RUN_ID",
+        "value" : "$GITHUB_RUN_ID"
+      },
+      {
+        "key" : "GITHUB_SHA",
+        "value" : "$GITHUB_SHA"
+      },
+
+      
     ],
     "targetForVariableExpansion" : {
       "containerPath" : "container:NDCalc.xcodeproj",
@@ -31,6 +61,7 @@
   },
   "testTargets" : [
     {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:NDCalc.xcodeproj",
         "identifier" : "1A6B878B26187C9500F67DE5",
