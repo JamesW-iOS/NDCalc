@@ -52,13 +52,13 @@ final class CountdownCircleViewModel: ObservableObject, DependencyProvider {
                     completionAmount = 0.0
                     circleReseting = false
                     secondsLeft = countdown.stringSecondsLeft
-                    timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [unowned self] _ in
+                    timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
                         guard let countdown = countdownController.currentCountdownPublisher.value else {
                             assertionFailure("Should not fire without seconds left")
                             return
                         }
 
-                        secondsLeft = countdown.stringSecondsLeft
+                        self?.secondsLeft = countdown.stringSecondsLeft
                     }
                     RunLoop.current.add(timer!, forMode: .common)
 
