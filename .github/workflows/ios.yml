@@ -35,7 +35,7 @@ jobs:
         env:
           scheme: ${{ 'default' }}
           platform: ${{ 'iOS Simulator' }}
-          BUILDKITE_ANALYTICS_TOKEN: ${{  Configure BuildKite.BUILDKITE_ANALYTICS_TOKEN }}
+          BUILDKITE_ANALYTICS_TOKEN: ${{  'Configure BuildKite.BUILDKITE_ANALYTICS_TOKEN' }}
         run: |
           # xcrun xctrace returns via stderr, not the expected stdout (see https://developer.apple.com/forums/thread/663959)
           device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
