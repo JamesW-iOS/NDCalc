@@ -477,7 +477,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				7AB47DB5282F4FA80033B727 /* PBXTargetDependency */,
 			);
 			name = NDCalc;
 			packageProductDependencies = (
@@ -665,10 +664,6 @@
 			isa = PBXTargetDependency;
 			target = 1A6B877A26187C9400F67DE5 /* NDCalc */;
 			targetProxy = 1A6B878D26187C9500F67DE5 /* PBXContainerItemProxy */;
-		};
-		7AB47DB5282F4FA80033B727 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 7AB47DB4282F4FA80033B727 /* Depends */;
 		};
 /* End PBXTargetDependency section */
 
@@ -928,14 +923,6 @@
 				minimumVersion = 0.0.1;
 			};
 		};
-		7A04C54427E5621A00D00898 /* XCRemoteSwiftPackageReference "Depends" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/unsignedapps/Depends";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
-			};
-		};
 		7A04C54B27E5625F00D00898 /* XCRemoteSwiftPackageReference "CombineExpectations" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/groue/CombineExpectations";
@@ -968,11 +955,6 @@
 		};
 		7A7016F42836796B00933927 /* Depends */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Depends;
-		};
-		7AB47DB4282F4FA80033B727 /* Depends */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7A04C54427E5621A00D00898 /* XCRemoteSwiftPackageReference "Depends" */;
 			productName = Depends;
 		};
 /* End XCSwiftPackageProductDependency section */
