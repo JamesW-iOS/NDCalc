@@ -17,6 +17,10 @@
       {
         "key" : "BUILDKITE_ANALYTICS_TOKEN",
         "value" : "$BUILDKITE_ANALYTICS_TOKEN"
+      },
+      {
+        "key" : "BUILDKITE_ANALYTICS_DEBUG_ENABLED",
+        "value" : "true"
       }
     ],
     "targetForVariableExpansion" : {
