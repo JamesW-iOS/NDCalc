@@ -89,3 +89,5 @@ fastlane/test_output
 
 iOSInjectionProject/
 /NDCalc.xcodeproj/project.xcworkspace/xcshareddata/swiftpm
+.DS_Store
+*.xcuserstate
