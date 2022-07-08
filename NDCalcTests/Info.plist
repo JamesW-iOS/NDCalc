@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BUILDKITE_ANALYTICS_TOKEN</key>
+	<string>$BUILDKITE_ANALYTICS_TOKEN</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -18,23 +20,7 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>BUILDKITE_ANALYTICS_DEBUG_ENABLED</key>
-	<string>true</string>
-	<key>BUILDKITE_ANALYTICS_TOKEN</key>
-	<string>$BUILDKITE_ANALYTICS_TOKEN</string>
-	<key>GITHUB_ACTION</key>
-	<string>$GITHUB_ACTION</string>
-	<key>GITHUB_REF</key>
-	<string>$GITHUB_REF</string>
-	<key>GITHUB_RUN_NUMBER</key>
-	<string>$GITHUB_RUN_NUMBER</string>
-	<key>GITHUB_RUN_ATTEMPT</key>
-	<string>$GITHUB_RUN_ATTEMPT</string>
-	<key>GITHUB_REPOSITORY</key>
-	<string>$GITHUB_REPOSITORY</string>
-	<key>GITHUB_RUN_ID</key>
-	<string>$GITHUB_RUN_ID</string>
-	<key>GITHUB_SHA</key>
-	<string>$GITHUB_SHA</string>
+	<key>test</key>
+	<string></string>
 </dict>
 </plist>
