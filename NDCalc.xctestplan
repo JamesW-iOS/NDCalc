@@ -14,10 +14,7 @@
 
     ],
     "environmentVariableEntries" : [
-      {
-        "key" : "BUILDKITE_ANALYTICS_DEBUG_ENABLED",
-        "value" : "true"
-      }
+
     ],
     "targetForVariableExpansion" : {
       "containerPath" : "container:NDCalc.xcodeproj",
