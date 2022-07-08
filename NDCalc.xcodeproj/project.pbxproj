@@ -568,6 +568,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25BC621C2877D42200E400C0 /* Info.plist in Resources */,
 				2531BA942876B9CB00CAA9C8 /* environment.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
