@@ -153,6 +153,7 @@
 		1AFE701B26B3D02100E74618 /* AnyOptionalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyOptionalProtocol.swift; sourceTree = "<group>"; };
 		2510CB0F2873EF5800F6D8ED /* NDCalcUITests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NDCalcUITests copy-Info.plist"; path = "/Users/ibajames/Desktop/NDCalc/NDCalcUITests copy-Info.plist"; sourceTree = "<absolute>"; };
 		2531BA932876B9CB00CAA9C8 /* environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
+		258BC636287418FB00CCFBE2 /* NDCalc.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = NDCalc.xctestplan; sourceTree = "<group>"; };
 		7A28EBDA2802D600002DBB1D /* CountdownCircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCircleViewModel.swift; sourceTree = "<group>"; };
 		7A750C8A2836563E0050B850 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
 		7A750C94283679140050B850 /* Depends */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Depends; path = ../Depends; sourceTree = "<group>"; };
@@ -300,6 +301,7 @@
 		1A6B877226187C9400F67DE5 = {
 			isa = PBXGroup;
 			children = (
+				258BC636287418FB00CCFBE2 /* NDCalc.xctestplan */,
 				7A750C93283679140050B850 /* Packages */,
 				1A6B877D26187C9400F67DE5 /* NDCalc */,
 				1A6B878F26187C9500F67DE5 /* NDCalcTests */,
