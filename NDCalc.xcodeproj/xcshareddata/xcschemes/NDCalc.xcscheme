@@ -30,7 +30,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "BUILDKITE_ANALYTICS_TOKEN"
-            value = "$BUILDKITE_ANALYTICS_TOKEN"
+            value = "$(BUILDKITE_ANALYTICS_TOKEN)"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
