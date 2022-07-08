@@ -56,7 +56,6 @@
 		2510CAFF2873EE9500F6D8ED /* TestDepends-auto in Frameworks */ = {isa = PBXBuildFile; productRef = 2510CAFE2873EE9500F6D8ED /* TestDepends-auto */; };
 		2510CB1C2873FBAC00F6D8ED /* BuildkiteTestCollector in Frameworks */ = {isa = PBXBuildFile; productRef = 2510CB1B2873FBAC00F6D8ED /* BuildkiteTestCollector */; };
 		2531BA942876B9CB00CAA9C8 /* environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2531BA932876B9CB00CAA9C8 /* environment.plist */; };
-		25BC621C2877D42200E400C0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A6B879226187C9500F67DE5 /* Info.plist */; };
 		7A03334F2813D53D008DCA01 /* CombineExpectations in Frameworks */ = {isa = PBXBuildFile; productRef = 7A03334E2813D53D008DCA01 /* CombineExpectations */; };
 		7A28EBDB2802D600002DBB1D /* CountdownCircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28EBDA2802D600002DBB1D /* CountdownCircleViewModel.swift */; };
 		7A750C8B2836563E0050B850 /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A750C8A2836563E0050B850 /* OnboardingViewModelTests.swift */; };
@@ -569,7 +568,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25BC621C2877D42200E400C0 /* Info.plist in Resources */,
 				2531BA942876B9CB00CAA9C8 /* environment.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
