@@ -27,6 +27,15 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "NO">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1A6B877A26187C9400F67DE5"
+            BuildableName = "NDCalc.app"
+            BlueprintName = "NDCalc"
+            ReferencedContainer = "container:NDCalc.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "BUILDKITE_ANALYTICS_TOKEN"
@@ -36,7 +45,7 @@
          <EnvironmentVariable
             key = "BUILDKITE_ANALYTICS_DEBUG_ENABLED"
             value = "true"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
       <Testables>
