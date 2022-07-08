@@ -33,6 +33,11 @@
             value = "$(BUILDKITE_ANALYTICS_TOKEN)"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "BUILDKITE_ANALYTICS_DEBUG_ENABLED"
+            value = "true"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
       <Testables>
          <TestableReference
