@@ -12,12 +12,12 @@
     "codeCoverage" : false,
     "environmentVariableEntries" : [
       {
-        "key" : "BUILDKITE_ANALYTICS_TOKEN",
-        "value" : "$(BUILDKITE_ANALYTICS_TOKEN)"
+        "key" : "BUILDKITE_ANALYTICS_DEBUG_ENABLED",
+        "value" : "1"
       },
       {
-        "key" : "BUILDKITE_ANALYTICS_DEBUG_ENABLED",
-        "value" : "true"
+        "key" : "BUILDKITE_ANALYTICS_TOKEN",
+        "value" : "$(BUILDKITE_ANALYTICS_TOKEN)"
       },
       {
         "key" : "BUILDKITE_BRANCH",
