@@ -1,0 +1,68 @@
+{
+  "configurations" : [
+    {
+      "id" : "243CC99F-B903-4C5B-B827-C7288170DBB7",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "environmentVariableEntries" : [
+      {
+        "key" : "BUILDKITE_ANALYTICS_TOKEN",
+        "value" : "$(BUILDKITE_ANALYTICS_TOKEN)"
+      },
+      {
+        "enabled" : false,
+        "key" : "BUILDKITE_ANALYTICS_DEBUG_ENABLED",
+        "value" : "true"
+      },
+      {
+         "key" : "BUILDKITE_BRANCH",
+         "value" : "$(BUILDKITE_BRANCH)"
+       },
+       {
+         "key" : "BUILDKITE_BUILD_ID",
+         "value" : "$(BUILDKITE_BUILD_ID)"
+       },
+       {
+         "key" : "BUILDKITE_BUILD_NUMBER",
+         "value" : "$(BUILDKITE_BUILD_NUMBER)"
+       },
+       {
+         "key" : "BUILDKITE_BUILD_URL",
+         "value" : "$(BUILDKITE_BUILD_URL)"
+       },
+       {
+         "key" : "BUILDKITE_COMMIT",
+         "value" : "$(BUILDKITE_COMMIT)"
+       },
+       {
+         "key" : "BUILDKITE_JOB_ID",
+         "value" : "$(BUILDKITE_JOB_ID)"
+       },
+       {
+         "key" : "BUILDKITE_MESSAGE",
+         "value" : "$(BUILDKITE_MESSAGE)"
+       }
+    ],
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:NDCalc.xcodeproj",
+      "identifier" : "1A6B877A26187C9400F67DE5",
+      "name" : "NDCalc"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:NDCalc.xcodeproj",
+        "identifier" : "1A6B878B26187C9500F67DE5",
+        "name" : "NDCalcTests"
+      }
+    }
+  ],
+  "version" : 1
+}

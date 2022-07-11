@@ -151,6 +151,7 @@
 		1AFE701926B3CEF200E74618 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 		1AFE701B26B3D02100E74618 /* AnyOptionalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyOptionalProtocol.swift; sourceTree = "<group>"; };
 		2510CB0F2873EF5800F6D8ED /* NDCalcUITests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NDCalcUITests copy-Info.plist"; path = "/Users/ibajames/Desktop/NDCalc/NDCalcUITests copy-Info.plist"; sourceTree = "<absolute>"; };
+		25690A65287BBD5800D0F037 /* NDCalc.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = NDCalc.xctestplan; sourceTree = "<group>"; };
 		7A28EBDA2802D600002DBB1D /* CountdownCircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCircleViewModel.swift; sourceTree = "<group>"; };
 		7A750C8A2836563E0050B850 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
 		7A750C94283679140050B850 /* Depends */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Depends; path = ../Depends; sourceTree = "<group>"; };
@@ -349,6 +350,7 @@
 				1A649B1026BCF31A0008ACF2 /* Extensions */,
 				1A6A28DC26A971CD00D53227 /* Mocks */,
 				1A6B879226187C9500F67DE5 /* Info.plist */,
+				25690A65287BBD5800D0F037 /* NDCalc.xctestplan */,
 				1A6A28DA26A9719300D53227 /* CountdownControllerTests.swift */,
 				1A6A28DF26AA382900D53227 /* NotificationControllerTests.swift */,
 				1A6A28E526AA547100D53227 /* CountdownTests.swift */,
