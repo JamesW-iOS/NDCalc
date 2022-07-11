@@ -55,7 +55,6 @@
 		2510CAFD2873EE9500F6D8ED /* Depends in Frameworks */ = {isa = PBXBuildFile; productRef = 2510CAFC2873EE9500F6D8ED /* Depends */; };
 		2510CAFF2873EE9500F6D8ED /* TestDepends-auto in Frameworks */ = {isa = PBXBuildFile; productRef = 2510CAFE2873EE9500F6D8ED /* TestDepends-auto */; };
 		2510CB1C2873FBAC00F6D8ED /* BuildkiteTestCollector in Frameworks */ = {isa = PBXBuildFile; productRef = 2510CB1B2873FBAC00F6D8ED /* BuildkiteTestCollector */; };
-		25690A64287BB54300D0F037 /* environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25690A63287BB54300D0F037 /* environment.plist */; };
 		7A03334F2813D53D008DCA01 /* CombineExpectations in Frameworks */ = {isa = PBXBuildFile; productRef = 7A03334E2813D53D008DCA01 /* CombineExpectations */; };
 		7A28EBDB2802D600002DBB1D /* CountdownCircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28EBDA2802D600002DBB1D /* CountdownCircleViewModel.swift */; };
 		7A750C8B2836563E0050B850 /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A750C8A2836563E0050B850 /* OnboardingViewModelTests.swift */; };
@@ -152,7 +151,6 @@
 		1AFE701926B3CEF200E74618 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 		1AFE701B26B3D02100E74618 /* AnyOptionalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyOptionalProtocol.swift; sourceTree = "<group>"; };
 		2510CB0F2873EF5800F6D8ED /* NDCalcUITests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NDCalcUITests copy-Info.plist"; path = "/Users/ibajames/Desktop/NDCalc/NDCalcUITests copy-Info.plist"; sourceTree = "<absolute>"; };
-		25690A63287BB54300D0F037 /* environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 		7A28EBDA2802D600002DBB1D /* CountdownCircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCircleViewModel.swift; sourceTree = "<group>"; };
 		7A750C8A2836563E0050B850 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
 		7A750C94283679140050B850 /* Depends */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Depends; path = ../Depends; sourceTree = "<group>"; };
@@ -322,7 +320,6 @@
 		1A6B877D26187C9400F67DE5 /* NDCalc */ = {
 			isa = PBXGroup;
 			children = (
-				25690A63287BB54300D0F037 /* environment.plist */,
 				1A6B877E26187C9400F67DE5 /* NDCalcApp.swift */,
 				1AAD4E6D26AE85260037F3A0 /* Screens */,
 				1A457650268ECDDF00C9332A /* Extensions */,
@@ -558,7 +555,6 @@
 			files = (
 				1AD7CF5B261C402E00F6C33A /* shutterSpeeds.json in Resources */,
 				1A6B878626187C9500F67DE5 /* Preview Assets.xcassets in Resources */,
-				25690A64287BB54300D0F037 /* environment.plist in Resources */,
 				1A6B878326187C9500F67DE5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
