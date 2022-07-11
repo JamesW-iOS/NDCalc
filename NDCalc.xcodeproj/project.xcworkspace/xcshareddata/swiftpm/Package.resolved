@@ -21,7 +21,7 @@
     {
       "identity" : "test-collector-swift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/buildkite/test-collector-swift",
+      "location" : "https://github.com/Buildkite/test-collector-swift",
       "state" : {
         "branch" : "main",
         "revision" : "e8ffdb1aa96ca1a2d9d3acc1678cb15a29c872a7"

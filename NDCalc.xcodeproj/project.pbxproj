@@ -923,7 +923,7 @@
 		};
 		2510CB1A2873FBAC00F6D8ED /* XCRemoteSwiftPackageReference "test-collector-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/buildkite/test-collector-swift";
+			repositoryURL = "https://github.com/Buildkite/test-collector-swift";
 			requirement = {
 				branch = main;
 				kind = branch;
