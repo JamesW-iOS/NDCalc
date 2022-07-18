@@ -75,6 +75,16 @@
                ReferencedContainer = "container:NDCalc.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "25BC62202877D91900E400C0"
+               BuildableName = "NDCalcTestsa.xctest"
+               BlueprintName = "NDCalcTestsa"
+               ReferencedContainer = "container:NDCalc.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
