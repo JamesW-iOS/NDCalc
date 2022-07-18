@@ -925,7 +925,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Buildkite/test-collector-swift";
 			requirement = {
-				branch = main;
+				branch = Improve-logging;
 				kind = branch;
 			};
 		};
