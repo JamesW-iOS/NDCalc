@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Buildkite/test-collector-swift",
       "state" : {
-        "branch" : "main",
-        "revision" : "e8ffdb1aa96ca1a2d9d3acc1678cb15a29c872a7"
+        "branch" : "Improve-logging",
+        "revision" : "3d29d6ae51e7d8134d97f23f5f9a38044ba96a25"
       }
     }
   ],
