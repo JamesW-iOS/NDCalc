@@ -28,8 +28,8 @@
         "value" : "$(GITHUB_ACTION)"
       },
       {
-        "key" : "GITHUB_ACTION",
-        "value" : "$(GITHUB_ACTION)"
+        "key" : "GITHUB_REF",
+        "value" : "$(GITHUB_REF)"
       },
       {
         "key" : "GITHUB_RUN_NUMBER",
