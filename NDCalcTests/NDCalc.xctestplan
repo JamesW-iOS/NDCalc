@@ -48,6 +48,15 @@
         "value" : "$(GITHUB_RUN_ID)"
       },
       {
+        "key" : "GITHUB_WORKFLOW",
+        "value" : "$(GITHUB_WORKFLOW)"
+      },
+      {
+        "key" : "GITHUB_ACTOR",
+        "value" : "$(GITHUB_ACTOR)"
+      },
+      
+      {
         "key" : "GITHUB_SHA",
         "value" : "$(GITHUB_SHA)"
       }
