@@ -1,0 +1,15 @@
+version: 2.1
+jobs:
+  build-and-test:
+    macos:
+      xcode: 13.4.1
+    steps:
+      - checkout
+      - run: cd NDCalc
+      - run:
+          name: Run tests
+          command: xcodebuild -project NDCalc.xcodeproj -scheme NDCalc -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=15.5' test
+workflows:
+  test:
+    jobs:
+      - build-and-test
