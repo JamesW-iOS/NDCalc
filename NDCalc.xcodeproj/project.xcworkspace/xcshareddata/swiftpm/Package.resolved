@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "combineexpectations",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/groue/CombineExpectations",
+      "state" : {
+        "branch" : "master",
+        "revision" : "04d4e4b21c9e8361925f03f64a7ecda89ef9974f"
+      }
+    },
+    {
+      "identity" : "depends",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/unsignedapps/Depends",
+      "state" : {
+        "revision" : "3f8bf751b182e887c401c4dc7d7c62ae677ea106",
+        "version" : "0.0.1"
+      }
+    },
+    {
+      "identity" : "test-collector-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/buildkite/test-collector-swift",
+      "state" : {
+        "branch" : "xcode-cloud-support",
+        "revision" : "a96ca050ba3586cb0bccce0be5b375c5330265b9"
+      }
+    }
+  ],
+  "version" : 2
+}

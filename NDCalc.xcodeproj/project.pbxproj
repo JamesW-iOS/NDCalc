@@ -928,7 +928,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/buildkite/test-collector-swift";
 			requirement = {
-				branch = main;
+				branch = xcode-cloud-support;
 				kind = branch;
 			};
 		};

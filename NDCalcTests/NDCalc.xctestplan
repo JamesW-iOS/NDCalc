@@ -24,32 +24,28 @@
         "value" : "$(BUILDKITE_ANALYTICS_TOKEN)"
       },
       {
-        "key" : "BUILDKITE_BUILD_ID",
-        "value" : "$(BUILDKITE_BUILD_ID)"
+        "key" : "CI_COMMIT",
+        "value" : "$(CI_COMMIT)"
       },
       {
-        "key" : "BUILDKITE_BUILD_URL",
-        "value" : "$(BUILDKITE_BUILD_URL)"
+        "key" : "CI_BUILD_NUMBER",
+        "value" : "$(CI_BUILD_NUMBER)"
       },
       {
-        "key" : "BUILDKITE_BRANCH",
-        "value" : "$(BUILDKITE_BRANCH)"
+        "key" : "CI_BUILD_ID",
+        "value" : "$(CI_BUILD_ID)"
       },
       {
-        "key" : "BUILDKITE_COMMIT",
-        "value" : "$(BUILDKITE_COMMIT)"
+        "key" : "CI_WORKFLOW",
+        "value" : "$(CI_WORKFLOW)"
       },
       {
-        "key" : "BUILDKITE_BUILD_NUMBER",
-        "value" : "$(BUILDKITE_BUILD_NUMBER)"
+        "key" : "CI_BRANCH",
+        "value" : "$(CI_BRANCH)"
       },
       {
-        "key" : "BUILDKITE_JOB_ID",
-        "value" : "$(BUILDKITE_JOB_ID)"
-      },
-      {
-        "key" : "BUILDKITE_MESSAGE",
-        "value" : "$(BUILDKITE_MESSAGE)"
+        "key" : "CI_PULL_REQUEST_HTML_URL",
+        "value" : "$(CI_PULL_REQUEST_HTML_URL)"
       }
     ],
     "targetForVariableExpansion" : {
