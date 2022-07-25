@@ -24,24 +24,40 @@
         "value" : "$(BUILDKITE_ANALYTICS_TOKEN)"
       },
       {
-        "key" : "CIRCLE_BUILD_NUM",
-        "value" : "$(CIRCLE_BUILD_NUM)"
+        "key" : "GITHUB_ACTION",
+        "value" : "$(GITHUB_ACTION)"
       },
       {
-        "key" : "CIRCLE_WORKFLOW_ID",
-        "value" : "$(CIRCLE_WORKFLOW_ID)"
+        "key" : "GITHUB_REF",
+        "value" : "$(GITHUB_REF)"
       },
       {
-        "key" : "CIRCLE_BUILD_URL",
-        "value" : "$(CIRCLE_BUILD_URL)"
+        "key" : "GITHUB_RUN_NUMBER",
+        "value" : "$(GITHUB_RUN_NUMBER)"
       },
       {
-        "key" : "CIRCLE_BRANCH",
-        "value" : "$(CIRCLE_BRANCH)"
+        "key" : "GITHUB_RUN_ATTEMPT",
+        "value" : "$(GITHUB_RUN_ATTEMPT)"
       },
       {
-        "key" : "CIRCLE_SHA1",
-        "value" : "$(CIRCLE_SHA1)"
+        "key" : "GITHUB_RUN_ID",
+        "value" : "$(GITHUB_RUN_ID)"
+      },
+      {
+        "key" : "GITHUB_SHA",
+        "value" : "$(GITHUB_SHA)"
+      },
+      {
+        "key" : "GITHUB_WORKFLOW",
+        "value" : "$(GITHUB_WORKFLOW)"
+      },
+      {
+        "key" : "GITHUB_ACTOR",
+        "value" : "$(GITHUB_ACTOR)"
+      },
+      {
+        "key" : "GITHUB_REPOSITORY",
+        "value" : "$(GITHUB_REPOSITORY)"
       }
     ],
     "targetForVariableExpansion" : {
