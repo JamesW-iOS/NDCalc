@@ -22,6 +22,30 @@
       {
         "key" : "BUILDKITE_ANALYTICS_TOKEN",
         "value" : "$(BUILDKITE_ANALYTICS_TOKEN)"
+      },
+      {
+        "key" : "CI_COMMIT",
+        "value" : "$(CI_COMMIT)"
+      },
+      {
+        "key" : "CI_BUILD_NUMBER",
+        "value" : "$(CI_BUILD_NUMBER)"
+      },
+      {
+        "key" : "CI_BUILD_ID",
+        "value" : "$(CI_BUILD_ID)"
+      },
+      {
+        "key" : "CI_WORKFLOW",
+        "value" : "$(CI_WORKFLOW)"
+      },
+      {
+        "key" : "CI_BRANCH",
+        "value" : "$(CI_BRANCH)"
+      },
+      {
+        "key" : "CI_PULL_REQUEST_HTML_URL",
+        "value" : "$(CI_PULL_REQUEST_HTML_URL)"
       }
     ],
     "targetForVariableExpansion" : {
