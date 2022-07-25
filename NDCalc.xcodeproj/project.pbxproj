@@ -926,9 +926,9 @@
 		};
 		2510CB1A2873FBAC00F6D8ED /* XCRemoteSwiftPackageReference "test-collector-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JamesW-iOS/test-collector-swift";
+			repositoryURL = "https://github.com/buildkite/test-collector-swift";
 			requirement = {
-				branch = improve-github-message;
+				branch = Improve-Github-message;
 				kind = branch;
 			};
 		};
