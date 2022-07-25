@@ -17,7 +17,7 @@ struct NDCalcApp: App {
 
     init() {
         // The components need to be registered in this order since each one depends of the ones registered before it.
-      // some comment
+      // some comment how about more
         let userPreferences = PreferenceStore()
         dependancies.register(userPreferences, for: .preferenceStore)
 
