@@ -928,7 +928,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JamesW-iOS/test-collector-swift";
 			requirement = {
-				branch = Improve-Github-message;
+				branch = improve-github-message;
 				kind = branch;
 			};
 		};
