@@ -28,4 +28,24 @@ class CountdownTests: XCTestCase {
         XCTAssertEqual(countdown.finishTime, futureDate, "futureDate should be set to what countdown was started with")
         XCTAssertFalse(countdown.isComplete)
     }
+
+    func testEquality() throws {
+        let oneSecond = Date(timeIntervalSinceNow: 1)
+        let onePointOneSecond = Date(timeIntervalSinceNow: 1.1)
+        let oneMinute = Date(timeIntervalSinceNow: 60)
+
+        let oneSecondCountdown = try Countdown(endsAt: oneSecond)
+        let onePointOneSecondCountdown = try Countdown(endsAt: onePointOneSecond)
+        let oneMinuteCountdown = try Countdown(endsAt: oneMinute)
+
+        XCTAssertEqual(oneSecondCountdown, oneSecondCountdown)
+        XCTAssertEqual(oneMinuteCountdown, oneMinuteCountdown)
+
+        XCTAssertEqual(onePointOneSecondCountdown, onePointOneSecondCountdown)
+        XCTAssertNotEqual(oneSecondCountdown, onePointOneSecondCountdown)
+        XCTAssertNotEqual(onePointOneSecondCountdown, oneSecondCountdown)
+
+        XCTAssertNotEqual(oneSecondCountdown, oneMinuteCountdown)
+        XCTAssertNotEqual(oneMinuteCountdown, oneSecondCountdown)
+    }
 }

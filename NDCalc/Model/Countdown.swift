@@ -74,6 +74,6 @@ struct Countdown: Equatable {
     }
 
     static func == (lhs: Countdown, rhs: Countdown) -> Bool {
-        return lhs.finishTime == rhs.finishTime
+        return lhs.finishTime.timeIntervalSince1970.distance(to: rhs.finishTime.timeIntervalSince1970).magnitude < 0.01
     }
 }

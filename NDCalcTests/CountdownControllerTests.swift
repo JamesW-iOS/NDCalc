@@ -89,12 +89,17 @@ class CountdownControllerTests: XCTestCase {
     func testCountdown_IsPublished_WhenStartWithSomethingPersisted() throws {
         let endDate = Calendar.current.date(byAdding: .minute, value: 1, to: Date())!
         userDefaults.set(endDate.timeIntervalSince1970, forKey: CountdownController.storeCountdownKey)
-
         let expectedCountdown = try Countdown(endsAt: endDate)
 
         countdownController = CountdownController(dependancies: dependancies, userDefaults: userDefaults)
+        let recorder = countdownController.currentCountdownPublisher.record()
 
-        XCTAssertEqual(expectedCountdown, countdownController.currentCountdownPublisher.value)
+        let elements = try wait(for: recorder.next(1), timeout: 0.1)
+
+        XCTAssertEqual(
+            [expectedCountdown],
+            elements
+        )
     }
 
     func testHasCountdownActive_IsFalse_WhenCancelCountdown() throws {
@@ -146,5 +151,4 @@ class CountdownControllerTests: XCTestCase {
         let endDate = Calendar.current.date(byAdding: .minute, value: -1, to: Date())!
         XCTAssertThrowsError(try countdownController.startCountdown(for: endDate))
     }
-
 }
