@@ -16,6 +16,8 @@ protocol UserNotificationCenter {
     func requestAuthorization(options: UNAuthorizationOptions, completionHandler: @escaping (Bool, Error?) -> Void)
     func add(_ request: UNNotificationRequest, withCompletionHandler completionHandler: ((Error?) -> Void)?)
     func removePendingNotificationRequests(withIdentifiers identifiers: [String])
+    func notificationSettings() async -> UNNotificationSettings
+    func removeAllDeliveredNotifications()
 }
 
 extension UNUserNotificationCenter: UserNotificationCenter {}

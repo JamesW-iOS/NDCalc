@@ -9,6 +9,7 @@ import Combine
 import UserNotifications
 import AVFoundation
 import Depends
+import SwiftUI
 
 @MainActor
 final class HomeViewModel: ObservableObject, DependencyProvider {
@@ -144,6 +145,17 @@ final class HomeViewModel: ObservableObject, DependencyProvider {
             countdownController.cancelCountdown()
         }
         countdownViewActive = false
+    }
+
+    func scenePhaseChanged(to phase: ScenePhase) {
+        switch phase {
+        case .active:
+            notificationController.clearAllDeliveredNotifications()
+        case .background, .inactive:
+            break
+        @unknown default:
+            assertionFailure()
+        }
     }
 
     /// Convert a number to a nice 'human' representation.

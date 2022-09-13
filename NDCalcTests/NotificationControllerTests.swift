@@ -13,11 +13,18 @@ class NotificationControllerTests: XCTestCase {
     var dependency: DependencyRegistry!
     var sut: NotificationController!
     var mockNotificationCentre: MockUserNotificationCentre!
+    var userDefaults: UserDefaults!
 
     override func setUpWithError() throws {
         dependency = DependencyRegistry()
+
         mockNotificationCentre = MockUserNotificationCentre()
         dependency.register(mockNotificationCentre, for: .notificationCenter)
+
+        userDefaults = UserDefaults.init(suiteName: #file)
+        userDefaults.removePersistentDomain(forName: #file)
+        dependency.register(userDefaults, for: .userDefaults)
+
         sut = NotificationController(dependancies: dependency)
     }
 
@@ -25,6 +32,7 @@ class NotificationControllerTests: XCTestCase {
         sut = nil
         mockNotificationCentre = nil
         dependency = nil
+        userDefaults = nil
     }
 
     func testRequestPermission() {
@@ -56,12 +64,6 @@ class NotificationControllerTests: XCTestCase {
                                                                repeats: false)
 
         let request = mockNotificationCentre.request
-        // guard unwrapping the request causes the compiler to crash, no idea why,
-        // force unwrapping here since it's just a test.
-//        guard let request = request else {
-//            XCTFail("Unable to unwrap the request")
-//            return
-//        }
 
         guard let trigger = request!.trigger as? UNTimeIntervalNotificationTrigger else {
             XCTFail("trigger should be a time interval trigger")

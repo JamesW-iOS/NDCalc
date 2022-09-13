@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @ObservedObject var model: HomeViewModel
     @Environment(\.sizeCategory) var sizeCategory
+    @Environment(\.scenePhase) var scenePhase
 
     var body: some View {
         ZStack {
@@ -34,6 +35,9 @@ struct HomeView: View {
         }
         .navigationBarBackButtonHidden(true)
         .animation(.linear, value: model.countdownViewActive)
+        .onChange(of: scenePhase) { newPhase in
+            model.scenePhaseChanged(to: newPhase)
+        }
     }
 
     var mainView: some View {
@@ -83,7 +87,12 @@ struct HomeView: View {
     @ViewBuilder
     func timerRunningView() -> some View {
         VStack {
+            Spacer()
+
             CountdownCircleView(viewModel: model.countdownViewModel, circleColor: .blue)
+
+            Spacer()
+
             Button {
                 withAnimation {
                     model.countdownViewButtonTapped()

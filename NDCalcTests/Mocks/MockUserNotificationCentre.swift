@@ -27,4 +27,11 @@ final class MockUserNotificationCentre: UserNotificationCenter {
     func removePendingNotificationRequests(withIdentifiers identifiers: [String]) {
         request = nil
     }
+
+    func notificationSettings() async -> UNNotificationSettings {
+        fatalError()
+    }
+
+    func removeAllDeliveredNotifications() {
+    }
 }

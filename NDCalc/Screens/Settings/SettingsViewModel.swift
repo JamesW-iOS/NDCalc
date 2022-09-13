@@ -8,21 +8,50 @@
 import Combine
 import Depends
 import Foundation
+import SwiftUI
 
 /// A view model for the SettingsView view.
 ///
 /// Preference is a generic parameter for an object adopting the PreferenceStoreProtocol
 @MainActor
 final class SettingsViewModel: ObservableObject, DependencyProvider {
+    enum NotificationProblem: String, Identifiable {
+        case timeSensitive, enabled, sound, lockScreen
+
+        var id: String {
+            self.rawValue
+        }
+
+        var description: String {
+            switch self {
+            case .timeSensitive:
+                return "Time Senesitive notifications disabled"
+            case .enabled:
+                return "Notifications disabled"
+            case .sound:
+                return "Notifcation sound disabled"
+            case .lockScreen:
+                return "Lock screen notifications disabled"
+            }
+        }
+    }
+
     let dependencies: DependencyRegistry
 
     @Dependency(.preferenceStore) private var userPreferenceStore
+    @Dependency(.notificationController) private var notificationController
 
     @Published var currentExplainer: ExplainerViewModel?
     @Published var selectedShutterGap: ShutterGap
     @Published var selectedFilterRepresentation: FilterStrengthRepresentation
+    @Published var notificationProblems = [NotificationProblem]()
 
     private var cancelables = Set<AnyCancellable>()
+    private var notificationSettingTask: Task<(), Never>?
+
+    var shouldShowNotificationSection: Bool {
+        !notificationProblems.isEmpty
+    }
 
     init(dependencies: DependencyRegistry) {
         self.dependencies = dependencies
@@ -32,6 +61,9 @@ final class SettingsViewModel: ObservableObject, DependencyProvider {
 
         configureBindings()
 
+        notificationSettingTask = Task {
+            await updateNotificationSettings()
+        }
     }
 
     func selectedLearnMoreShutterGap() {
@@ -40,6 +72,26 @@ final class SettingsViewModel: ObservableObject, DependencyProvider {
 
     func selectedLearnMoreFilterRepresentation() {
         currentExplainer = filterRepresenation
+    }
+
+    func scenePhaseChanged(to phase: ScenePhase) {
+        switch phase {
+        case .background, .inactive:
+            if let notificationSettingTask = notificationSettingTask {
+                notificationSettingTask.cancel()
+                self.notificationSettingTask = nil
+            }
+        case .active:
+            notificationSettingTask = Task {
+                await updateNotificationSettings()
+            }
+        @unknown default:
+            assertionFailure()
+        }
+    }
+
+    func viewDidAppear() async {
+        await updateNotificationSettings()
     }
 
     private func configureBindings() {
@@ -68,6 +120,42 @@ final class SettingsViewModel: ObservableObject, DependencyProvider {
                 userPreferenceStore.setSelectedFilterRepresentation(representation)
             }
             .store(in: &cancelables)
+    }
+
+    private func updateNotificationSettings() async {
+        let settings = await notificationController.getNotificationPermission()
+
+        var problems = [NotificationProblem]()
+
+        switch settings.timeSensitiveSetting {
+        case .disabled:
+            problems.append(.timeSensitive)
+        case .enabled, .notSupported:
+            break
+        }
+
+        switch settings.authorizationStatus {
+        case .authorized:
+            break
+        case .denied, .notDetermined, .ephemeral, .provisional:
+            problems.append(.enabled)
+        }
+
+        switch settings.lockScreenSetting {
+        case .enabled:
+            break
+        case .disabled, .notSupported:
+            problems.append(.lockScreen)
+        }
+
+        switch settings.soundSetting {
+        case .enabled:
+            break
+        case .disabled, .notSupported:
+            problems.append(.sound)
+        }
+
+        notificationProblems = problems
     }
 
     // MARK: - Explanations

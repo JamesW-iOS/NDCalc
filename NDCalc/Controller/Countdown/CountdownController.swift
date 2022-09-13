@@ -54,9 +54,7 @@ final class CountdownController: CountdownControllerProtocol, DependencyProvider
         let storedCountdownEndTime = userDefaults.double(forKey: Self.storeCountdownKey)
         if storedCountdownEndTime != 0 {
             let date = Date(timeIntervalSince1970: storedCountdownEndTime)
-            if let countdown = try? Countdown(endsAt: date) {
-                currentCountdownPublisher.send(countdown)
-            }
+            try? startCountdown(for: date)
         }
     }
 

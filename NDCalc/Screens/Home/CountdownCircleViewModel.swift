@@ -33,18 +33,12 @@ final class CountdownCircleViewModel: ObservableObject, DependencyProvider {
         }
     }
 
-    var timerDone: Bool {
-        true
-    }
-
     init(dependencies: DependencyRegistry) {
         self.dependencies = dependencies
 
         completionAmount = 1.0
         circleReseting = true
         secondsLeft = Self.allDoneString
-
-        let countdownController = dependencies.dependency(for: .countdownController)
 
         countdownController.currentCountdownPublisher
             .sink { [unowned self] countdown in
@@ -53,15 +47,13 @@ final class CountdownCircleViewModel: ObservableObject, DependencyProvider {
                     circleReseting = false
                     secondsLeft = countdown.stringSecondsLeft
                     timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-                        guard let countdown = countdownController.currentCountdownPublisher.value else {
+                        guard let countdown = self?.countdownController.currentCountdownPublisher.value else {
                             assertionFailure("Should not fire without seconds left")
                             return
                         }
 
                         self?.secondsLeft = countdown.stringSecondsLeft
                     }
-                    RunLoop.current.add(timer!, forMode: .common)
-
                 } else {
                     circleReseting = true
                     completionAmount = 1.0

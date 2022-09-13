@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import NotificationCenter
 @testable import NDCalc
 
 final class MockNotificationController: NotificationControllerProtocol {
@@ -13,6 +14,8 @@ final class MockNotificationController: NotificationControllerProtocol {
     var hasNotificationScheduled = false
     var scheduledNotificationDate: Date?
     var hasRequestedNotificationPermission = false
+    // swiftlint:disable:next identifier_name
+    var hasCalledRemovedAllDeliveredNotifications = false
 
     func scheduleNotification(for endDate: Date) {
         hasNotificationScheduled = true
@@ -26,5 +29,18 @@ final class MockNotificationController: NotificationControllerProtocol {
 
     func requestNotificationPermission() {
         hasRequestedNotificationPermission = true
+    }
+
+    func clearAllDeliveredNotifications() {
+        hasCalledRemovedAllDeliveredNotifications = true
+    }
+
+    func getNotificationPermission() async -> NotificationSettings {
+        .init(
+            timeSensitiveSetting: .notSupported,
+            authorizationStatus: .ephemeral,
+            lockScreenSetting: .notSupported,
+            soundSetting: .notSupported
+        )
     }
 }

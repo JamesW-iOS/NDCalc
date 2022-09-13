@@ -52,11 +52,15 @@
 		1AFC055E26A155F90037B9B1 /* ExplainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFC055D26A155F90037B9B1 /* ExplainerViewModel.swift */; };
 		1AFE701A26B3CEF200E74618 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFE701926B3CEF200E74618 /* UserDefaultWrapper.swift */; };
 		1AFE701C26B3D02100E74618 /* AnyOptionalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFE701B26B3D02100E74618 /* AnyOptionalProtocol.swift */; };
-		2510CAFD2873EE9500F6D8ED /* Depends in Frameworks */ = {isa = PBXBuildFile; productRef = 2510CAFC2873EE9500F6D8ED /* Depends */; };
-		2510CAFF2873EE9500F6D8ED /* TestDepends-auto in Frameworks */ = {isa = PBXBuildFile; productRef = 2510CAFE2873EE9500F6D8ED /* TestDepends-auto */; };
 		2531BA942876B9CB00CAA9C8 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		7A03334F2813D53D008DCA01 /* CombineExpectations in Frameworks */ = {isa = PBXBuildFile; productRef = 7A03334E2813D53D008DCA01 /* CombineExpectations */; };
 		7A28EBDB2802D600002DBB1D /* CountdownCircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28EBDA2802D600002DBB1D /* CountdownCircleViewModel.swift */; };
+		7A72DFE528C0BCF80088AFBE /* NotificationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72DFE428C0BCF80088AFBE /* NotificationSetting.swift */; };
+		7A72DFE828C0C1650088AFBE /* Depends in Frameworks */ = {isa = PBXBuildFile; productRef = 7A72DFE728C0C1650088AFBE /* Depends */; };
+		7A72DFEA28C0C1830088AFBE /* Depends in Frameworks */ = {isa = PBXBuildFile; productRef = 7A72DFE928C0C1830088AFBE /* Depends */; };
+		7A72DFEB28C0C1830088AFBE /* Depends in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 7A72DFE928C0C1830088AFBE /* Depends */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A72DFEF28C0C2230088AFBE /* Depends in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 7A72DFE728C0C1650088AFBE /* Depends */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A72DFF128C0C6520088AFBE /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72DFF028C0C6520088AFBE /* UserDefaults.swift */; };
 		7A750C8B2836563E0050B850 /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A750C8A2836563E0050B850 /* OnboardingViewModelTests.swift */; };
 		7AAEBDE8284A0FAD002E08CD /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEBDE7284A0FAD002E08CD /* HomeViewModelTests.swift */; };
 		7AB47DB8282F52420033B727 /* ApplicationStateStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB47DB7282F52420033B727 /* ApplicationStateStoreProtocol.swift */; };
@@ -82,6 +86,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7A72DFEB28C0C1830088AFBE /* Depends in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +97,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7A72DFEF28C0C2230088AFBE /* Depends in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +159,8 @@
 		2510CB0F2873EF5800F6D8ED /* NDCalcUITests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NDCalcUITests copy-Info.plist"; path = "/Users/ibajames/Desktop/NDCalc/NDCalcUITests copy-Info.plist"; sourceTree = "<absolute>"; };
 		25690A65287BBD5800D0F037 /* NDCalc.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = NDCalc.xctestplan; sourceTree = "<group>"; };
 		7A28EBDA2802D600002DBB1D /* CountdownCircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCircleViewModel.swift; sourceTree = "<group>"; };
+		7A72DFE428C0BCF80088AFBE /* NotificationSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSetting.swift; sourceTree = "<group>"; };
+		7A72DFF028C0C6520088AFBE /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		7A750C8A2836563E0050B850 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
 		7A750C94283679140050B850 /* Depends */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Depends; path = ../Depends; sourceTree = "<group>"; };
 		7AAEBDE7284A0FAD002E08CD /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
@@ -167,7 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2510CAFD2873EE9500F6D8ED /* Depends in Frameworks */,
+				7A72DFE828C0C1650088AFBE /* Depends in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2510CAFF2873EE9500F6D8ED /* TestDepends-auto in Frameworks */,
+				7A72DFEA28C0C1830088AFBE /* Depends in Frameworks */,
 				7A03334F2813D53D008DCA01 /* CombineExpectations in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,6 +198,7 @@
 				1A9E0DEF26A52246002A1ED4 /* Countdown */,
 				1A07726B269E8D4B0096BBD6 /* Preferances */,
 				1A07726A269E8D3F0096BBD6 /* Notification */,
+				7A72DFF028C0C6520088AFBE /* UserDefaults.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -197,6 +206,7 @@
 		1A07726A269E8D3F0096BBD6 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
+				7A72DFE328C0BCE50088AFBE /* Models */,
 				1A45765A268F1CEA00C9332A /* NotificationController.swift */,
 				1A9E0DF626A524FC002A1ED4 /* NotificationControllerProtocol.swift */,
 				1A6A28E126AA402200D53227 /* UserNotificationCenter.swift */,
@@ -432,6 +442,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7A72DFE328C0BCE50088AFBE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7A72DFE428C0BCF80088AFBE /* NotificationSetting.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		7A750C93283679140050B850 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,7 +495,7 @@
 			);
 			name = NDCalc;
 			packageProductDependencies = (
-				2510CAFC2873EE9500F6D8ED /* Depends */,
+				7A72DFE728C0C1650088AFBE /* Depends */,
 			);
 			productName = NDCalc;
 			productReference = 1A6B877B26187C9400F67DE5 /* NDCalc.app */;
@@ -500,7 +518,7 @@
 			name = NDCalcTests;
 			packageProductDependencies = (
 				7A03334E2813D53D008DCA01 /* CombineExpectations */,
-				2510CAFE2873EE9500F6D8ED /* TestDepends-auto */,
+				7A72DFE928C0C1830088AFBE /* Depends */,
 			);
 			productName = NDCalcTests;
 			productReference = 1A6B878C26187C9500F67DE5 /* NDCalcTests.xctest */;
@@ -535,7 +553,7 @@
 			mainGroup = 1A6B877226187C9400F67DE5;
 			packageReferences = (
 				7A04C54B27E5625F00D00898 /* XCRemoteSwiftPackageReference "CombineExpectations" */,
-				2510CAFB2873EE9500F6D8ED /* XCRemoteSwiftPackageReference "Depends" */,
+				7A72DFE628C0C1650088AFBE /* XCRemoteSwiftPackageReference "Depends" */,
 			);
 			productRefGroup = 1A6B877C26187C9400F67DE5 /* Products */;
 			projectDirPath = "";
@@ -611,6 +629,7 @@
 				1A6B877F26187C9400F67DE5 /* NDCalcApp.swift in Sources */,
 				1A457645268EBB7700C9332A /* CountdownCircleView.swift in Sources */,
 				1A45765B268F1CEA00C9332A /* NotificationController.swift in Sources */,
+				7A72DFE528C0BCF80088AFBE /* NotificationSetting.swift in Sources */,
 				1A07726F269E8EA00096BBD6 /* PreferenceStore.swift in Sources */,
 				7A28EBDB2802D600002DBB1D /* CountdownCircleViewModel.swift in Sources */,
 				1A9E0DFB26A58B54002A1ED4 /* BundleItems.swift in Sources */,
@@ -629,6 +648,7 @@
 				1AD7CF5D261C429A00F6C33A /* Bundle-Decodable.swift in Sources */,
 				1A45765E268F30C600C9332A /* Vibration.swift in Sources */,
 				7AB6842C282FD30D00C97AFC /* OnboardingViewModel.swift in Sources */,
+				7A72DFF128C0C6520088AFBE /* UserDefaults.swift in Sources */,
 				1A457649268ECCA400C9332A /* NDButton.swift in Sources */,
 				1AE8A173271501CB00F0CC1C /* PickerHeading.swift in Sources */,
 				1AC7D3A726FC300900AF451E /* NDPicker.swift in Sources */,
@@ -911,14 +931,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2510CAFB2873EE9500F6D8ED /* XCRemoteSwiftPackageReference "Depends" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/unsignedapps/Depends";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
-			};
-		};
 		7A04C54B27E5625F00D00898 /* XCRemoteSwiftPackageReference "CombineExpectations" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/groue/CombineExpectations";
@@ -927,23 +939,31 @@
 				kind = branch;
 			};
 		};
+		7A72DFE628C0C1650088AFBE /* XCRemoteSwiftPackageReference "Depends" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JamesW-iOS/Depends";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2510CAFC2873EE9500F6D8ED /* Depends */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2510CAFB2873EE9500F6D8ED /* XCRemoteSwiftPackageReference "Depends" */;
-			productName = Depends;
-		};
-		2510CAFE2873EE9500F6D8ED /* TestDepends-auto */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2510CAFB2873EE9500F6D8ED /* XCRemoteSwiftPackageReference "Depends" */;
-			productName = "TestDepends-auto";
-		};
 		7A03334E2813D53D008DCA01 /* CombineExpectations */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7A04C54B27E5625F00D00898 /* XCRemoteSwiftPackageReference "CombineExpectations" */;
 			productName = CombineExpectations;
+		};
+		7A72DFE728C0C1650088AFBE /* Depends */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A72DFE628C0C1650088AFBE /* XCRemoteSwiftPackageReference "Depends" */;
+			productName = Depends;
+		};
+		7A72DFE928C0C1830088AFBE /* Depends */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A72DFE628C0C1650088AFBE /* XCRemoteSwiftPackageReference "Depends" */;
+			productName = Depends;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

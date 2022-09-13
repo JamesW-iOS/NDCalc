@@ -155,6 +155,17 @@ class HomeViewModelTests: XCTestCase {
 
         XCTAssertEqual(predictedCountdown.secondsLeft, publishedCountdown!.secondsLeft, accuracy: 0.1)
     }
+
+    @MainActor
+    func testMovesToForeground_CallsClearDeliveredNotifications() {
+        let notificationController = dependancies.dependency(
+            for: .notificationController
+        ) as! MockNotificationController
+
+        viewModel.scenePhaseChanged(to: .active)
+
+        XCTAssertTrue(notificationController.hasCalledRemovedAllDeliveredNotifications)
+    }
 }
 
 // swiftlint:enable force_cast
