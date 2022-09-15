@@ -57,7 +57,7 @@ struct About: View {
                 }
 
                 Section(header: Text("Connect with me")) {
-                    Link("Follow me on Twitter", destination: URL(string: "https://twitter.com/JamesW-tech")!)
+                    Link("Follow me on Twitter", destination: URL(string: "https://twitter.com/JamesWTech")!)
                 }
             }
             .listStyle(InsetGroupedListStyle())
