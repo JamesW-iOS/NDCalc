@@ -54,7 +54,7 @@ final class CountdownController: CountdownControllerProtocol, DependencyProvider
         let storedCountdownEndTime = userDefaults.double(forKey: Self.storeCountdownKey)
         if storedCountdownEndTime != 0 {
             let date = Date(timeIntervalSince1970: storedCountdownEndTime)
-            try? startCountdown(for: date)
+            try? startCountdown(for: date, properties: nil)
         }
     }
 
@@ -69,23 +69,33 @@ final class CountdownController: CountdownControllerProtocol, DependencyProvider
 
     /// Start a countdown for a particular end time.
     /// - Parameter endDate: The time at which the countdown should end.
+    /// - Parameter properties: The properties of the timer, `nil` if no activity should be scheduled.
     ///
     /// - Throws: `CountdownError.invalidEndTime`
     /// if the `endDate` given is either the current time or in the past.
-    func startCountdown(for endDate: Date) throws {
+    func startCountdown(for endDate: Date, properties: TimerProperties?) throws {
         let countdown = try Countdown(endsAt: endDate)
         currentCountdownPublisher.send(countdown)
         userDefaults.set(endDate.timeIntervalSince1970, forKey: Self.storeCountdownKey)
 
-        notificationController.scheduleNotification(for: endDate)
-        timer = Timer.scheduledTimer(
-            withTimeInterval: endDate.timeIntervalSinceNow,
-            repeats: false
-        ) { [unowned self] _ in
-            Vibration.error.vibrate()
-            currentCountdownPublisher.send(nil)
-            if applicationStateStore.applicationState.value == .foreground {
-                AudioServicesPlayAlertSound(1005)
+        if let properties {
+            let attributes = TimerActivityAttributes(
+                timerStart: Date(),
+                timerEnd: endDate,
+                exposure: properties.shutter,
+                filter: properties.filter
+            )
+
+            notificationController.scheduleNotification(with: attributes)
+            timer = Timer.scheduledTimer(
+                withTimeInterval: endDate.timeIntervalSinceNow,
+                repeats: false
+            ) { [unowned self] _ in
+                Vibration.error.vibrate()
+                currentCountdownPublisher.send(nil)
+                if applicationStateStore.applicationState.value == .foreground {
+                    AudioServicesPlayAlertSound(1005)
+                }
             }
         }
     }
@@ -97,7 +107,7 @@ final class CountdownController: CountdownControllerProtocol, DependencyProvider
         userDefaults.set(nil, forKey: Self.storeCountdownKey)
 
         guard let timer = timer else {
-            assertionFailure("there should be a timer scheduled if countdown is being canceled")
+//            assertionFailure("there should be a timer scheduled if countdown is being canceled")
             return
         }
         timer.invalidate()

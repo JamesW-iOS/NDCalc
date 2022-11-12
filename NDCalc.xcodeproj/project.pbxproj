@@ -62,6 +62,13 @@
 		7A72DFEF28C0C2230088AFBE /* Depends in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 7A72DFE728C0C1650088AFBE /* Depends */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7A72DFF128C0C6520088AFBE /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72DFF028C0C6520088AFBE /* UserDefaults.swift */; };
 		7A750C8B2836563E0050B850 /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A750C8A2836563E0050B850 /* OnboardingViewModelTests.swift */; };
+		7A9E69E728DC3BD800181EB9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9E69E628DC3BD800181EB9 /* WidgetKit.framework */; };
+		7A9E69E928DC3BD800181EB9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9E69E828DC3BD800181EB9 /* SwiftUI.framework */; };
+		7A9E69EC28DC3BD800181EB9 /* NSCalcWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E69EB28DC3BD800181EB9 /* NSCalcWidget.swift */; };
+		7A9E69EE28DC3BD900181EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A9E69ED28DC3BD900181EB9 /* Assets.xcassets */; };
+		7A9E69F228DC3BD900181EB9 /* NSCalcWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A9E69E528DC3BD800181EB9 /* NSCalcWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A9E69F828DC3C6F00181EB9 /* TimerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E69F728DC3C6F00181EB9 /* TimerActivityAttributes.swift */; };
+		7A9E69F928DC3C6F00181EB9 /* TimerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E69F728DC3C6F00181EB9 /* TimerActivityAttributes.swift */; };
 		7AAEBDE8284A0FAD002E08CD /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEBDE7284A0FAD002E08CD /* HomeViewModelTests.swift */; };
 		7AB47DB8282F52420033B727 /* ApplicationStateStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB47DB7282F52420033B727 /* ApplicationStateStoreProtocol.swift */; };
 		7AB47DBA282F53D90033B727 /* ApplicationStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB47DB9282F53D90033B727 /* ApplicationStateStore.swift */; };
@@ -77,6 +84,13 @@
 			remoteGlobalIDString = 1A6B877A26187C9400F67DE5;
 			remoteInfo = NDCalc;
 		};
+		7A9E69F028DC3BD900181EB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A6B877326187C9400F67DE5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A9E69E428DC3BD800181EB9;
+			remoteInfo = NSCalcWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,6 +103,17 @@
 				7A72DFEB28C0C1830088AFBE /* Depends in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9E69F628DC3BD900181EB9 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7A9E69F228DC3BD900181EB9 /* NSCalcWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7AB68427282FC58800C97AFC /* Embed Frameworks */ = {
@@ -163,6 +188,13 @@
 		7A72DFF028C0C6520088AFBE /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		7A750C8A2836563E0050B850 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
 		7A750C94283679140050B850 /* Depends */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Depends; path = ../Depends; sourceTree = "<group>"; };
+		7A9E69E528DC3BD800181EB9 /* NSCalcWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NSCalcWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A9E69E628DC3BD800181EB9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		7A9E69E828DC3BD800181EB9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		7A9E69EB28DC3BD800181EB9 /* NSCalcWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCalcWidget.swift; sourceTree = "<group>"; };
+		7A9E69ED28DC3BD900181EB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A9E69EF28DC3BD900181EB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A9E69F728DC3C6F00181EB9 /* TimerActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActivityAttributes.swift; sourceTree = "<group>"; };
 		7AAEBDE7284A0FAD002E08CD /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		7AB47DB7282F52420033B727 /* ApplicationStateStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStateStoreProtocol.swift; sourceTree = "<group>"; };
 		7AB47DB9282F53D90033B727 /* ApplicationStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStateStore.swift; sourceTree = "<group>"; };
@@ -185,6 +217,15 @@
 			files = (
 				7A72DFEA28C0C1830088AFBE /* Depends in Frameworks */,
 				7A03334F2813D53D008DCA01 /* CombineExpectations in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9E69E228DC3BD800181EB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9E69E928DC3BD800181EB9 /* SwiftUI.framework in Frameworks */,
+				7A9E69E728DC3BD800181EB9 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +283,7 @@
 				1A077270269E8F850096BBD6 /* Constatnts.swift */,
 				1A9E0DF226A52307002A1ED4 /* Countdown.swift */,
 				1A9E0DFA26A58B54002A1ED4 /* BundleItems.swift */,
+				7A9E69F728DC3C6F00181EB9 /* TimerActivityAttributes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -312,6 +354,7 @@
 				1A6B877D26187C9400F67DE5 /* NDCalc */,
 				1A6B878F26187C9500F67DE5 /* NDCalcTests */,
 				1A6B879A26187C9500F67DE5 /* NDCalcUITests */,
+				7A9E69EA28DC3BD800181EB9 /* NSCalcWidget */,
 				1A6B877C26187C9400F67DE5 /* Products */,
 				7A03334D2813D53D008DCA01 /* Frameworks */,
 				2510CB0F2873EF5800F6D8ED /* NDCalcUITests copy-Info.plist */,
@@ -323,6 +366,7 @@
 			children = (
 				1A6B877B26187C9400F67DE5 /* NDCalc.app */,
 				1A6B878C26187C9500F67DE5 /* NDCalcTests.xctest */,
+				7A9E69E528DC3BD800181EB9 /* NSCalcWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -438,6 +482,8 @@
 		7A03334D2813D53D008DCA01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A9E69E628DC3BD800181EB9 /* WidgetKit.framework */,
+				7A9E69E828DC3BD800181EB9 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -456,6 +502,16 @@
 				7A750C94283679140050B850 /* Depends */,
 			);
 			name = Packages;
+			sourceTree = "<group>";
+		};
+		7A9E69EA28DC3BD800181EB9 /* NSCalcWidget */ = {
+			isa = PBXGroup;
+			children = (
+				7A9E69EB28DC3BD800181EB9 /* NSCalcWidget.swift */,
+				7A9E69ED28DC3BD900181EB9 /* Assets.xcassets */,
+				7A9E69EF28DC3BD900181EB9 /* Info.plist */,
+			);
+			path = NSCalcWidget;
 			sourceTree = "<group>";
 		};
 		7AB47DB6282F522A0033B727 /* ApplicationStateStore */ = {
@@ -488,10 +544,12 @@
 				1A6B877926187C9400F67DE5 /* Resources */,
 				1ACB829826AD6A2700349F33 /* Swiftlint */,
 				7AB68427282FC58800C97AFC /* Embed Frameworks */,
+				7A9E69F628DC3BD900181EB9 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7A9E69F128DC3BD900181EB9 /* PBXTargetDependency */,
 			);
 			name = NDCalc;
 			packageProductDependencies = (
@@ -524,13 +582,30 @@
 			productReference = 1A6B878C26187C9500F67DE5 /* NDCalcTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		7A9E69E428DC3BD800181EB9 /* NSCalcWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A9E69F328DC3BD900181EB9 /* Build configuration list for PBXNativeTarget "NSCalcWidgetExtension" */;
+			buildPhases = (
+				7A9E69E128DC3BD800181EB9 /* Sources */,
+				7A9E69E228DC3BD800181EB9 /* Frameworks */,
+				7A9E69E328DC3BD800181EB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NSCalcWidgetExtension;
+			productName = NSCalcWidgetExtension;
+			productReference = 7A9E69E528DC3BD800181EB9 /* NSCalcWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		1A6B877326187C9400F67DE5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					1A6B877A26187C9400F67DE5 = {
@@ -539,6 +614,9 @@
 					1A6B878B26187C9500F67DE5 = {
 						CreatedOnToolsVersion = 12.5;
 						TestTargetID = 1A6B877A26187C9400F67DE5;
+					};
+					7A9E69E428DC3BD800181EB9 = {
+						CreatedOnToolsVersion = 14.1;
 					};
 				};
 			};
@@ -561,6 +639,7 @@
 			targets = (
 				1A6B877A26187C9400F67DE5 /* NDCalc */,
 				1A6B878B26187C9500F67DE5 /* NDCalcTests */,
+				7A9E69E428DC3BD800181EB9 /* NSCalcWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -581,6 +660,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2531BA942876B9CB00CAA9C8 /* (null) in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9E69E328DC3BD800181EB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9E69EE28DC3BD900181EB9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +730,7 @@
 				1AE8A171271501B100F0CC1C /* FilterPicker.swift in Sources */,
 				1AE8A170271501B100F0CC1C /* ShutterSpeedPicker.swift in Sources */,
 				1A077271269E8F850096BBD6 /* Constatnts.swift in Sources */,
+				7A9E69F828DC3C6F00181EB9 /* TimerActivityAttributes.swift in Sources */,
 				1AFE701A26B3CEF200E74618 /* UserDefaultWrapper.swift in Sources */,
 				1AFC055B26A153130037B9B1 /* Explainer.swift in Sources */,
 				1AD7CF5D261C429A00F6C33A /* Bundle-Decodable.swift in Sources */,
@@ -673,6 +761,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A9E69E128DC3BD800181EB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9E69EC28DC3BD800181EB9 /* NSCalcWidget.swift in Sources */,
+				7A9E69F928DC3C6F00181EB9 /* TimerActivityAttributes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -680,6 +777,11 @@
 			isa = PBXTargetDependency;
 			target = 1A6B877A26187C9400F67DE5 /* NDCalc */;
 			targetProxy = 1A6B878D26187C9500F67DE5 /* PBXContainerItemProxy */;
+		};
+		7A9E69F128DC3BD900181EB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A9E69E428DC3BD800181EB9 /* NSCalcWidgetExtension */;
+			targetProxy = 7A9E69F028DC3BD900181EB9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -803,6 +905,7 @@
 		1A6B87A126187C9500F67DE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -812,7 +915,7 @@
 				DEVELOPMENT_TEAM = R98CCK63WA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NDCalc/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -830,6 +933,7 @@
 		1A6B87A226187C9500F67DE5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -839,7 +943,7 @@
 				DEVELOPMENT_TEAM = R98CCK63WA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NDCalc/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -898,6 +1002,66 @@
 			};
 			name = Release;
 		};
+		7A9E69F428DC3BD900181EB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R98CCK63WA;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NSCalcWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NSCalcWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.thetrex.NDCalc.NSCalcWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A9E69F528DC3BD900181EB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R98CCK63WA;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NSCalcWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NSCalcWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.thetrex.NDCalc.NSCalcWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -924,6 +1088,15 @@
 			buildConfigurations = (
 				1A6B87A426187C9500F67DE5 /* Debug */,
 				1A6B87A526187C9500F67DE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A9E69F328DC3BD900181EB9 /* Build configuration list for PBXNativeTarget "NSCalcWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9E69F428DC3BD900181EB9 /* Debug */,
+				7A9E69F528DC3BD900181EB9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

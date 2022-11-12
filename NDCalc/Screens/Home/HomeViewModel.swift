@@ -131,7 +131,13 @@ final class HomeViewModel: ObservableObject, DependencyProvider {
     func startCountdown() {
         do {
             let timerEndDate = Date( timeIntervalSinceNow: calculatedShutterSpeed.seconds)
-            try countdownController.startCountdown(for: timerEndDate)
+            try countdownController.startCountdown(
+                for: timerEndDate,
+                properties: (
+                    filter: selectedFilter.stringRepresentation(notation: filterNotation),
+                    shutter: selectedShutterSpeed.stringFractionalRepresentation
+                )
+            )
         } catch {
             assertionFailure("Should always start countdown")
             return

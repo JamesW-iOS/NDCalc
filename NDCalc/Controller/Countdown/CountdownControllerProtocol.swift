@@ -12,6 +12,8 @@ import Depends
 /// A protocol that defines the requirements for a Countdown controller object,
 /// an object that can start and stop countdowns
 protocol CountdownControllerProtocol {
+    typealias TimerProperties = (filter: String, shutter: String)
+
     /// A publisher for the current countdown that is running, nil if no countdown is running.
     ///
     /// This would ordinarily be an `@Published` marked variable but protocols don't allow for
@@ -27,7 +29,7 @@ protocol CountdownControllerProtocol {
     /// - Parameter for: The time at which the countdown will end.
     /// - Throws: `CountdownError.invalidEndTime`
     ///            if `for` is the current time or in the past.
-    func startCountdown(for endDate: Date) throws
+    func startCountdown(for endDate: Date, properties: TimerProperties?) throws
     /// Cancel the current countdown.
     func cancelCountdown()
 }
@@ -58,7 +60,7 @@ public final class MockCountdownController: CountdownControllerProtocol, Observa
     }
 
     /// Empty implementation, here just for protocol conformance
-    func startCountdown(for endDate: Date) throws {
+    func startCountdown(for endDate: Date, properties: TimerProperties?) throws {
         let countDown = try Countdown(endsAt: endDate)
         currentCountdownPublisher.send(countDown)
     }

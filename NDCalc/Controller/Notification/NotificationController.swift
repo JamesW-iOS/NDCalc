@@ -5,6 +5,7 @@
 //  Created by James Warren on 2/7/21.
 //
 
+import ActivityKit
 import Combine
 import Depends
 import UserNotifications
@@ -13,8 +14,8 @@ import UserNotifications
 final class NotificationController: NotificationControllerProtocol, DependencyProvider {
     let dependencies: DependencyRegistry
 
-//    /// The identifier of the currently scheduled notification if there is one.
-//    private(set) var notificationIdentifier: String?
+    //    /// The identifier of the currently scheduled notification if there is one.
+    //    private(set) var notificationIdentifier: String?
 
     /// A reference to an object that conforms to the `UserNotificationCenter` protocol
     ///
@@ -35,6 +36,9 @@ final class NotificationController: NotificationControllerProtocol, DependencyPr
         }
     }
 
+    private var timerActivity: Activity<TimerActivityAttributes>?
+    private var endTimer: Timer?
+
     /// Initialise a `NotificationController`, optionally with a `UserNotificationCenter` object
     /// - Parameter notificationCentre: An object that handles actually scheduling notifications, this is almost always
     /// the  system `UNUserNotificationCenter`, this should only be overridden for testing.
@@ -45,44 +49,58 @@ final class NotificationController: NotificationControllerProtocol, DependencyPr
     /// Schedule a notification to be delivered at a particular time.
     ///
     /// - Parameter for: The time at which the notification should be delivered.
-    func scheduleNotification(for endDate: Date) {
-        let content = UNMutableNotificationContent()
-        content.title = Self.notificationTitle
-        content.body = Self.notificationBody
-        content.sound = UNNotificationSound.defaultCritical
+    func scheduleNotification(with attributes: TimerActivityAttributes) {
+        let initialContentState = TimerActivityAttributes.ContentState(isRunning: true)
 
-        if #available(iOS 15.0, *) {
-            content.interruptionLevel = UNNotificationInterruptionLevel.critical
-        }
-
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: endDate.timeIntervalSinceNow, repeats: false)
-        let identifier = UUID().uuidString
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-
-        notificationIdentifier = identifier
-        userDefaults.set(identifier, forKey: Self.savedNotifationIDKey)
-
-        hasNotificationScheduled = true
-
-        centre.add(request) { (error) in
-            if let error = error {
-                print("error while scheduling notification: \(error.localizedDescription)")
+        do {
+            if let previousTimerActivity = timerActivity {
+                Task {
+                    await previousTimerActivity.end(using: nil, dismissalPolicy: .immediate)
+                }
             }
+
+            timerActivity = try Activity<TimerActivityAttributes>.request(
+                attributes: attributes,
+                contentState: initialContentState
+            )
+
+            let now = Date()
+
+            endTimer = Timer.scheduledTimer(
+                withTimeInterval: now.distance(to: attributes.timerEnd),
+                repeats: false
+            ) { [weak self] _ in
+                guard let self else {
+                    return
+                }
+                self.endTimer = nil
+                Task {
+                    guard let timerActivity = self.timerActivity else {
+//                        assertionFailure("timer activity should still be active")
+                        return
+                    }
+
+                    print("here")
+
+                    let update = TimerActivityAttributes.ContentState(isRunning: false)
+                    await timerActivity.end(using: update, dismissalPolicy: .after(Date().addingTimeInterval(60 * 5)))
+                }
+            }
+        } catch {
+            print("failed to schedule activity")
         }
     }
 
     /// Cancel the currently scheduled notification if there is one.
     func cancelNotification() {
-        guard let notificationIdentifier = notificationIdentifier else {
-            assertionFailure("cancel notification called but no identifier saved.")
-            return
+        Task {
+            for activity in Activity<TimerActivityAttributes>.activities {
+                await activity.end(dismissalPolicy: .immediate)
+            }
+
+            self.timerActivity = nil
+            self.endTimer = nil
         }
-
-        userDefaults.set(nil, forKey: Self.savedNotifationIDKey)
-
-        hasNotificationScheduled = false
-        self.notificationIdentifier = nil
-        centre.removePendingNotificationRequests(withIdentifiers: [notificationIdentifier])
     }
 
     /// Request notification permission from the `UserNotificationCenter`, usually the system.

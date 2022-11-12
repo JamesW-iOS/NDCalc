@@ -23,7 +23,7 @@ protocol NotificationControllerProtocol {
     /// Schedule a notification to be sent at a particular time..
     ///
     /// - Parameter for: The time at which the notification should be delivered.
-    func scheduleNotification(for endDate: Date)
+    func scheduleNotification(with attributes: TimerActivityAttributes)
     /// Cancel the currently scheduled notification if there is one
     func cancelNotification()
     /// Request notification permission from the system.
@@ -43,7 +43,7 @@ final class MockNotificationController: NotificationControllerProtocol {
 
     var hasNotificationScheduled: Bool = false
 
-    func scheduleNotification(for endDate: Date) {
+    func scheduleNotification(with attributes: TimerActivityAttributes) {
     }
 
     func cancelNotification() {
