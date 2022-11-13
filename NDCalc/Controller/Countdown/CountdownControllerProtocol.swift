@@ -29,7 +29,7 @@ protocol CountdownControllerProtocol {
     /// - Parameter for: The time at which the countdown will end.
     /// - Throws: `CountdownError.invalidEndTime`
     ///            if `for` is the current time or in the past.
-    func startCountdown(for endDate: Date, properties: TimerProperties?) throws
+    func startCountdown(for endDate: Date, properties: TimerProperties) throws
     /// Cancel the current countdown.
     func cancelCountdown()
 }
@@ -46,7 +46,6 @@ public final class MockCountdownController: CountdownControllerProtocol, Observa
     /// Initialises a `MockCountdownController`, optionally with a specific Countdown
     /// - Parameter countdown: An optional `Countdown` to create the `MockCountdownController` with.
     init(countdown: Countdown? = nil) {
-//        currentCountdown = countdown
         currentCountdownPublisher = CurrentValueSubject(nil)
     }
 
@@ -60,8 +59,8 @@ public final class MockCountdownController: CountdownControllerProtocol, Observa
     }
 
     /// Empty implementation, here just for protocol conformance
-    func startCountdown(for endDate: Date, properties: TimerProperties?) throws {
-        let countDown = try Countdown(endsAt: endDate)
+    func startCountdown(for endDate: Date, properties: TimerProperties) throws {
+        let countDown = try Countdown(endsAt: endDate, shutterSpeed: properties.shutter, filter: properties.filter)
         currentCountdownPublisher.send(countDown)
     }
 

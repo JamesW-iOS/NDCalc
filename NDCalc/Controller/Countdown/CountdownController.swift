@@ -17,6 +17,8 @@ import UIKit
 /// side effects of timers like communicating with the a NotificationController and triggering vibration alerts.
 final class CountdownController: CountdownControllerProtocol, DependencyProvider {
     static let storeCountdownKey = "countdownKey"
+    static let storedCountdownFilterKey = "storeFilterKey"
+    static let storedCountdownShutterKey = "storeShutterKey"
 
     let dependencies: DependencyRegistry
 
@@ -29,6 +31,15 @@ final class CountdownController: CountdownControllerProtocol, DependencyProvider
 
     @Dependency(.applicationState)
     private var applicationStateStore: ApplicationStateStoreProtocol
+
+    /// The currently selected `Filter` in the picker.
+    @UserDefault(key: storedCountdownFilterKey,
+                 defaultValue: "")
+    private var storedFilter: String
+    /// The currently selected `ShutterSpeed` in the picker.
+    @UserDefault(key: storedCountdownShutterKey,
+                 defaultValue: "")
+    private var storesdShutterSpeed: String
 
     /// A timer that is set to finish when the countdown will finish, used to schedule a vibration to occur.
     /// `nil` if no Countdown running.
@@ -54,7 +65,9 @@ final class CountdownController: CountdownControllerProtocol, DependencyProvider
         let storedCountdownEndTime = userDefaults.double(forKey: Self.storeCountdownKey)
         if storedCountdownEndTime != 0 {
             let date = Date(timeIntervalSince1970: storedCountdownEndTime)
-            try? startCountdown(for: date, properties: nil)
+            assert(!storesdShutterSpeed.isEmpty, "Should have stored shutter speed if stored countdown")
+            assert(!storedFilter.isEmpty, "Should have stored filter if stored countdown")
+            try? startCountdown(for: date, properties: (filter: storedFilter, shutter: storesdShutterSpeed))
         }
     }
 
@@ -73,29 +86,29 @@ final class CountdownController: CountdownControllerProtocol, DependencyProvider
     ///
     /// - Throws: `CountdownError.invalidEndTime`
     /// if the `endDate` given is either the current time or in the past.
-    func startCountdown(for endDate: Date, properties: TimerProperties?) throws {
-        let countdown = try Countdown(endsAt: endDate)
+    func startCountdown(for endDate: Date, properties: TimerProperties) throws {
+        let countdown = try Countdown(endsAt: endDate, shutterSpeed: properties.shutter, filter: properties.filter)
         currentCountdownPublisher.send(countdown)
         userDefaults.set(endDate.timeIntervalSince1970, forKey: Self.storeCountdownKey)
+        storesdShutterSpeed = properties.shutter
+        storedFilter = properties.filter
 
-        if let properties {
-            let attributes = TimerActivityAttributes(
-                timerStart: Date(),
-                timerEnd: endDate,
-                exposure: properties.shutter,
-                filter: properties.filter
-            )
+        let attributes = TimerActivityAttributes(
+            timerStart: Date(),
+            timerEnd: endDate,
+            exposure: properties.shutter,
+            filter: properties.filter
+        )
 
-            notificationController.scheduleNotification(with: attributes)
-            timer = Timer.scheduledTimer(
-                withTimeInterval: endDate.timeIntervalSinceNow,
-                repeats: false
-            ) { [unowned self] _ in
-                Vibration.error.vibrate()
-                currentCountdownPublisher.send(nil)
-                if applicationStateStore.applicationState.value == .foreground {
-                    AudioServicesPlayAlertSound(1005)
-                }
+        notificationController.scheduleNotification(with: attributes)
+        timer = Timer.scheduledTimer(
+            withTimeInterval: endDate.timeIntervalSinceNow,
+            repeats: false
+        ) { [unowned self] _ in
+            Vibration.error.vibrate()
+            currentCountdownPublisher.send(nil)
+            if applicationStateStore.applicationState.value == .foreground {
+                AudioServicesPlayAlertSound(1005)
             }
         }
     }
@@ -107,7 +120,6 @@ final class CountdownController: CountdownControllerProtocol, DependencyProvider
         userDefaults.set(nil, forKey: Self.storeCountdownKey)
 
         guard let timer = timer else {
-//            assertionFailure("there should be a timer scheduled if countdown is being canceled")
             return
         }
         timer.invalidate()

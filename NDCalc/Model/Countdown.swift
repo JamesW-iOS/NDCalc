@@ -25,6 +25,8 @@ enum CountdownError: Error, CustomStringConvertible, Equatable {
 struct Countdown: Equatable {
     /// The time that `Countdown` will end.
     let finishTime: Date
+    let shutterSpeed: String
+    let filter: String
     /// The time that the `Countdown` was started.
     private let startedAt = Date()
 
@@ -44,7 +46,7 @@ struct Countdown: Equatable {
 
     /// A formatted representation of the time left in a countdown
     var stringSecondsLeft: String {
-        guard let output = Self.timeFormatter.string(from: secondsLeft.magnitude + 1) else {
+        guard let output = Self.timeFormatter.string(from: secondsLeft.magnitude) else {
             assertionFailure("Unable to format time left in countdown")
             return "Error"
         }
@@ -65,12 +67,14 @@ struct Countdown: Equatable {
 
     /// Initiialises a `Countdown` to end at a particular time.
     /// - Parameter endsAt: The exact time at which the `Countdown` will end.
-    init(endsAt: Date) throws {
+    init(endsAt: Date, shutterSpeed: String, filter: String) throws {
         if endsAt <= Date() {
             throw CountdownError.invalidEndTime
         }
 
         finishTime = endsAt
+        self.shutterSpeed = shutterSpeed
+        self.filter = filter
     }
 
     static func == (lhs: Countdown, rhs: Countdown) -> Bool {

@@ -14,6 +14,7 @@ struct NDCalcApp: App {
     let seenOnboarrding = {
         UserDefaults.standard.bool(forKey: OnboardingViewModel.SeenOnboardingScreenKey)
     }()
+    let reviewController: ReviewController
 
     init() {
         // The components need to be registered in this order since each one depends of the ones registered before it.
@@ -28,6 +29,8 @@ struct NDCalcApp: App {
 
         let applicationStateStore = ApplicationStateStore()
         dependancies.register(applicationStateStore, for: .applicationState)
+
+        reviewController = ReviewController(dependancies: dependancies)
     }
 
     var body: some Scene {

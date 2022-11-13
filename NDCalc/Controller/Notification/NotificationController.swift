@@ -14,9 +14,6 @@ import UserNotifications
 final class NotificationController: NotificationControllerProtocol, DependencyProvider {
     let dependencies: DependencyRegistry
 
-    //    /// The identifier of the currently scheduled notification if there is one.
-    //    private(set) var notificationIdentifier: String?
-
     /// A reference to an object that conforms to the `UserNotificationCenter` protocol
     ///
     /// This is almost always the system `UNUserNotificationCenter` except in the case of testing.
@@ -53,9 +50,9 @@ final class NotificationController: NotificationControllerProtocol, DependencyPr
         let initialContentState = TimerActivityAttributes.ContentState(isRunning: true)
 
         do {
-            if let previousTimerActivity = timerActivity {
-                Task {
-                    await previousTimerActivity.end(using: nil, dismissalPolicy: .immediate)
+            Task {
+                for activity in Activity<TimerActivityAttributes>.activities {
+                    await activity.end(dismissalPolicy: .immediate)
                 }
             }
 
@@ -76,7 +73,7 @@ final class NotificationController: NotificationControllerProtocol, DependencyPr
                 self.endTimer = nil
                 Task {
                     guard let timerActivity = self.timerActivity else {
-//                        assertionFailure("timer activity should still be active")
+                        //                        assertionFailure("timer activity should still be active")
                         return
                     }
 

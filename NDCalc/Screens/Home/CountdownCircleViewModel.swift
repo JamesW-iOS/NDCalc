@@ -11,14 +11,22 @@ import Depends
 import Foundation
 
 final class CountdownCircleViewModel: ObservableObject, DependencyProvider {
+    struct CircleAnimation: Equatable {
+        let from: Double
+        let over: TimeInterval
+        let reseting: Bool
+    }
+
     static let allDoneString = "All done"
 
     let dependencies: DependencyRegistry
 
     @Dependency(.countdownController) var countdownController: CountdownControllerProtocol
 
-    @Published private(set) var completionAmount: Double
-    @Published private(set) var circleReseting: Bool
+    @Published private(set) var circleAnimation: CircleAnimation?
+
+//    @Published private(set) var completionAmount: Double
+//    @Published private(set) var circleReseting: Bool
     @Published private(set) var secondsLeft: String
     private var cancellables = Set<AnyCancellable>()
 
@@ -36,32 +44,45 @@ final class CountdownCircleViewModel: ObservableObject, DependencyProvider {
     init(dependencies: DependencyRegistry) {
         self.dependencies = dependencies
 
-        completionAmount = 1.0
-        circleReseting = true
+//        completionAmount = 1.0
+//        circleReseting = true
         secondsLeft = Self.allDoneString
 
+        Task {
+            try? await Task.sleep(nanoseconds: 1_000_000)
+            proccesCountdown(countdownController.currentCountdownPublisher.value)
+        }
+
+
         countdownController.currentCountdownPublisher
-            .sink { [unowned self] countdown in
-                if let countdown = countdown {
-                    completionAmount = 0.0
-                    circleReseting = false
-                    secondsLeft = countdown.stringSecondsLeft
-                    timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-                        guard let countdown = self?.countdownController.currentCountdownPublisher.value else {
-                            assertionFailure("Should not fire without seconds left")
-                            return
-                        }
-
-                        self?.secondsLeft = countdown.stringSecondsLeft
-                    }
-                } else {
-                    circleReseting = true
-                    completionAmount = 1.0
-
-                    timer?.invalidate()
-                    secondsLeft = Self.allDoneString
-                }
-            }
+            .dropFirst()
+            .print()
+            .sink { [unowned self] in proccesCountdown($0) }
             .store(in: &cancellables)
+    }
+
+    private func proccesCountdown(_ countdown: Countdown?) {
+        print("Proccessing countdown: \(countdown)")
+
+        if let countdown = countdown {
+            print("New animation")
+            circleAnimation = .init(from: countdown.completionAmount, over: countdown.secondsLeft, reseting: false)
+            secondsLeft = countdown.stringSecondsLeft
+            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+                guard let countdown = self?.countdownController.currentCountdownPublisher.value else {
+                    assertionFailure("Should not fire without seconds left")
+                    return
+                }
+
+                self?.secondsLeft = countdown.stringSecondsLeft
+            }
+        } else {
+            //                    circleReseting = true
+            //                    completionAmount = 1.0
+            circleAnimation = .init(from: 0, over: 0.7, reseting: true)
+
+            timer?.invalidate()
+            secondsLeft = Self.allDoneString
+        }
     }
 }
